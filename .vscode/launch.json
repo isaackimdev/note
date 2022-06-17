@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ArithmeticSequence",
+            "request": "launch",
+            "mainClass": "ArithmeticSequence",
+            "projectName": "algorithm_2c844f18"
+        },
+        {
+            "type": "java",
             "name": "Launch SumAlgorithm",
             "request": "launch",
             "mainClass": "SumAlgorithm",
