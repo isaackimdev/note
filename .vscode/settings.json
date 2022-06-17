@@ -1,7 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "java/02_ArithmeticSequence",
         "java/01_SumAlgorithm",
-        "java/02_CountAlgorithm"
+        "java/02_ArithmeticSequence"
     ]
 }
