@@ -17,4 +17,6 @@
 Visual Studio Code
 
 ## VS code Usage
+Run : VS Code Key - F5
+
 
