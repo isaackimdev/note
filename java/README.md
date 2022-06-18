@@ -1,5 +1,5 @@
-# Algorithm - Java편
-## Basic Level Algorithm
+# Algorithm - Java
+## Basic Algorithm
 - 합계 알고리즘 : SumAlgorithm, 수열, ...
 - 개수 알고리즘 : CountAlgorithm.java
 - 평균 알고리즘 : AverageAlgorithm
