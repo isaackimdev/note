@@ -20,7 +20,7 @@ public class RankAlgorithm {
 
         // 3. output
         for (int i = 0; i < scores.length; i++) {
-            System.out.println(scores[i] + "점 : " + rankings[i] + "등");
+            System.out.println(String.format("%3d점: %1d등", scores[i], rankings[i]));
         }
     }
 }
