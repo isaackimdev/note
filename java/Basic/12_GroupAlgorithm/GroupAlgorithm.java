@@ -1,6 +1,5 @@
 //[?] 컬렉션 형태의 데이터를 특정 키 값으로 그룹화
 import java.util.Arrays;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 /*
