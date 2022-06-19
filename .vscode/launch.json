@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch GroupAlgorithm",
+            "request": "launch",
+            "mainClass": "GroupAlgorithm",
+            "projectName": "algorithm_1824fb3a"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
