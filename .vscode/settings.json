@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "java/Basic/08_SortAlgorithm",
+        "java/Basic/07_RankAlgorithm",
+        "java/Basic/06_NearAlgorithm",
+        "java/Basic/09_SearchAlgorithm"
+    ]
+}
