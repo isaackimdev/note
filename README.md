@@ -65,4 +65,7 @@ Algorithm Code Repository
 - [6060 : [기초-비트단위논리연산] 비트단위로 AND 하여 출력하기(설명)(py)](./codeup/python-basic-100/6060.py)
 - [6061 : [기초-비트단위논리연산] 비트단위로 OR 하여 출력하기(설명)(py)](./codeup/python-basic-100/6061.py)
 - [6062 : [기초-비트단위논리연산] 비트단위로 XOR 하여 출력하기(설명)(py)](./codeup/python-basic-100/6062.py)
-- 3항 연산자
+- [6063 : [기초-3항연산] 정수 2개 입력받아 큰 값 출력하기(설명)(py)](./codeup/python-basic-100/6063.py)
+- [6064 : [기초-3항연산] 정수 3개 입력받아 가장 작은 값 출력하기(설명)(py)](./codeup/python-basic-100/6064.py)
+- [6065 : [기초-조건/선택실행구조] 정수 3개 입력받아 짝수만 출력하기(설명)(py)](./codeup/python-basic-100/6065.py)
+- [6066 : [기초-조건/선택실행구조] 정수 3개 입력받아 짝/홀 출력하기(설명)(py)](./codeup/python-basic-100/6066.py)
