@@ -94,3 +94,5 @@ Algorithm Code Repository
 - [6089 : [기초-종합] 수 나열하기2(py)](./codeup/python-basic-100/6089.py)
 - [6090 : [기초-종합] 수 나열하기3(py)](./codeup/python-basic-100/6090.py)
 - [6091 : [기초-종합] 함께 문제 푸는 날(설명)(py)](./codeup/python-basic-100/6091.py)
+- [6092 : [기초-리스트] 이상한 출석 번호 부르기1(설명)(py)](./codeup/python-basic-100/6092.py)
+
