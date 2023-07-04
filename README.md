@@ -95,4 +95,8 @@ Algorithm Code Repository
 - [6090 : [기초-종합] 수 나열하기3(py)](./codeup/python-basic-100/6090.py)
 - [6091 : [기초-종합] 함께 문제 푸는 날(설명)(py)](./codeup/python-basic-100/6091.py)
 - [6092 : [기초-리스트] 이상한 출석 번호 부르기1(설명)(py)](./codeup/python-basic-100/6092.py)
+- [6093 : [기초-리스트] 이상한 출석 번호 부르기2(py)](./codeup/python-basic-100/6093.py)
+- [6094 : [기초-리스트] 이상한 출석 번호 부르기3(py)](./codeup/python-basic-100/6094.py)
+- [6095 : [기초-리스트] 바둑판에 흰 돌 놓기(설명)(py)](./codeup/python-basic-100/6095.py)
+
 
