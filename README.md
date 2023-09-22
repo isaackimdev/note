@@ -1,3 +1,2 @@
-# Algorithm
-
-PS
+# study
+- algorithm
