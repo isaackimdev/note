@@ -1,4 +1,6 @@
 # study
+https://github.com/isaackimdev
+
 - algorithm
     - beakjoon
     - codeup
