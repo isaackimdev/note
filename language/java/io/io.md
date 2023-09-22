@@ -34,7 +34,7 @@ public class Main2 {
             new BufferedReader(
                 new InputStreamReader(System.in)
             );
-            
+
         BufferedWriter bw = 
             new BufferedWriter(
                 new OutputStreamWriter(System.out)
@@ -46,3 +46,5 @@ public class Main2 {
     }
 }
 ```
+
+두 번째 방법은 코드가 더 길지만 더 적은 메모리를 사용한다.
