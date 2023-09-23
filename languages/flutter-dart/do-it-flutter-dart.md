@@ -25,11 +25,13 @@ __INDEX__
 4. Android studio 설치 후 -> 실행
 5. flutter plug-in / dart plug-in 설치
 6. flutter project 생성하기
+    - Flutter SDK path 지정하기 (/flutter 까지만.)
 7. 프로젝트에서 가상기기(AVD : Android Virtual Device) 만들기
     - Device Manage
         - Create device
             - Pixel 2 기본값 설치 (android)
             - x86 images -> Tiramisu
 8. 에뮬레이터 구동해보기
-
+9. Hot reload 테스트하기
+    - {project root}/lib/main.dart
 
