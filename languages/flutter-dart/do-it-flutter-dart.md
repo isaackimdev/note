@@ -25,7 +25,7 @@ __INDEX__
 4. Android studio 설치 후 -> 실행
 5. flutter plug-in / dart plug-in 설치
 6. flutter project 생성하기
-7. 프로젝트에서 가상기기 만들기
+7. 프로젝트에서 가상기기(AVD : Android Virtual Device) 만들기
     - Device Manage
         - Create device
             - Pixel 2 기본값 설치 (android)

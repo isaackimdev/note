@@ -1,4 +1,4 @@
-package language.java.io;
+package languages.java.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
