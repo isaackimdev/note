@@ -1,4 +1,4 @@
-# study
+# cs
 https://github.com/isaackimdev
 
 - algorithm
