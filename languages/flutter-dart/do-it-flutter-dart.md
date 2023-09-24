@@ -17,6 +17,7 @@ __INDEX__
 
 #### 개발 환경
 - OS : windows 10, 11
+- IDE : Android studio
 
 #### 개발 환경 세팅 순서
 1. https://flutter.dev/ -> [Get started] -> flutter sdk install
@@ -35,3 +36,118 @@ __INDEX__
 9. Hot reload 테스트하기
     - {project root}/lib/main.dart
 
+#### flutter project 분석
+- android : 안드로이드 앱 구성
+- ios : ios 앱 구성
+- lib : Dart file
+    - main.dart : 앱의 메인 다트 파일
+- test : Test dart file
+- pubspec.yaml : 플러터 프로젝트의 메인 환경 파일
+    - 빌드와 관련된 각종 설정
+    - package, resource 추가 관련 설정
+
+#### main.dart 파일 분석하기
+
+__import 구문__ 
+```dart
+import 'package:flutter/material.dart';
+```
+import 구문은 다른 dart file을 불러올 때 사용. 플러터에서 제공하는 패키지일 수도 있고, pubspec.yaml 파일에 등록한 외부 패키지일 수도 있다. 또는 개발자가 직접 작성한 dart file 일 수 있다. 
+
+Java랑 비슷해보인다.
+
+
+__main() 함수__
+```dart
+void main() {
+  runApp(const MyApp());
+}
+```
+프로그램의 진입점(entry point)인 main() 함수다. main() 함수는 다트 엔진의 진입점으로서 다트 엔진이 main()을 호출하면서 앱이 실행된다. main()에서 runApp() 함수를 호출하고 이때 위젯을 지정한다. 위젯은 화면을 구성하는 클래스라고 보면 된다.
+
+
+__MyApp 클래스__
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+```
+위젯 클래스는 StatelessWidget, StatefulWidget 중 하나를 상속받는다. build() 함수는 위젯을 어떻게 구성할지를 명시한다. 위젯 클래스가 실행되면 자동으로 build() 함수가 호출된다. build 함수 내에 MaterialApp(플러터 제공 위젯), MyHomePage(커스텀 위젯)도 위젯 클래스다.
+
+
+__MyHomePage 클래스__
+```dart
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+```
+StatefulWidget은 화면 위젯에 출력되는 데이터 등을 별도의 State 클래스에 지정하는데 _MyHomePageState 클래스가 State클래스다. StatefulWidget 클래스가 실행되면 createState() 함수가 자동으로 호출되며 이 함수에서 StatefulWidget을 위한 State 클래스의 객체를 반환한다.
+
+___MyHomePageState 클래스__
+```dart
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'HelloWorld',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+```
+State(_MyHomePageState) 클래스가 호출되면 build 메서드를 호출한다. build 메서드는 State의 setState() 메서드가 호출되었을 때마다 다시 호출한다. 따라서 데이터의 변화를 화면/위젯에 반영하기 위해선 setState()를 다시 호출한다.
+
+Scaffold는 appBar, body, floatingActionButton 등으로 화면의 구성 요서를 묶어 주는 위젯이다.
+
+__실행 순서__
+main() -> MyApp -> MyHomePage -> _MyHomePageState
+
+화면을 구성하는 대부분은 _MyHomePageState의 build() 함수에 작성된다.
