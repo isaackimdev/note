@@ -1,5 +1,7 @@
-package languages.java.character;
+# Java - ASCII
 
+__아스키 코드 보기__
+```java
 public class Main {
     public static void main(String[] args) {
         // ascii code
@@ -7,3 +9,4 @@ public class Main {
         System.out.println(i); // 'A' => 65
     }
 }
+```
