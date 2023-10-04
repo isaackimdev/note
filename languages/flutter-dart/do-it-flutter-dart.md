@@ -31,21 +31,29 @@ __INDEX__
 - IDE : Android studio
 
 #### 개발 환경 세팅 순서
-1. https://flutter.dev/ -> [Get started] -> flutter sdk install
+1. Flutter SDK 설치하기
+    - https://flutter.dev/ -> [Get started] -> Windows -> flutter sdk install -> 압축 해제
 2. window 기준 c:/ 를 root로 위치 
 3. path 설정 (환경 변수 설정) : flutter-sdk/bin 경로 설정
-4. Android studio 설치 후 -> 실행
-5. flutter plug-in / dart plug-in 설치
+    - 내 PC > 우클릭 속성 > 고습 시스템 설정 > 환경 변수 > path 설정
+4. IDE : Android studio 설치 후 -> 실행
+    - IDE는 Android studio를 많이 사용한다.
+5. Android Studio에 flutter plug-in / dart plug-in 설치하기
+    - IDE 초기 화면 Flugins 탭에서 flutter, dart 플러그인을 설치한다.
 6. flutter project 생성하기
-    - Flutter SDK path 지정하기 (/flutter 까지만.)
+    - Flutter SDK path 지정하기 
+    - C:/flutter_windows_3.7.3/flutter 까지만.
+    - Android language : Kotlin
+    - iOS language : Swift
+    - Platforms : Android, iOS
 7. 프로젝트에서 가상기기(AVD : Android Virtual Device) 만들기
     - Device Manage
         - Create device
             - Pixel 2 기본값 설치 (android)
-            - x86 images -> Tiramisu
+            - x86 images -> Tiramisu(23.10최신) > download
 8. 에뮬레이터 구동해보기
 9. Hot reload 테스트하기
-    - {project root}/lib/main.dart
+    - {project root}/lib/main.dart 수정하기
 
 #### flutter project 분석
 - android : 안드로이드 앱 구성
