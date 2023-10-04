@@ -1,7 +1,7 @@
 # do it flutter & dart
 
 __INDEX__
-1. flutter start
+1. flutter
 2. dart
 3. user interface
 4. screen
@@ -10,8 +10,19 @@ __INDEX__
 7. native app function
 8. with firebase
 
-## 1. flutter start
-플러터(flutter) 하는 이유는 쉽게 말해서 크로스 플랫폼에서 동작하는 앱을 만들기 위함이다. Android, iOS, Windows, macOS, Linux, Web, Embedded 등 여러 플랫폼에서 동작하는 앱을 같은 코드로 개발할 수 있다.
+## 1. flutter
+플러터(flutter) 하는 이유는 쉽게 말해서 크로스 플랫폼에서 동작하는 앱을 만들기 위함이다. Android, iOS, Windows, macOS, Linux, Web, Embedded, WebApp 등 여러 플랫폼에서 동작하는 앱을 같은 코드로 개발할 수 있다.
+
+- Flutter는 __크로스 플랫폼__ 프레임워크다.
+- 플러터는 다트(Dart) 언어를 사용한다.
+- 다트로 작성한 하나의 코드로 여러 플랫폼에 App으로 개발된다.
+- 뛰어난 성능과 강력한 애니메이션 기법을 제공한다.
+- flutter는 화면을 출력할 때 플러터 엔진에 스키아라는 그래픽 엔진을 이용해 직접 렌더링한다.
+- 위 이유로 __화면 렌더링 속도가 빠르다.__
+- 따라서 자연스럽고 __강력한 애니메이션을 구현할 수 있다.__
+- flutter는 네이티브와 연동하지 않고 __스키아 엔진__을 이용해 플러터에서 화면을 직접 출력하고 사용자 이벤트를 처리한다. 따라서 성능이 뛰어날 뿐만 아니라 모든 플랫폼에서 똑같은 화면을 제공할 수 있다.
+- 네이티브 기능과 최소한으로만 연동한다.
+
 
 ### flutter 개발 환경 구축하기
 
