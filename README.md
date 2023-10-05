@@ -1,4 +1,4 @@
-# cs
+# note
 https://github.com/isaackimdev
 
 - algorithm
