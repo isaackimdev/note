@@ -34,3 +34,7 @@ close cur
 -- cursor 초기화한다.
 deallocate cur
 ```
+
+해당 내용은 내 블로그에 작성해둔 내용이다.
+
+https://lifere.tistory.com/entry/MSSQL-%EC%BB%A4%EC%84%9CCursor-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EC%98%88%EC%A0%9C
