@@ -1,4 +1,4 @@
-# cursor 문법 정리
+# cursor 문법
 
 ```sql
 -- mssql
