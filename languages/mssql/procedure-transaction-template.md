@@ -21,26 +21,26 @@ ALTER PROCEDURE [Proc_name_example]
 AS
 BEGIN
 
-	BEGIN TRY
-		BEGIN TRANSACTION
-			/** content */
-			
-            SELECT ''
-			
-            /** content */
-		COMMIT TRANSACTION
-	END TRY
-	BEGIN CATCH
-		
-		IF XACT_STATE() <> 0
-		BEGIN
-			SET @MSG = 'error'
-			ROLLBACK TRANSACTION
-		END
+BEGIN TRY
+BEGIN TRANSACTION
+/** content start */
 
-	END CATCH
+	SELECT ''
+
+/** content end */
+COMMIT TRANSACTION
+END TRY
+
+BEGIN CATCH
+
+IF XACT_STATE() <> 0
+BEGIN
+	SET @MSG = 'error'
+	ROLLBACK TRANSACTION
+END
+
+END CATCH
 
 END
 GO
-
 ```
