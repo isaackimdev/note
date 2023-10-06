@@ -44,3 +44,5 @@ END CATCH
 END
 GO
 ```
+
+여러 DDL을 트랜잭션 내에서 사용할 때.
