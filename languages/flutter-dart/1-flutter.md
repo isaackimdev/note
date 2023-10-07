@@ -182,3 +182,4 @@ dev_dependencies:
 ```
 pubspec.yaml 파일을 열면 dependencies와 dev_dependencies 항목이 보이는데 이곳에 패키지를 등록한다. dependencies는 앱이 빌드되어 플랫폼에서 실행될 때 필요한 패키지를 의미한다. 그런데 앱을 개발할 때만 이용하는 패키지는 앱을 빌드할 때 포함할 필요가 없다. 이런 패키지는 dev_dependencies에 등록한다.
 
+패키지 등록 후에 Android studio에서 pubspec.yaml 파일 위 [__Pub get__]을 클릭해 패키지를 내려 받는다. 다운로드 받은 내용이 pubspec.lock 파일에 자동 등록된다.
