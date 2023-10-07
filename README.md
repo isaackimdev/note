@@ -10,7 +10,7 @@ https://github.com/isaackimdev
         - [io](./languages/java/io/io.md)
         - [ascii](./languages/java/ascii/ascii.md)
     - flutter-dart
-        - [futter_start](/languages/flutter-dart/do-it-flutter-dart.md)
+        - [do it futter dart](/languages/flutter-dart/do-it-flutter-dart.md)
     - mssql
         - [cursor](/languages/mssql/cursor.md)
         - [procedure-transaction-template](./languages/mssql/procedure-transaction-template.md)
