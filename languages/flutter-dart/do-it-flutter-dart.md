@@ -1,6 +1,6 @@
 # do it flutter & dart
 
-__INDEX__
+### INDEX
 1. [flutter](1-flutter.md)
 2. dart
 3. user interface
