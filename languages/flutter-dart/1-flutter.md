@@ -167,6 +167,8 @@ main() -> MyApp -> MyHomePage -> _MyHomePageState
 
 화면을 구성하는 대부분은 _MyHomePageState의 build() 함수에 작성된다.
 
+
+
 ### 외부패키지 등록
 플러터 기본 제공하는 기능이 아닌 외부 패키지를 등록할 때에는 보통 pub.dev 사이트에서 외부 패키지를 받아서 사용한다.
 
@@ -175,8 +177,9 @@ main() -> MyApp -> MyHomePage -> _MyHomePageState
 flutter 프로젝트에선 외부 패키지를 사용하려면 pubspec.yaml파일에 패키지 정보를 등록해야 한다.
 
 __flutter 프로젝트에 외부 패키지 등록하기__
-다음은 외부 패키지 english_words 패키지를 추가했다.
+다음은 외부 패키지 __english_words__ 패키지를 추가했다.
 ```yaml
+# pubspec.yaml 파일 (환경 파일, build)
  ... (생량) ...
 dependencies:
   flutter:
@@ -191,3 +194,51 @@ dev_dependencies:
 pubspec.yaml 파일을 열면 dependencies와 dev_dependencies 항목이 보이는데 이곳에 패키지를 등록한다. dependencies는 앱이 빌드되어 플랫폼에서 실행될 때 필요한 패키지를 의미한다. 그런데 앱을 개발할 때만 이용하는 패키지는 앱을 빌드할 때 포함할 필요가 없다. 이런 패키지는 dev_dependencies에 등록한다.
 
 패키지 등록 후에 Android studio에서 pubspec.yaml 파일 위 [__Pub get__]을 클릭해 패키지를 내려 받는다. 다운로드 받은 내용이 pubspec.lock 파일에 자동 등록된다.
+
+플러터 명령 줄에 표시된 명령과 의미는 각각 다음과 같다.
+
+- Pub get : 패키지 다운로드
+- Pub upgrade : 패키지를 최신 버전으로 업그레이드
+- Pub outdated : 오래된 패키지 종속성 식별
+- Flutter doctor : 플러터 개발 환경 점검
+
+
+
+### 외부패키지 사용하기
+
+위에서 추가했던 english_words 외부 패키지는 다음 구문으로 추가할 수 있다.
+```dart
+import 'package:english_words/english_words.dart';
+```
+추가한 외부 패키지 english_words를 사용한 간단한 테스트 앱 코드를 작성한다. 아래 코드를 작성한 다음 Android studio에서 실행하면 랜덤 영단어를 보여주는 앱이 된다.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = WordPair.random();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Test"),
+        ),
+        body: Center(
+          child: Text('${wordPair}'),
+        ),
+      )
+    );
+  }
+}
+```
+실습환경에서는 다음과 같은 순서로 진행하였다.
+1. lib/ch2/test.dart 파일 생성 후 위 코드 작성
+2. test.dart 파일 run
+
+
