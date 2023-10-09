@@ -52,6 +52,10 @@
 - pubspec.yaml : 플러터 프로젝트의 메인 환경 파일
     - 빌드와 관련된 각종 설정
     - package, resource 추가 관련 설정
+    - 플러터 프로젝트의 빌더 파일
+      - package dependency
+      - assets / resources
+
 
 #### main.dart 파일 분석하기
 
@@ -70,7 +74,7 @@ void main() {
   runApp(const MyApp());
 }
 ```
-프로그램의 진입점(entry point)인 main() 함수다. main() 함수는 다트 엔진의 진입점으로서 다트 엔진이 main()을 호출하면서 앱이 실행된다. main()에서 runApp() 함수를 호출하고 이때 위젯을 지정한다. 위젯은 화면을 구성하는 클래스라고 보면 된다.
+프로그램의 진입점(entry point)인 main() 함수다. main() 함수는 __다트 엔진__ 의 진입점으로서 다트 엔진이 main()을 호출하면서 앱이 실행된다. main()에서 runApp() 함수를 호출하고 이때 위젯을 지정한다. 위젯은 화면을 구성하는 클래스라고 보면 된다.
 
 
 __MyApp 클래스__
@@ -95,6 +99,8 @@ class MyApp extends StatelessWidget {
 ```
 위젯 클래스는 StatelessWidget, StatefulWidget 중 하나를 상속받는다. build() 함수는 위젯을 어떻게 구성할지를 명시한다. 위젯 클래스가 실행되면 자동으로 build() 함수가 호출된다. build 함수 내에 MaterialApp(플러터 제공 위젯), MyHomePage(커스텀 위젯)도 위젯 클래스다.
 
+위젯 클래스는 화면을 구성한다. build() 함수는 꼭 출력을 해야 한다. build() 함수는 화면을 출력한다고 볼 수 있다. Widget을 return 한다는 것을 확인할 수 있다.
+
 
 __MyHomePage 클래스__
 ```dart
@@ -108,6 +114,8 @@ class MyHomePage extends StatefulWidget {
 }
 ```
 StatefulWidget은 화면 위젯에 출력되는 데이터 등을 별도의 State 클래스에 지정하는데 _MyHomePageState 클래스가 State클래스다. StatefulWidget 클래스가 실행되면 createState() 함수가 자동으로 호출되며 이 함수에서 StatefulWidget을 위한 State 클래스의 객체를 반환한다.
+
+Widget은 StatelessWidget, StatefulWidget 클래스를 상속 받아서 사용하게 된다. StatefulWidget을 사용하는 경우에는 StatelessWidget과 달리 State 클래스가 함께 사용된다.
 
 ___MyHomePageState 클래스__
 ```dart
