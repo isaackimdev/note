@@ -54,3 +54,44 @@ import 'dart:async';
 #### 외부에서 사용할 수 없게 제한하기
 다트에는 public, private 같은 접근 제한자가 없다. 다트에서 일반적인 변수 선원 varName은 외부에서 접근이 가능하다. 다트에서는 언더 바(_)를 사용해서 외부에서는 사용할 수 없도록 한다. _varName처럼 사용하면 된다.
 
+
+### as, show, import
+---
+
+#### 식별자에 별칭 정의하기 as
+```dart
+import 'test1.dart' as Test1
+main() { }
+```
+
+위 예시 코드에서 as를 사용했다. test1.dart 파일 내부에 변수, 함수, 클래스가 있다고 하면 main() 함수에서 test1.dart 파일내에 있는 요소를 사용한다고 할 때 as 뒤에 별칭으로 접근하여서 사용해야 한다.
+- Test1.변수
+- Test1.함수()
+- Test1.클래스
+
+#### 특정 요소 불러오기 show
+필요한 요소만 갖고 와서 사용할 때 사용하는 키워드 show
+```dart
+import 'test1.dart' show no1, User1;
+
+main() {
+    no1 = 30;
+    User1 user1 = User1();
+
+    sayHello1(); // error
+}
+```
+show 뒤에 선언된 no1, User1은 사용할 수 있지만, 그 외의 호출은 오류가 발생한다.
+
+#### 특정 요소 숨기기 hide (show와 반대되는 개념)
+특정한 요소를 제외할 때 사용한다.
+```dart
+import 'test1.dart' hide sayHello1, User1;
+
+main() {
+    no1 = 30;
+    sayHello1(); // error
+    User1 user1 = User1();  // error
+}
+```
+
