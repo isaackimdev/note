@@ -95,3 +95,64 @@ main() {
 }
 ```
 
+
+
+### Library
+---
+다트 파일에서 다른 다트파일을 포함할 때 part나 part of 예약어를 사용할 수 있다. 특히 Library 예약어와 함께 라이브러리를 만들 때 유용하다.
+
+다음 예제를 보자.
+```dart
+// a.dart
+int aData = 10;
+```
+
+```dart
+// b.dart
+int bData = 20;
+```
+
+```dart
+// test.dart
+import 'a.dart';
+import 'b.dart';
+
+main() {
+    print('$aData, $bData');
+}
+```
+test.dart 파일에서 각 파일을 import 하고 있다. 라이브러리라고 한다면 많은 file을 전부 import 할 것인가? 이를 해결해주는 '라이브러리 만들기'를 보자.
+
+```dart
+// a.dart
+part of my_lib;
+int aData = 10;
+```
+
+```dart
+// b.dart
+part of my_lib;
+int bData = 20;
+```
+
+```dart
+// myLib.dart
+Library my_lib;
+part 'a.dart';
+part 'b.dart';
+```
+
+```dart
+// test.dart
+import 'myLib.dart'
+
+main() {
+    print('$aData, $bData');
+}
+```
+
+1. 기존의 a.dart, b.dart 파일은 part of 라는 예약어를 써서 my_lib 이라는 라이브러리에 속한다고 명시한다.
+2. 라이브러리로 묶어줄 myLib.dart 파일을 생성한다. 그리고 Library 키워드로 라이브러리임을 명시하고, 라이브러리로 포함할 파일을 part 키워드를 써서 포함시킨다.
+3. 라이브러리르 사용하고자 하는 test.dart 에서 myLib.dart 파일 하나만 import 해도 a.test, b.test 파일의 변수를 모두 사용할 수 있다. 
+4. 위 과정은 __라이브러리__ 를 만들어 사용하는 것으로 볼 수 있다.
+
