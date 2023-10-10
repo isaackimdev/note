@@ -15,3 +15,4 @@ https://github.com/isaackimdev
     - mssql
         - [cursor](/languages/mssql/cursor.md)
         - [procedure-transaction-template](./languages/mssql/procedure-transaction-template.md)
+        - [find-sp-used-table](./languages/mssql/find-sp-used-table.md)

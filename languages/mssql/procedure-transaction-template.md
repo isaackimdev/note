@@ -30,14 +30,14 @@ BEGIN TRANSACTION
 /** content end */
 COMMIT TRANSACTION
 END TRY
-
 BEGIN CATCH
 
-IF XACT_STATE() <> 0
-BEGIN
-	SET @MSG = 'error'
-	ROLLBACK TRANSACTION
-END
+	-- XACT_STATE() 가 -1 이면 오류 발생 transaction rollback
+	IF XACT_STATE() <> 0
+	BEGIN
+		SET @MSG = 'error'
+		ROLLBACK TRANSACTION
+	END
 
 END CATCH
 
