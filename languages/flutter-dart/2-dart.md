@@ -156,3 +156,24 @@ main() {
 3. 라이브러리르 사용하고자 하는 test.dart 에서 myLib.dart 파일 하나만 import 해도 a.test, b.test 파일의 변수를 모두 사용할 수 있다. 
 4. 위 과정은 __라이브러리__ 를 만들어 사용하는 것으로 볼 수 있다.
 
+
+
+### 다트에서 모든 변수는 객체다.
+int, bool, String, User 등 모든 변수가 다 '객체'다. 
+
+기본 타입도 모두 클래스다.
+
+int a = 10; 이처럼 숫자 대입이 가능하지만 클래스, 객체이기 때문에 null도 대입이 된다.
+
+#### 다트의 타입 클래스
+다트에선 dart:core와 dart:typed_data 라이브러리에서 타입 클래스를 제공한다.
+
+|라이브러리|타입 클래스|데이터
+|-|-|-
+|dart:core library|bool|true, false
+|dart:core library|double|실수
+|dart:core library|int|정수
+| |num|숫자(double과 int의 상위 클래스)
+| |String|문자열
+|dart:typed_data|ByteData|바이트
+
