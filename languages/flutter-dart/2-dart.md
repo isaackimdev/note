@@ -218,3 +218,31 @@ main() {
   int n2 = d1.toInt();
 }
 ```
+
+#### 상수 변수 const, final
+다트에는 상수가 되는 시점에 따라 컴파일 타임과 런 타임 상수 변수로 구분된다.
+- 컴파일 타임에 상수 변수 선언하는 예약어 : const
+- 런타임에 상수 변수로 선언하는 예약어 : final
+
+컴파일 시점의 상수 변수에는 초기값을 같이 선언해주어야 한다. 
+
+```dart
+const String data1 = 'hello';
+final int no1 = 10;
+
+class User {
+  static const String data2 = 'hello';
+  final int no2;
+  User(this.no2);
+
+  void some() {
+    const String data3 = 'hello';
+    final int no3;
+    no3 = 10;
+    int result = no3 + 10;
+    // data1 = 'world'; //error
+  }
+
+}
+
+```
