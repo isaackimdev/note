@@ -246,3 +246,31 @@ class User {
 }
 
 ```
+
+#### var와 dynamic 타입
+
+지정 외 변수 선언 키워드
+- var : 타입 유추
+    - var 값을 선언할 때 값을 대입하지 않으면 dynamic 타입으로 본다.
+- dynamic : 어떠한 타입도 재-대입이 가능하다.
+
+```dart
+// var, dynamic
+class User {}
+
+main() {
+  dynamic data = 10;
+  data = 'hello';
+  data = true;
+  data = User();
+
+  var no1 = 10;
+  no1 = 20;
+  // no1 = true; // error
+
+  var no2;  // dynamic
+  no2 = 10;
+  no2 = true;
+  no2 = 'hello';
+}
+```
