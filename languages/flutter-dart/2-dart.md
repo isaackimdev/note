@@ -274,3 +274,101 @@ main() {
   no2 = 'hello';
 }
 ```
+
+### List, Set, Map
+- List : 다트에서는 배열이 리스트고, 리스트가 곧 배열이다.
+- Set : 
+- Map : 
+
+#### List
+
+```dart
+// List 사용 예
+main() {
+  List list1 = [10, 'hello', true];
+  list1[0] = 20;
+  list1[1] = 'world';
+  print('List : [${list1[0]}, ${list1[1]}, ${list1[2]}]');
+}
+```
+위와 같이 타입 선언없이 List를 선언하여 사용한다면 dynamic type으로 사용될 수 있다.
+
+특정 타입을 선언하여서 사용할 경우 제네릭을 사용한다.
+```dart
+main() {
+  List<int> list2 = [10, 20, 30];
+  list2[0] = 'hello';
+}
+```
+
+
+리스트 크기 지정하기
+```dart
+main() {
+  var list3 = List<int>.filled(3, 0);
+  print(list3); // [0, 0, 0]
+
+  list3[0] = 10;
+  list3[1] = 20;
+  list3[2] = 30;
+  print(list3); // [10, 20, 30]
+
+  list3.add(40);  // Runtime error
+}
+```
+위에서 사용된 filled() 함수는 List의 생성자이다. 다른 언어들과 달라서 생소하다. 첫 번째 인자는 size이다. 두 번째 인자는 List의 초기값이다.
+
+다음은 add() 함수를 사용해서 List에 값을 추가하려고 한다. 사이즈를 이미 고정으로 정해서 위 코드는 오류가 난다. 오류가 나지 않게 하려면 다른 설정을 추가한다.
+
+```dart
+main() {
+  var list3 = List<int>.filled(3, 0, growable: true);
+  list3.add(40);
+  print(list3);
+}
+```
+결괏값
+```[0, 0, 0, 40]```
+
+
+__특정한 로직으로 리스트 초기화하기__
+
+generate()
+
+```dart
+main() {
+  var list4 = List<int>.generate(3, (index) => index * 10, growable: true);
+  print(list4);
+}
+```
+
+
+#### Set
+Set은 List와 마찬가지로 여러 건의 데이터를 저장하는 컬렉션 타입의 클래스이며 인덱스 값으로 데이터에 접근한다. 리스트와 차이는 중복 데이터를 허용하지 않는다. 집합 타입 변수를 선언하면서 초기화할 때는 중괄호({})를 이용한다.
+
+```dart
+main() {
+  Set<int> set1 = {10, 20, 10};
+  print(set1);
+  set1.add(30);
+  set1.add(40);
+  print(set1);
+
+  Set<int> set2 = Set();
+  set2.add(10);
+  set2.add(20);
+  print(set2);
+}
+```
+
+#### Map
+여러 건의 데이터를 키와 값 형태로 저장하는 타입이다.
+
+```dart
+main() {
+  Map<String, String> map1 = {'one':'hello', 'two':'world'};
+  print(map1['one']);
+  map1['one'] = 'world';
+  print(map1['one']);
+}
+```
