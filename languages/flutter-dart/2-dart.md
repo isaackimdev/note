@@ -372,3 +372,67 @@ main() {
   print(map1['one']);
 }
 ```
+
+
+### Null Safety
+Null safety란 프로그래밍 언어가 특정 변수의 타입에 대해서 nullable과 non-null을 구분하는 것을 말한다.
+이때 그 언어가 Null safety를 지원한다고 볼 수 있다.
+
+클래스 변수가 선언은 되어 있는데 주소값을 갖지 않는 경우를 null로 본다. 주소값을 갖지 않는다는 것은 메모리에 할당되지 않았다는 것을 의미한다.
+
+__NPE__, Null Pointer Exception 을 발생시킨다.
+```runtime error```
+
+프로그래밍 언어에서 말하는 Null Safety는 개발자가 null 을 체크하는 것이 아니라 컴파일러가 null을 체크하도록 하는 것이 null safety를 지원하는 것이라 한다.
+
+How? 타입으로 최소한의 정보로 컴파일러에게 제공한다.
+
+Null Safety
+  - type
+  - 연산자
+
+dart에서도 Null Safety를 제공한다. 플러터 2.0이 나오면서 다트언어가 2.12.0 버전으로 업데이트되면서 Null Safety를 제공하게 됐다.
+
+#### Null 허용과 Null 불허
+```dart
+int a1 = 10;  // non-null
+int? a2 = 10; // nullable
+
+int a3;  // error
+int? a4; // nullable
+
+a3 = null; // error
+a4 = null; // nullable
+```
+
++var 키워드에는 '?'연산을 붙여 사용할 수 없다. null check를 사용할 수 없다.
+
+var, dynamic에는 null 할당이 가능하다.
+
+#### 자동 형 변환 체크
+```dart
+int a1 = 10;
+int? a2 = 10;
+
+main() {
+  a1 = a2;  // 오류
+  a2 = a1;  // 성공
+}
+```
+위에서 오류가 나는 부분을 __명시적 형 변환__ 으로 해결할 수 있다.
+```dart
+int a1 = 10;
+int? a2 = 10;
+
+main() {
+  a1 = a2 as int;
+}
+```
+
+#### 초기화를 미루는 late 연산자 (선언과 동시에 값을 주지 못할 때)
+
+```dart
+int a1;       // 컴파일 오류
+late int a2;  // 성공
+```
+
