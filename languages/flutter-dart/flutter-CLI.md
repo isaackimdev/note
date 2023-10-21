@@ -1,5 +1,8 @@
 # Flutter CLI
 
+#### 플러터 버전 확인하기
+`flutter --version`
+
 #### 플러터 프로젝트 만들기
 `flutter create project nmae`
 
