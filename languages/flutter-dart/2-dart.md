@@ -548,3 +548,30 @@ main() {
 // result : hello
 // result : world
 ```
+
+### 함수 선언 위치
+최상위, 함수 내 함수, 클래스 내 함수 선언 가능
+
+다트에서는 함수 오버로딩을 제공하지 않는다.
+
+optional로 오버로딩을 대체할 수 있다.
+- var, dynamic parameter 사용
+
+```dart
+void some1(var a) { // parameter -> dynamic, var 생략도 가능
+
+}
+
+dynamic some2() { // some2() { } 과 동일하다고 볼 수 있음.
+  // return 10;
+  // return true;
+  return 'hello';
+}
+
+main() {
+  some1(10);
+  some1(true);
+  some1('hello');
+}
+```
+
