@@ -436,3 +436,115 @@ int a1;       // 컴파일 오류
 late int a2;  // 성공
 ```
 
+### Null Safety 연산자
+
+객체가 Null일 때 접근하면 NPE가 발생한다. Null Safety, 코드에서 Null check를 할 것인가, Compiler에게 Null check를 시킬 것인가. Dart, flutter에서는 Null Safety를 지원한다고 했다. 그럼 Compile 에게 어떤 Type에 대한 정보를 주어야 한다. Type이 nullable이냐, non-null이냐.
+
+```dart
+int a = 10;
+a = null; // error
+
+int? b = 10;
+b = null; // o
+```
+
+기본적으로는 non-null 변수를 선언하는 것이 좋다. null이 들어갈 수 있는 경우에만 nullable로 선언해주는 게 좋다. nullable이 편할 수도 있지만, 객체를 선언해놓고 할당되지 않은 값에 접근하면 NPE가 발생하기 때문이다.
+
+다음 코드를 보자.
+
+```dart
+User? obj = null; // User() or null;
+obj.name; // error
+obj.sayHello(); // error
+```
+
+왜 위 코드는 오류가 날까? nullable로 선언하게 되면 null이 대입이 가능하다.
+그렇다면 객체에 접근을 할 때 null인 객체의 멤버에 접근을 하면 npe가 발생한다.
+그렇기 때문에 null check를 해주는 연산자를 추가한다.
+
+```dart
+User? obj = null; // User(); or null
+obj?.name;
+obj?.sayHello();
+```
+
+#### Null check 연산자 - !연산자
+null이면 NPE 오류를 발생해달라는 연산자다.
+
+```dart
+int? a1 = 20;
+
+main() {
+  a1!;
+  a1 = null;
+  a1!;  // runtime error
+}
+```
+#### 멤버에 접근할 때 ?., ?[ ] 연산자
+
+널 허용 객체의 멤버에 접근하기
+```dart
+String? ste = "hello";
+
+main() {
+  str.isEmpty;  // error
+}
+```
+
+널 객체의 멤버에 접근할 때 null 반환하기
+```dart
+main() {
+    int? no1 = 10;
+    // null 이면 접근을 안하고 null을 return 아니면 접근한다.
+    bool? result1 = no1?.isEven; 
+    print('result 1 : $result1');
+
+    no1 = null;
+    bool? result2 = no1?1.isEven;
+    print('result 2 : $result2');
+}
+// true
+// null
+```
+
+널 리스트에 인덱스로 접근할 때 null 반환하기
+```dart
+main() {
+  List<int>? list = [10, 20, 30];
+  print('list[0] : ${list?[0]}');
+  list = null;
+  print('list[0] : ${list?[0]}');
+}
+// list[0] : 10
+// list[0] : null
+```
+
+#### 값을 대입할 때 ??= 연산자
+널일 때 대입하지 않기
+```dart
+main() {
+  int? data3;
+  data3 ??= 10;
+  print('data3 : $data3');
+  data3 ??= null;
+  print('data3 : $data3');
+}
+// data3 : 10
+// data3 : 10
+```
+
+#### 값을 대체할 때 ?? 연산자
+널일 때 값 대체하기
+```dart
+main() {
+  String? data4 = 'hello';
+  String? result = data4 ?? 'world';
+  print('result : $result');
+  
+  data4 = null;
+  String? result = data4 ?? 'world';
+  print('result : $result');
+}
+// result : hello
+// result : world
+```
