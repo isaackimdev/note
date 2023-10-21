@@ -23,7 +23,7 @@
     - https://flutter.dev/ -> [Get started] -> Windows -> flutter sdk install -> 압축 해제
 2. window 기준 c:/ 를 root로 위치 
 3. path 설정 (환경 변수 설정) : flutter-sdk/bin 경로 설정
-    - 내 PC > 우클릭 속성 > 고습 시스템 설정 > 환경 변수 > path 설정
+    - 내 PC > 우클릭 속성 > 고급 시스템 설정 > 환경 변수 > path 설정
 4. IDE : Android studio 설치 후 -> 실행
     - IDE는 Android studio를 많이 사용한다.
 5. Android Studio에 flutter plug-in / dart plug-in 설치하기
