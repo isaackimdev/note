@@ -1,16 +1,16 @@
-백준 단계별로 풀어보기
+# Baekjoon 알고리즘 문제 풀기
 
-[BAEKJOON](https://www.acmicpc.net)
+[BAEKJOON](https://acmicpc.net)
 
-https://www.acmicpc.net/problem/2557
+단계별로 문제풀기, 아래처럼 마지막 path에 문제 번호를 넣어 url을 호출하면 해당 문제 번호 페이지로 이동할 수 있다.
 
-마지막 path에 문제의 번호를 넣어 url을 호출한다.
+https://acmicpc.net/problem/2557
 
-vs code 실행 단축키 : F5
+
+
 
 ### 정리
 double과 float의 차이
-
 
 |구분|데이터형|바이트 수|데이터 범위|유효자릿수|
 |--|--|--|--|--|
