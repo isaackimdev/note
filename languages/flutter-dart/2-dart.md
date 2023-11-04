@@ -656,3 +656,59 @@ some(10, true, 'world') // error
 some(10, 'world');
 some(10, true);  // error
 ```
+
+## 05-4. 함수 타입 인수
+dart에서는 모든 데이터가 객체이다. 함수도 객체다. 함수도 변수에 대입이 가능하다.
+```dart
+void some() {}
+Function data2 = some;
+```
+
+함수를 활용한 예
+```dart
+int plus(int no) {
+  return no + 10;
+}
+int multiply(int no) {
+  return no * 10;
+}
+
+Function testFum(Function argFun) { // 고차함수
+  print('argFun : ${argFun(20)}');
+  return multiply;
+}
+
+main(List<String> args) {
+  var result = testFun(plus);
+  print('result : ${result(20)}');
+}
+
+// argFun : 30
+// result : 200
+```
+
+Function 타입으로 선언한 변수에는 모든 함수를 대입할 수 있다. 함수 타입 변수에 대입할 함수를 특정 형태로 한정할 수 있다.
+
+함수 타입 제한
+```dart
+some(int f(int a)) {
+  f(30);
+}
+
+main(List<String> args) {
+  some(int a) {
+    return a + 20;
+  }
+}
+```
+
+익명 함수 / 람다 함수
+```dart
+fun1(arg) {
+  return 10;
+}
+
+Function fun2 = (arg) {
+  return 10;
+}
+```
