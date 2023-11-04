@@ -633,4 +633,26 @@ main() {
 }
 ```
 
+### 옵셔널 위치 매개변수 optional positional parameter
+명명된 매개변수처럼 값은 선택이므로 생략할 수 있다. but 값을 전달할 때 이름 대신 매개변수가 선언된 순서(위치)에 맞게 호출해야 한다. 즉 옵셔널 위치 매개변수로 선언된 함수는 데이터 전달은 자유지만 순서는 맞춰 호출해야 한다.
 
+규칙
+- 매개변수들을 대괄호로 묶는다.
+- 함수의 마지막 매개변수에만 사용할 수 있다.
+- 매개변수에 기본 인자를 설정할 수 있다.
+
+호출 규칙
+- 매개변수 이름은 생략한다.
+- 매개변수가 선언된 순서에 따라 값이 할당된다.
+
+```dart
+void some(int arg1, [String arg2 = 'hello', bool arg3 = false]) {}
+
+some(); // eror
+some(10);
+some(10, arg2: 'world', arg3: true);  // error
+some(10, 'world', true);
+some(10, true, 'world') // error
+some(10, 'world');
+some(10, true);  // error
+```
