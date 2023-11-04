@@ -712,3 +712,24 @@ Function fun2 = (arg) {
   return 10;
 }
 ```
+
+## 05-5. Getter, Setter Function
+```dart
+String _name = 'Hello';
+
+String get name {
+  return _name.toUpperCase();
+}
+set name(value) {
+  _name = value;
+}
+
+// 호출할 때는 그냥 변수를 사용하듯 사용한다.
+main() {
+  name = "World";
+  print('name: $name');
+}
+
+// 결과
+// name : WORLD
+```
