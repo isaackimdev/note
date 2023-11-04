@@ -1,4 +1,4 @@
-## 2. dart
+# 2. dart
 
 - dart 2011~ created by google
 - cross platform language
@@ -574,4 +574,63 @@ main() {
   some1('hello');
 }
 ```
+
+## 05-2. 명명된 매개 변수
+함수를 호출할 때 매개 변수의 개수와 타입, 순서에 맞게 데이터를 전달해야 한다. 그렇지 않으면 오류가 발생한다.
+
+```dart
+void some(int a, String b, bool c) {
+
+}
+
+main() {
+  some();   // error
+  some('hello', true, 10);  // error
+  some(10, 'hello', true);
+}
+```
+
+다른 언어에서 오버로딩을 봐왔을 것이다. 오버로딩은 함수명은 같지만 매개 변수의 개수가 다른 함수들을 선언하는 방법이다. 그런데 dart에서 옵셔널(Optional)이라는 방법을 통해 오버로딩을 하지 않고 매개 변수의 개수가 다른 같은 이름의 함수를 사용할 수 있도록 한다.
+
+#### 옵셔널
+- 명명된 매개변수(named parameter) ★★★
+- 옵셔널 위치 매개변수(optional positional parameter)
+
+명명된 매개변수 예제
+```dart
+void some( {String? data1} ) {
+  print('data1: $data1');
+}
+
+some(data1: 'world');
+```
+#### 명명된 매개변수 선언 규칙
+- 명명된 매개변수는 중괄호{}로 묶어서 선언한다.
+- 여러 매개변수를 중괄호로 묶어 명명된 매개변수를 선언할 수 있다.
+- 한 함수에서 명명된 매개변수는 한 번만 선언할 수 있으며 순서상 마지막에 선언해야 한다.
+- 명명된 매개변수에는 기본값을 설정할 수 있다.
+
+```dart
+void some1({String? data2, bool? data3}, int data1) {} // error
+void some2(int data1, {String? data2, bool? data3}, {int? data4}) {} // error
+void some3(int data1, {String? data2, bool? data3}) {} // success
+```
+
+#### 명명된 매개변수 호출 규칙
+- 명명된 매개변수에 데이터를 전달하지 않을 수 있다. (생략 가능)
+- 명명된 매개변수에 데이터를 전달하려면 반드시 __이름을 명시__ 해야 한다. 
+- 명명된 매개변수에 데이터를 전달할 때 선언된 순서와 맞추지 않아도 된다.
+
+#### 필수 매개변수 선언하기 - required
+
+```dart
+someFun({required int arg1}) {
+  print('someFun().. arg1 : $arg1');
+}
+main() {
+  someFun();  // error
+  someFun(arg1: 10);  // success
+}
+```
+
 
