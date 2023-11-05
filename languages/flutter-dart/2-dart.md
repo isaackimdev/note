@@ -927,3 +927,39 @@ try {
   print('catch...$e');
 }
 ```
+
+## 06-1 클래스와 객체
+
+dart 언어만의 특징.
+
+다른 언어와 비슷하다. 생성자 부분이 조금 다른 부분들이 존재한다.
+
+클래스에 생성자, 변수, 함수 들어갈 수 있다. (멤버)
+
+객체 생성시 new 연산자 생략 가능하다.
+
+객체 멤버, 클래스 멤버(static) 사용이 가능하다.
+
+클래스 멤버는 객체에서 접근이 불가능하다.
+
+```dart
+class MyClass {
+  String data1 = 'hello';
+  static String data2 = 'world';
+  myFun1() {}
+  static myFun2() {}
+}
+
+main() {
+  // MyClass.data1 = 'world'; // error
+  MyClass.data2 = 'hello';
+  // MyClass.myFun1(); // error
+  MyClass.myFun2();
+
+  MyClass obj = MyClass();
+  obj.data1 = 'world';
+  obj.myFun1();
+
+  // obj.data2 = 'hello'; // error
+}
+```
