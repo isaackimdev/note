@@ -963,3 +963,88 @@ main() {
   // obj.data2 = 'hello'; // error
 }
 ```
+
+## 06-2 생성자와 멤버 초기화
+다른 언어와 거의 동일하다.
+그런데 생성자에서 조금 차이가 있는 부분이 있다.
+
+#### 생성자 선언
+```dart
+// 클래스 선언
+class User {
+  // 컴파일러가 디폴트 생성자를 추가한다. 매개 변수가 없는 생성자
+}
+/* 
+위 생성자와 동일한 것이다. OOP 기본
+class User {
+  User() {}
+}
+*/
+```
+
+#### 멤버 초기화하기
+
+```dart
+class User {
+  late String name;
+  late int age;
+  User(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+
+이걸 더 간단하게 작성할 수 있다. 위와 동일한 코드라고 볼 수 있다.
+```dart
+class User{
+  late String name;
+  late int age;
+  User(this.name, this.age);
+}
+```
+
+
+#### 초기화 목록 (initialize area)
+멤버 초기화, 다른 생성자 호출{ this(), super() }
+
+```dart
+User(String name, int age) : this.name = name, this.age = age { }
+```
+
+응용 예제 1
+```dart
+// 리스트의 데이터로 초기화
+class Myclass {
+  late int data1;
+  late int data2;
+
+  MyClass(List<int> args) 
+    : this.data1 = args[0],
+      this.data2 = args[1] { }
+
+}
+```
+
+응용 예제 2
+```dart
+// 클래스 멤버 함수의 반환값으로 초기화
+class MyClass {
+  late int data1;
+  late int data2;
+
+  // 멤버 초기화
+  MyClass(int arg1, int arg2)
+    : this.data1 = calFun(arg1),
+      this.data2 = calFun(arg2) {}
+  
+  static int calFun(int arg) {
+    return arg * 10;
+  }
+
+  printData() {
+    print('$data1, $data2');
+  }
+}
+
+```
