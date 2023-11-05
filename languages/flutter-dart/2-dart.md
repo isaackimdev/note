@@ -789,3 +789,141 @@ User()
   ..age = 30
   ..some();
 ```
+
+## 05-7
+
+제어문은 일단 다른 언어와 거의 흡사하다.
+
+#### for 반복문에서 in 연산자 제공
+
+```dart
+main() {
+  var list = [10, 20, 30];
+  for(var x in list) {
+    print(x);
+  }
+}
+```
+
+if-else, while 거의 똑같아서 pass
+
+#### switch-case 선택문
+
+정수, 문자열 등의 값 조건을 넣을 수 있다.
+
+- break : switch문 나가기
+- continue : 특정 위치(라벨)로 이동하기
+- return : switch 문이 작성된 함수 종료하기(반환하기)
+- throw: switch 문이 작성된 함수 종료하기(던지기)
+
+위에 구문 중 하나는 무조건 써야 한다.
+
+```dart
+some(arg) {
+  switch(arg) {
+    case 'A' : // 오류
+      print('A');
+    case 'B' : 
+      print('B');
+  }
+}
+```
+
+#### 예외 던지기와 예외 처리
+
+예외를 던지는 throw 문
+```dart
+// 문자열 던지기
+some() {
+  throw 'my exception';
+}
+```
+
+물론 다음처럼 개발자가 만든 객체를 던져도 된다.
+```dart
+// 사용자 정의 객체 던지기
+class User{}
+some() {
+  throw User();
+}
+```
+
+#### try~on~finally 예외 처리
+
+코드 이해
+```dart
+try {
+  // 정상
+} on type {
+
+} on type {
+
+} finally {
+
+}
+```
+
+try - on 예제
+```dart
+some() {
+  throw FormatException('my exception');
+}
+main() {
+  try {
+    print('step1...');
+    some();
+    print('step2...');
+  } on FormatException {
+    print('step3...');
+  } on Exceptiono {
+    print('step4...');
+  } finally {
+    print('step5...');
+  }
+  print('step6...');
+}
+
+// 실행결과
+
+// step1...
+// step3...
+// step5...
+// step6...
+```
+
+#### catch
+
+try on catch 예제
+
+```dart
+some() {
+  throw FormatException('my exception');
+}
+main() {
+  try {
+    print('step1...');
+    some();
+    print('step2...');
+  } on FormatException catch(e) {
+    print('step3... $e'); // error 의 객체를 얻고자 할 때
+  } on Exceptiono catch(e) {
+    print('step4...$e');
+  } finally {
+    print('step5...');
+  }
+  print('step6...');
+}
+```
+
+on Type, catch는 들어갈수도 안들어갈수도 있다.
+
+on Type이 빠지고 catch만 쓴 예제
+
+만약 예외 종류를 구분하지 않겠다면 다음처럼 작성할 수 있다.
+```dart
+try {
+  some();
+} catch(e) {
+  print('catch...$e');
+}
+```
