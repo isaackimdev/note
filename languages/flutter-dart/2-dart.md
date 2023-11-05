@@ -1048,3 +1048,93 @@ class MyClass {
 }
 
 ```
+
+
+## 06-3 명명된 생성자 (많이 사용되는 방법)
+
+보통 아래처럼 생성자를 작성할 수 있다.
+```dart
+public class MyClass {
+  MyClass() {}
+  MyClass(int data1) {}
+  MyClass(int data1, int data2) {}
+}
+```
+
+생성자의 이름을 정의할 수 있다. 이름을 갖는 생성자 named constructor
+
+```dart
+// 명명된 생성자
+class MyClass {
+  MyClass() {}
+  MyClass.first() {}
+  MyClass.second() {}
+}
+
+// 호출할 때
+var obj1 = MyClass();
+var obj2 = MyClass.first();
+var obj3 = MyClass.second();
+```
+
+#### this()로 다른 생성자 호출하기
+
+오류나는 예제1 (X)
+```dart
+class MyClass {
+  MyClass(int data1, int data2) {
+    print('MyClass() call....');
+  }
+  MyClass.first(int arg) {
+    this(arg, 0); // error
+    // 자신의 다른 생성자를 호출하는 것
+  }
+}
+```
+오류나는 예제2 (X)
+```dart
+class MyClass {
+  MyClass(int data1, int data2) {
+    print('MyClass() call....');
+  }
+  // 중괄호를 가지면 안된다.
+  MyClass.first(int arg) : this(arg, 0) { } // error
+}
+```
+
+#### 올바른 예제 (O)
+```dart
+// 기본 생성자 중첩 호출
+class MyClass {
+  MyClass(int data1, int data2) {
+    print('MyClass() call...');
+  }
+  MyClass.first(int arg) : this(arg, 0);  // 성공
+}
+```
+
+잘못된 this 호출 (X)
+```dart
+Myclass.first(int arg) : this(arg, 0), this.data1=arg1; // error
+```
+
+
+#### 명명된 생성자, 다양한 생성자 호출 예제 (O)
+```dart
+class MyClass {
+  late int data1;
+  late int data2;
+
+  MyClass(this.data1, this.data2) {}
+
+  // 다른 생성자를 호출하는 쪽에서는 중괄호 사용할 수 없다.
+  MyClass.first(int arg1) : this(arg1, 0);
+
+  MyClass.second() : this.first(0);
+}
+main() {
+  MyClass obj1 = MyClass(10, 20);
+  MyClass obj2 = MyClass.first(10);
+  MyClass obj3 = MyClass.second();
+}
+```
