@@ -733,3 +733,59 @@ main() {
 // 결과
 // name : WORLD
 ```
+
+## 05-6 기타 연산자 알아보기
+
+다른 언어들과 비슷함. 근데 좀 다른 연산자가 있음.
+
+#### 나누기 연산자 ~/
+
+- / : 소숫점 나온다.
+- ~/ : 정수값 버린다.
+
+
+#### 타입 확인과 변환 - is, as
+
+- is : 타입 체크 bool
+- as : 캐스팅
+
+```dart
+if ( obj is User) { // 타입 확인, 자동 형 변환
+  obj.some();
+}
+
+Object obj1 = User();
+(obj1 as User).some();  // 명시적 형 변환
+
+```
+
+#### 반복해서 접근하기 - .. , ?..
+
+객체를 반복해서 접근할 때 편리하게 사용할 수 있는 캐스케이드 연산자이다.
+
+```dart
+class User{
+  String? name;
+  int? age;
+
+  some() {
+    print('name: $name, age: $age');
+  }
+}
+```
+
+객체 생성과 멤버 접근
+```dart
+var user = User();
+user.name = 'kkang';
+user.age = 10;
+user.some();
+```
+
+캐스케이드 연산자 사용 예
+```dart
+User()
+  ..name = 'kkang'
+  ..age = 30
+  ..some();
+```
