@@ -1182,7 +1182,7 @@ class Image {
       var obj = Image._instance(url); // 해당 식별자로 객체를 서로 생성하고
       _cache[url] = obj;              // 캐시에 추가
     }
-    return _cache[url];               // 캐시에서 식별자에 해당하는 객체 반환
+    return _cache[url]!;               // 캐시에서 식별자에 해당하는 객체 반환
   }
 }
 
@@ -1192,3 +1192,30 @@ main() {
   print('image1 == image2 : ${image1 == image2}');  // image1 == image2 : true
 }
 ```
+
+
+## 06-5 상수 생성자
+
+상수 생성자 : const로 생성자 선언
+
+```dart
+class MyClass {
+  const MyClass();   // 중괄호 사용 할 수 없다. 로직 입력 불가
+}
+```
+
+const로 생성자가 선언되면, 멤버 변수들은 final로 상수가 되어야 한다.
+```dart
+// 잘못된 예
+class MyClass {
+  int data1;
+  const MyClass();  // error
+}
+// 올바른 예
+class MyClass {
+  final int data1;  // 생성자 매개변수로 초기화 -> 값 변경 불가
+  const MyClass(this.data1);
+}
+```
+const로 생성할 수도 있는데, const로는 한번만 생성한다고 보면 된다.
+
