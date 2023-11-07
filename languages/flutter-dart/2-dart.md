@@ -1138,3 +1138,57 @@ main() {
   MyClass obj3 = MyClass.second();
 }
 ```
+
+
+## 06-4. 팩토리 생성자
+
+하나의 클래스 내에 생성자. factory 예약어로 생성되는 생성자.
+
+factory는 공장이다. 객체를 생성해내는 공장이라고 본다.
+
+객체를 return 하는 일종의 static 이다.
+
+객체를 생성해서 return 하던가, 기존 객체를 return 하던가 해야 한다.
+
+팩토리 생성자 올바른 예
+
+```dart
+class MyClass {
+  MyClass._instance();
+  factory MyClass() {
+    return MyClass._instance();
+    /*
+    어떤 알고리즘에 의해서 맞는 객체를 return 한다.
+    새로운 객체 or 기존 객체
+    대표적으로는 캐싱 알고리즘이 있다.
+    */
+  }
+}
+main() {
+  var obj = MyClass();
+}
+
+```
+
+
+캐시 알고리즘 구현 예
+```dart
+class Image {
+  late String url;
+  static Map<String, Image> _cache = <String, Image> {};
+  Image._instance(this.url);
+  factory Image(String url) {
+    if (_cache[url] == null) {        // 전달받은 식별자가 캐시에 없으면
+      var obj = Image._instance(url); // 해당 식별자로 객체를 서로 생성하고
+      _cache[url] = obj;              // 캐시에 추가
+    }
+    return _cache[url];               // 캐시에서 식별자에 해당하는 객체 반환
+  }
+}
+
+main() {
+  var image1 = Image('a.jpg');
+  var image2 = Image('a.jpg');
+  print('image1 == image2 : ${image1 == image2}');  // image1 == image2 : true
+}
+```
