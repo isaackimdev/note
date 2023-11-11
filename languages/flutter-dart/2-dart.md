@@ -1219,3 +1219,84 @@ class MyClass {
 ```
 const로 생성할 수도 있는데, const로는 한번만 생성한다고 보면 된다.
 
+
+
+## 상속과 추상 클래스
+
+## 07-1. 상속 알아보기
+
+상속과 오버라이딩
+
+상속 예제
+```dart
+class SuperClass {
+  int myData = 10;
+  void myFun() {
+    print('Super..myFun()...');
+  }
+}
+
+class SubClass extends SuperClass {}
+
+main() {
+  var obj = SubClass();
+  obj.myfun(); call super
+  print('obj.data : ${obj.myData}');
+}
+```
+
+오버라이딩 예제
+```dart
+class SuperClass {
+  int myData = 10;
+  void myFun() {
+    print('Super..myFun()...');
+  }
+}
+
+class SubClass extends SuperClass {
+  int myData = 20;
+  // 상위 클래스에 있는 펑션명으로 작명 : 오버라이드, 오버라이딩
+  void myFun() {  
+    print('Sub.. myFun()...');
+  }
+}
+
+main() {
+  var obj = SubClass();
+  obj.myfun();  // call sub
+  print('obj.data : ${obj.myData}');
+}
+```
+
+하위 클래스에서 상속받은 클래스가 상위 클래스의 함수를 호출할 때
+```dart
+class SuperClass { 
+  //... 
+}
+
+class SubClass extends SuperClass {
+  // ... 
+  void myFun() {
+    super.myFun();
+  }
+  // ...
+}
+```
+
+OOP에서는 상속 받은 하위 클래스의 객체를 생성하면서 하위 클래스의 생성자를 호출하고, 상위 클래스의 생성자도 콜 된다.
+
+명시적 하위-상위 클래스 호출
+```dart
+class SuperClass {
+  SuperClass(int arg) {}
+  SuperClass.first() {}
+}
+class SubClass extends SuperClass {
+  //SubClass() : super() {} // 오류
+  SubClass() : super(10) {}
+  SubClass.name() : supser.first() {}
+}
+```
+
+
