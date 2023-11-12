@@ -1360,3 +1360,57 @@ main() {
 }
 ```
 
+## 07-3. 멤버를 공유하는 믹스인
+
+java에는 없는 것
+
+믹스인 mixin
+- mixin 키워드 사용해서 클래스와 동일하게 선언한다.
+- 그런데 믹스인은 생성자는 아니다 보니까 생성자는 못 갖는다.
+- 객체 생성을 할 수 없다.
+- with 예약으로 확장하여 사용해야 한다.
+- 공통의 변수나 함수로 정의하여서 재사용할 수 있게끔 한다.
+- 생성자를 못 갖고, 클래스가 아니기 때문에 객체 생성 못한다.
+- 일반 클래스처럼 사용은 안된다.
+- 다중 상속 기법으로 사용될 수 있다.
+  - 클래스는 아니지만 원래 다중 상속 불가지만 그렇게 볼 수도 있다.
+  - 타 언어도 다중 상속 기본 불가 (java)
+- 일종의 상속, 다중 상속, 공통 적인 것을 담아 놓고 with로 사용한다.
+
+```dart
+class Sup1 {}
+class Sup2 {}
+class MySub extends Sup1, Sup2 {} // 오류
+```
+
+믹스인 자체는 객체 생성은 안되지만 타입으로 사용할 수는 있다.
+```dart
+class MyClass with MyMixin {}
+main() {
+  var obj = MyClass();
+  if(obj is MyMixin) {
+    print('obj is MyMixin');
+  } else {
+    print('obj is not MyMixin');
+  }
+
+  MyMixin obj2 = MyClass();
+}
+// obj is MyMixin
+```
+
+믹스인 사용 제약
+on Keyword
+```dart
+mixin MyMixin on MySuper {
+}
+class MySuper {
+}
+class MyClass extends MySuper with MyMixin { // 성공
+}
+class MySomeClass with MyMixin {  // 오류
+}
+```
+
+클래스도 with로 사용할 수 있다. 생성자가 없는 클래스만 with로 사용할 수 있다.
+
