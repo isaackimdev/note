@@ -1300,3 +1300,63 @@ class SubClass extends SuperClass {
 ```
 
 
+## 07-2. 추상 클래스와 인터페이스
+
+추상 함수를 갖는 클래스를 추상 클래스라 한다.
+
+추상 클래스는 객체 생성이 되지 않는다.
+
+추상 클래스는 하위 클래스가 상속 후 오버라이드 받아서 자신의 클래스에서 추상 함수가 없게 끔 한다. 오버라이드를 강제 수단으로 사용한다.
+
+
+추상 함수 선언
+```dart
+class User {
+  void some();  // error
+  // 미완성 함수(추상함수)
+}
+```
+
+추상 클래스 선언
+```dart
+abstract class User {
+  void some();  // error
+  // 미완성 함수(추상함수)
+}
+```
+
+추상 함수 재정의
+```dart
+abstract class User {
+  void some();
+}
+class Customer extends User {
+  @override
+  void some() {}
+}
+```
+
+### 인터페이스 interface
+
+java에서는 interface 키워드를 사용하고, 추상 함수를 선언한다. 그리고 implement로 상속한다.
+
+dart에는 interface 키워드를 사용하지 않는다.
+
+implement 키워드를 사용하여서 상속받는다 하면 변수, 함수 모두 재정의한다.
+
+한 클래스에 여러 인터페이스 지정
+```dart
+// 클래스를 implementes 한다.
+class MyClass implements User, MyInterface {
+
+}
+```
+그리고 구현 클래스의 객체는 다음처럼 인터페이스 타입으로 선언할 수 있다.
+
+```dart
+main() {
+  User user = MyClass();
+  print(`${user.greet('lee')}`);
+}
+```
+
