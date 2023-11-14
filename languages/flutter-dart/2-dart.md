@@ -1444,3 +1444,18 @@ Widget
 
 보통 Stateless, Stateful을 사용하는데 Stateful은 상태(data)가 변화하는 것을 re-rendering해줄 때 사용한다. 개발할 때 무조건 statefulWidget만 사용하지 않는다.
 
+## 08-4.정적 화면, 동적 화면 예제 점검
+## 08-5. 상태의 생명 주기 (State Class)
+
+![Alt text](./imgs/state-life-cycle.png)
+
+주로 재 정의 되는 함수
+- build() : 화면 rendering 때문에 필수★
+- initState() : 자주 사용, 객체 생성되자 마자 가장 먼저 최초 한번 호출, 자신들의 상태값 초기화, 초기값 세팅, 이벤트(이벤트 리스너-핸들러) 등록
+- setState() : State의 상태(data)를 변경할 때 호출하는 함수
+- Clean : state에 의해 화면이 출력되고 있는 정상 상태
+- Dirty : 화면에 반영되지 않은 상태, State 화면을 다시 빌드해야 하는 상태
+- didChangeDependencies() : 상위 위젯에서 하위 위젯으로 변경된 상태를 전달할 때 호출된다.
+- didUpdateWidget() : 상태가 변화될 때를 감지할 때 호출한다. 여기서 build()를 호출한다고 한다.
+- dispose() : 자주 사용, 객체가 메모리에서 소멸될 때 마지막으로 실행되는 함수
+
