@@ -1433,3 +1433,14 @@ class MySomeClass with MyMixin {  // 오류
 엘리먼트 트리 : 화면을 보이기 위한 객체 트리
 
 렌더 트리 : 실제 화면으로 보이게 하는 트리, 위젯 개수와 다를 수 있다.
+
+
+## 08-3. 위젯 종류
+
+Widget
+- StatelessWidget
+- StatefulWidget
+- 상속 위젯
+
+보통 Stateless, Stateful을 사용하는데 Stateful은 상태(data)가 변화하는 것을 re-rendering해줄 때 사용한다. 개발할 때 무조건 statefulWidget만 사용하지 않는다.
+
