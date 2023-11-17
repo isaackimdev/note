@@ -52,8 +52,74 @@ statefulWidget은 state 클래스를 갖는다. setState라는 함수로 re-rend
 
 ## BuildContext
 
-Widget은 BuildContext를 갖는다. BuildContext는 위젯 객체의 정보를 갖고 있으며 상위 위젯에도 접근을 할 수가 있다. 그렇지만 이것은 좋은 방법은 아님.
+Widget은 BuildContext를 갖는다. BuildContext는 __위젯 객체의 정보__ 를 갖고 있으며 상위 위젯에도 접근을 할 수가 있다. 그렇지만 이것은 좋은 방법은 아님.
 
 Widget은 Key를 가질 수 있다. stateless에는 크게 상관이 없을 수도 있다. stateful에도 서로 다른 클래스를 사용하면 상관없을수 있다. 하지만 목록형에 stateful을 쓸 때 서로 다른 객체임을 알리려면 __키(Key)__ 를 부여해야 한다.
 
 
+## 09-1. asset
+
+image, text 등의 파일 resources
+
+pubspec.yaml 파일에 flutter.aseets 에 리소스 경로들, assets 경로들을 설정한다.
+
+폴더 경로 지정 예시
+
+assets 경로(Path)는 플러터 프로젝트의 루트부터 시작한다. `lib` directory와 같은 레벨에 위치한다.
+
+```yaml
+# pubspec.yaml
+flutter:
+    assets:
+        - resources/images/
+        - resources/images/icon/
+        - resources/assets/text/
+```
+
+예제 소스
+```dart
+// test.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  // 미래 발생할 타입 : Futrue
+  Future<String> useRootBundle() async {
+    return await rootBundle.loadString('resources/assets/text/my_text.txt');
+  }
+  Future<String> useDefaultAssetBundle(BuildContext context) async {
+    return await DefaultAssetBundle.of(context).loadString("resources/assets/text/my_text.txt");
+  }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("test"),
+        ),
+        body: Column(
+          children: [
+            Image.asset("resources/images/icon.jpg"),
+            Image.asset("resources/images/icon/user.png"),
+            FutureBuilder(
+                future: useRootBundle(),
+                builder: (context, snapshot ) {
+                  return Text("rootBundle : ${snapshot.data}");
+                }
+            ),
+            FutureBuilder(
+                future: useDefaultAssetBundle(context),
+                builder: (context, snapshot ) {
+                  return Text("DefaultAssetBundle : ${snapshot.data}");
+                }
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
