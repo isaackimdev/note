@@ -38,3 +38,42 @@ deallocate cur
 해당 내용은 내 블로그에 작성해둔 내용이다.
 
 https://lifere.tistory.com/entry/MSSQL-%EC%BB%A4%EC%84%9CCursor-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EC%98%88%EC%A0%9C
+
+
+### 영문 설명 (English explanation)
+
+```sql
+-- encoding : EUC-KR
+
+-- variable
+DECLARE @name VARCHAR(20), @age SMALLINT
+
+-- declare cursor, cursor name : cur
+DECLARE cur CURSOR FOR 
+
+-- select table
+SELECT name, age FROM example
+
+-- cursor open, start
+OPEN cur 
+
+-- assign variable <- select table
+FETCH NEXT FROM cur INTO @name, @age 
+
+-- forEach, read row 1
+WHILE @@FETCH_STATUS = 0 -- if True => loop
+BEGIN
+    
+    -- logic
+	UPDATE example 
+	SET age = @age + 2
+	WHERE name = @name
+
+	-- assign variable <- next row
+	FETCH NEXT FROM cur INTO @name, @age
+END
+
+-- cursor close
+CLOSE cur
+DEALLOCATE cur
+```

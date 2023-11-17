@@ -16,15 +16,25 @@ GO
     EXEC [Proc_name_example] @MSG OUTPUT
     SELECT @MSG AS MESSAGE
 */
-ALTER PROCEDURE [Proc_name_example]
+[CREATE|ALTER] PROCEDURE [Proc_name_example]
+	-- Add the parameters for the stored procedure here
+	-- <@Param1, sysname, @p1> <Datatype_For_Param1, , int> = <Default_Value_For_Param1, , 0>, 
+	-- <@Param2, sysname, @p2> <Datatype_For_Param2, , int> = <Default_Value_For_Param2, , 0>
 	@MSG VARCHAR(1000) OUTPUT
 AS
 BEGIN
+
+-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	declare @proc_name nvarchar(200)
 
 BEGIN TRY
 BEGIN TRANSACTION
 /** content start */
 
+	-- logic
 	SELECT ''
 
 /** content end */
