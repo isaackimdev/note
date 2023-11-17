@@ -232,3 +232,64 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+
+## 09-3. 이미지 위젯
+
+이미지를 출력할 때는 image 위젯을 사용. 그런데 Image 위젯으로 출력할 데이터는 ImageProvider로 가져와야 한다.
+
+ImageProvider는 추상 클래스이며 이 클래스를 상속받은 다음의 클래스를 이용한다.
+
+- AssetImage : 에셋 이미지
+- FileImage : 파일 이미지
+- MemoryImage : 메모리의 데이터 이미지
+- NetworkImage : 네트워크의 이미지
+- ResizeImage : 이미지 크기 변경
+
+에셋 이미지를 AssetImage로 가져와 Image 위젯으로 출력하는 코드는 다음처럼 작성한다.
+
+```dart
+Image(image: AssetImage('images/icon/user.png'),),
+```
+
+ResizeImage는 이미지 크기를 변경
+```dart
+Image(image: ResizeImage(AssetImage('images/icon/user.png'), width: 70, height: 80)),
+```
+
+이미지 위젯에 이미지를 채우는 방식 BoxFit 클래스 사용.
+
+이미지 위젯 사용 예제
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Test'),),
+        body: Column(
+          children: [
+            Image(image: NetworkImage('https://picsum.photos/250?image=9')),
+            Container(
+              color: Colors.red,
+              child: Image.asset(
+                'resources/images/big.jpeg',
+                width: 200,
+                height: 200,
+                fit: BoxFit.fill,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+## 09-4. icon & icon button
+
