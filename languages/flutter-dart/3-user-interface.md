@@ -123,3 +123,112 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+## 09-2. Text Widget
+
+문자열을 출력하는 위젯
+
+텍스트 위젯 생성자
+```dart
+Text(String data, { ... (생략) ... })
+Text.rich(InlineSpan textSpan, { ... (생략) ... })
+```
+
+#### 텍스트 정렬하기 - textAlign
+
+문자열 정렬 textAlign 속성
+
+TextAlign 클래스가 클래스가 제공하는 상수로 가로 방향 정렬 방법을 지정한다.
+
+상수는 start, end, center, left, right 등을 제공한다.
+
+텍스트 정렬하기
+```dart
+Text('Hello World'),
+Text(
+  'Hello World',
+  textAlign: TextAlign.center,
+),
+```
+
+#### 텍스트 스타일 지정하기 - TextStyle
+
+텍스트 스타일 지정하기
+
+#### 줄 수 제한하기 - maxLines
+
+텍스트에 긴 문자열을 출력하면 자동으로 줄 바꿈해서 여러 줄로 출력
+
+줄임표시 같은 게 가능하다.
+
+텍스트 위젯 예제
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  String longTxt = "가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사12 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 ";
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("test"),),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Hello World',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                color: Colors.red,
+                fontSize: 20,
+                height: 2,
+                backgroundColor: Colors.yellow,
+                decoration: TextDecoration.underline,
+                decorationColor: Colors.red,
+                decorationStyle: TextDecorationStyle.wavy
+              ),
+            ),
+            Text(
+              longTxt,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.fade,
+            ),
+            RichText(
+                text: TextSpan(
+                  text: "HE",
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: "L",
+                      style: TextStyle(fontStyle: FontStyle.italic),
+                      children: [
+                        TextSpan(text: 'KO'),
+                        TextSpan(
+                          text: "WO",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ]
+                    ),
+                    TextSpan(
+                      text: 'RLD',
+                      style: TextStyle(fontWeight: FontWeight.bold)
+                    )
+                  ]
+                )
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
