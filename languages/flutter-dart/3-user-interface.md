@@ -330,3 +330,25 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+## 09-5 Jesture Detector & Elevate Button
+
+JestureDetector example
+```dart
+GestureDetector (
+  child: Image.asset('images/icon/user.png'),
+  onTap: () {
+    print('image click..');
+  },
+)
+```
+#### 엘리베이트 버튼 -ElevateButton
+
+```dart
+ElevateButton(
+  onPressed : () {
+    print('ElevatedButton click..');
+  },
+  child : Text('Click Me'),
+)
+```
