@@ -331,7 +331,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## 09-5 Jesture Detector & Elevate Button
+## 09-5 Gesture Detector & Elevate Button
 
 JestureDetector example
 ```dart
@@ -344,6 +344,8 @@ GestureDetector (
 ```
 #### 엘리베이트 버튼 -ElevateButton
 
+보통 버튼에서 많이 사용하는 위젯
+
 ```dart
 ElevateButton(
   onPressed : () {
@@ -352,3 +354,14 @@ ElevateButton(
   child : Text('Click Me'),
 )
 ```
+
+## 09-6. 컨테이너와 센터 위젯
+
+#### Container
+
+Container는 화면 영역을 표현하는 위젯이다. 자체 화면 갖지 않고 child로 Container 영역에 표시할 위젯을 지정할 수 있다. 특정 영역의 margin, border, padding 등 지정할 수 있고 배경 색상, 배경 이미지 등 다양하게 꾸미는 방법을 제공한다.
+
+#### 가운데 정렬하는 센터 - Center
+
+대부분 특정 영역에 가운데에 배치하는 경우에 Center를 많이 사용한다.
+
