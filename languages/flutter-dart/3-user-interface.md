@@ -399,3 +399,52 @@ add된 순서대로 겹쳐져 나오는 것
 
 위젯 스택 중에서 특정 인덱스 위젯만 나오도록 함.
 
+## 10-2. 위치 설정하기
+
+Row, Column을 이용해 위젯을 배치하면 순서대로 가로, 세로 방향으로 배치된다. Stack은 특정 위치를 설정해야 할 때가 많다. 이 때 Align과 Positioned 위젯을 사용한다. Align은 Stack뿐만 아니라 독립적으로 사용할 수 있지만, Positioned는 Stack에서만 사용할 수 있다.
+
+`특정 위치에 배치 - Align`
+
+다음 코드는 Align 위젯에 alingment값을 Alignment.topRight로 설정하여 위젯이 화면의 오른쪽 윗부분에 위치하는 코드다. Align 위젯은 독립적으로 사용해도 되고 Stack과 함께 사용해도 된다.
+
+```dart
+Align(
+  alignment: Alignment.topRight,
+  child: Container(
+    color: Colors.red,
+    width: 100,
+    height: 100,
+  ),
+)
+```
+Alignment 클래스에 정의된 center, bottomRight 등의 상수로 위젯의 위치를 설정할 수 있지만, Alignment 생성자의 매개변수에 숫자를 넘겨 위치를 설정할 수도 있다.
+```dart
+// Alignment 생성자
+Alignment(double x, double y)
+```
+x, y에는 -1.0~1.0 까지 값을 설정할 수 있고 0.0은 사각형의 중앙이다. -1.0은 X축 왼쪽 Y축 위를 의미하며, 1.0은 X축 오른쪽 Y축 아래를 의미한다.
+
+
+### 왼쪽 위를 기준으로 배치하기 - FractionalOffset
+
+```dart
+Align(
+  alignment: FractionalOffset(0.5, 0.5), // 중앙값
+)
+```
+
+### 상대 위칫값으로 배치하기 - Positioned
+
+부모 위젯 기준에서 left, top 등의 속성 값으로 배치한다.
+```dart
+Positioned(
+  left: 40.0,
+  top: 40.0,
+  child: Container(
+    width: 150,
+    height: 150,
+    color: Colors.pink,
+  )
+)
+```
+
