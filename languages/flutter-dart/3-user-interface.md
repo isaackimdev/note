@@ -365,3 +365,37 @@ Container는 화면 영역을 표현하는 위젯이다. 자체 화면 갖지 �
 
 대부분 특정 영역에 가운데에 배치하는 경우에 Center를 많이 사용한다.
 
+
+## 10-1. 방향 설정하기
+
+가로 배치 Row
+
+세로 배치 Column
+
+방향의 기본축, 교차축이 존재한다.
+main, cross
+
+#### Row, Column 기본 사이즈 
+- main 축 사이즈 최대 지정
+- crss 축 사이즈 최소 지정
+
+메인축 사이즈
+
+MainAxisSize
+- min, max
+
+배치 설정하기 - alignment
+- MainAxisAlignment
+- CrosAxisAlignment
+
+
+### stack
+
+add된 순서대로 겹쳐져 나오는 것
+
+여러 위젯을 겹쳐서 나오도록 하는 것
+
+### indexedStack
+
+위젯 스택 중에서 특정 인덱스 위젯만 나오도록 함.
+
