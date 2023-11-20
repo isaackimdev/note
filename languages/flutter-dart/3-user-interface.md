@@ -448,3 +448,30 @@ Positioned(
 )
 ```
 
+## 10-3. 사이즈 설정
+
+위젯은 각각 사이즈를 설정할 수 있다. 
+
+### 똑같은 크기로 배치하기 - IntrinsicWidth, IntrinsicHeight
+IntrinsicWidth, IntrinsicHeight는 Row나 Column에 추가한 여러 위젯의 크기를 똑같이 설정할 때 사용한다. Intrinsic을 사용하면 크기가 가장 큰 것을 기준으로 모두 통일할 수 있다.
+
+### 최소, 최대 범위로 배치하기 - ConstrainedBox
+위젯의 최소, 최대 범위 지정하여 사이즈 정한다.
+
+```dart
+// 최대로 확장
+ConstrainedBox(
+  constraints: BoxConstraints.expand()
+)
+```
+
+```dart
+// 마지노선 설정
+ConstrainedBox(
+  constraints: BoxConstraints(
+    minWidth: 300,
+    maxHeight: 50
+  ),
+  child: Container(color: Colors.red, width: 150, height: 150.0),
+)
+```
