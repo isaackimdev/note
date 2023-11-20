@@ -555,3 +555,25 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+## 11-1. 사용자 입력 처리 위젯
+
+input
+
+텍스트 필드 : TextField
+
+입력된 데이터 얻기 : TextEditingController
+
+텍스트 필드에 controller를 지정만 하면 자동저장된다.
+
+### 꾸미기 - InputDecoration
+
+### 액션 버튼 - textInputAction
+우측 하단 키를 무엇으로 쓸 것인지 지정할 수 있음.
+
+### 키보드 유형 - keyboardType
+
+### 텍스트 감추기 - obscureText
+
+### 여러 줄 입력 - maxLines, minLines
+
