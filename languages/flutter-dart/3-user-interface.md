@@ -475,3 +475,83 @@ ConstrainedBox(
   child: Container(color: Colors.red, width: 150, height: 150.0),
 )
 ```
+
+
+## 10-4. 기타 배치와 관련된 위젯
+
+비율로 배치하기 - Expended
+
+Expended를 사용하면 각 위젯 사이즈가 무시된다. 위젯 크기가 비율로 계산된다.
+
+비율값은 flex 속성값으로 설정할 수 있다.
+
+★ 빈 공간 넣기 - Spacer : 인스타 화면처럼 공간 부여 가능하다.
+Row에 공간 부여할 떄 사용. 빈 공간 넣기.
+
+
+스크롤 제공하기 - SingleChildScrollView : 하위 하나만 갖는다.
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Test'),),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                height: 300,
+                child: Row(
+                  children: [
+                    Container(
+                      color: Colors.red,
+                      width: 100,
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: Container(
+                          color: Colors.amber,
+                        )
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: Container(
+                          color: Colors.yellow,
+                        )
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.green,
+                height:300,
+                child: Row(
+                  children: [
+                    Image.asset("resources/images/lab_instagram_icon_1.jpg"),
+                    Image.asset("resources/images/lab_instagram_icon_2.jpg"),
+                    Image.asset("resources/images/lab_instagram_icon_3.jpg"),
+                    Spacer(),
+                    Image.asset("resources/images/lab_instagram_icon_4.jpg"),
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.blue,
+                height: 300,
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
