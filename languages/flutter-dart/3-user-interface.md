@@ -577,3 +577,89 @@ input
 
 ### 여러 줄 입력 - maxLines, minLines
 
+
+
+## 11-2. checkbox, radio button, slider, switch
+
+checkbox, radio button, slider, switch 이 모두 사용자에게 데이터를 입력받는 위젯.
+
+example
+
+### Checkbox
+```dart
+Row(
+  children: [
+    Checkbox(
+      value: isChecked,
+      onChangd: (bool? value) {
+        setState(() {
+          isChecked = value;
+        });
+      }
+    ),
+    Text('checkbox value is $isChecked')
+  ],
+)
+```
+
+### Radio button
+```dart
+Row(
+  children: [
+    Radio(
+      value: 'android',
+      groupValue: selectPlatform, // 
+      onChanged: (String? value) {
+        setState(() {
+          selectPlatform = value;
+        });
+      }
+    )
+  ]
+),
+Row(
+  children: [
+    Radio(
+      value: 'ios',
+      groupValue: selectPlatform, //
+      onChanged: (String? value) {
+        setState(() {
+          selectPlatform = value;
+        });
+      }
+    )
+  ]
+)
+```
+
+### Slider
+
+slider 위젯은 min, max 속성으로 값을 설정하며 사용자가 막대를 왼쪽, 오른쪽으로 밀면 그 사이 값이 onchanged에 지정한 함수의 매개변수에 전달된다.
+
+```dart
+// 슬라이더 출력
+Slider(
+  value: selectValue,
+  min: 0,
+  max: 10,
+  onChanged: (double value) {
+    setState(() {
+      selectValue = value;
+    });
+  }
+),
+```
+
+### Switch
+true / false 를 입력받는 위젯 : 주로 활성/비활성 상태를 선택받을 때 사용한다.
+
+```dart
+Switch(
+  value: selectValue,
+  onChanged: (bool value) {
+    setState(() {
+      selectValue = value;
+    });
+  }
+),
+```
