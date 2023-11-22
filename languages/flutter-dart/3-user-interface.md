@@ -663,3 +663,156 @@ Switch(
   }
 ),
 ```
+
+## 11-3 Form 이용하기
+
+입력에 있어서 유효성 검증이 필요하다. 유효성 검증은 개발자 알고리즘
+- 유효한지 아닌지 검증
+- 유효성에 따른 메시지 뿌리기 등
+
+Form Widget을 이용하면 어느정도 도움을 받을 수 있다.
+
+Form 위젯 그리고 하위의 `FormField<TextField>`를 사용한다.
+
+```
+Form
+- FormField<TextField>
+```
+
+또는 위 클래스를 추상화한 TextFormField를 사용할 수 있다.
+
+Form을 사용할 때 키를 선언해야 한다. 그리고 key를 맵핑한다.
+- Form -> key -> State
+
+form field를 사용할 때 유효성 검증 속성을 사용한다.
+- validator 속성
+
+Form.validate() 함수를 호출하면 Form 하위의 FormField 속성에 선언된 validator에 등록된 개발자 함수들이 전체 실행된다.
+
+validator 속성에서 return null; 은 유요하다고 본다. 문자열을 return 하면 유효하지 않다고 본다.
+
+- 검증 통과는 null return
+- 검증 무효는 문자열 -> 에러메시지 return
+- validator 모두가 null 을 return 하면, validate() 가 true를 뱉고, 그렇지 않으면 false를 뱉는다.
+- validate() -> true -> save()
+- save() 함수가 호출되면 모든 개별 Field의 onSaved : 개발자 함수가 수행된다.
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Test'),
+        ),
+        body: TestScreen(),
+      ),
+    );
+  }
+}
+class TestScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyFormState();
+  }
+}
+class MyFormState extends State<TestScreen> {
+  final _formKey = GlobalKey<FormState>();
+  String? firstName;
+  String? lastName;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("Form Test"),
+        Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'FirstName',
+                ),
+                validator: (value) {
+                  if(value?.isEmpty ?? false) {
+                    return "Please enter first name";
+                  }
+                  return null;
+                },
+                onSaved: (String? value) {
+                  firstName = value;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'LastName',
+                ),
+                validator: (value) {
+                  if(value?.isEmpty ?? false) {
+                    return "Please enter last name";
+                  }
+                  return null;
+                },
+                onSaved: (String? value) {
+                  lastName = value;
+                },
+              )
+            ],
+          ),
+        ),
+        ElevatedButton(
+            onPressed: () {
+              if(_formKey.currentState?.validate() ?? false) {
+                _formKey.currentState?.save();
+                print('firstName : $firstName, lastName : $lastName');
+              }
+            },
+            child: Text("submit")
+        )
+      ],
+    );
+  }
+}
+```
+
+## 12-1. List View
+
+리스트 뷰
+- 여러 위젯을 세로나 가로로 나열하면서 화면을 벗어날 때 스크롤을 지원하고자 사용하고, 일반 목록 화면처럼 항목을 나열하고자 사용한다. 
+- 리스트 뷰는 화면 스크롤을 지원한다.
+
+가로 스크롤을 적용하려면 아래 속성을 적용한다.
+
+`scrollDirection: Axis.horizontal,` 
+
+### 목록 구성하기
+
+ListView(), ListView.builder()를 이용해도 된다. 다만, ListView() 생성자 사용할 시 항목이 많아지는 것은 주의해야 한다.
+
+스크롤할 때 보이지 않던 항목을 준비해서 나오게 하면 효율적이다.
+
+
+#### 항목을 스크롤에 따라 불러오기 - ListView.builder()
+ListView.builder() 생성자에는 itemCount와 itemBuilder라는 속성을 설정한다. 
+- itemCount : 리스트 뷰에 출력할 항목 수
+- itemBuilder : 항목을 구성하는 위젯을 만들어 주는 함수
+
+*itemCount에 100을 설정하여도 itemBuilder에 지정한 항목 위젯을 만드는 함수가 처음부터 100번 호출되지는 않는다. 처음 화면에 나올 개수만큼만 호출되며 이후 스크롤이 발생해 항목이 더 필요해지면 그때 다시 호출된다.
+
+
+#### 항목 구분자 설정하기 - ListView.seperated()
+ListView.seperated() 생성자는 itemCount와 itemBuilder를 이용해 항목의 개수와 항목을 구성하는 위젯을 지정한다는 면에서 ListVuew.builder()와 같다. but ListVuew.builder()는 항목 구분자를 나타내는 별도의 속성을 제공하지 않는다. 물론 itemBuilder에 지정하는 함수에서 구분자 역할을 하는 위젯을 따로 준비해도 되지만, ListView.seperatred() 생성자를 이용하면 항목 구분자를 조금 더 쉽게 지정할 수 있다.
+
+ListView.seperated() 생성자의 seperatorBuilder 속성 지정하는 함수에서 구분자로 사용할 위젯을 반환하면 된다. 
+- Divider 위젯 주로 사용 (가로선)
+
+
+#### 항목 구성 - ListTile
+리스트에서 여러 위젯을 사용할 수 있지만 복잡한 것을 구성할 때 ListTile위젯을 사용하면 편리하다.
+
