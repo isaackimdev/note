@@ -816,3 +816,58 @@ ListView.seperated() 생성자의 seperatorBuilder 속성 지정하는 함수에
 #### 항목 구성 - ListTile
 리스트에서 여러 위젯을 사용할 수 있지만 복잡한 것을 구성할 때 ListTile위젯을 사용하면 편리하다.
 
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class User {
+  String name;
+  String phone;
+  String email;
+  User(this.name, this.phone, this.email);
+}
+class MyApp extends StatelessWidget {
+  List<User> users = [
+    User('홍길동', '01001', 'a@a.com'),
+    User('김길동', '01001', 'a@a.com'),
+    User('고길동', '01001', 'a@a.com'),
+    User('이길동', '01001', 'a@a.com'),
+    User('박길동', '01001', 'a@a.com'),
+    User('지길동', '01001', 'a@a.com'),
+    User('하길동', '01001', 'a@a.com'),
+    User('최길동', '01001', 'a@a.com'),
+    User('주길동', '01001', 'a@a.com'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Test'),),
+        body: ListView.separated(
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(
+                radius: 25,
+                backgroundImage: AssetImage('resources/images/big.jpeg'),
+              ),
+              title: Text(users[index].name),
+              subtitle: Text(users[index].phone),
+              trailing: Icon(Icons.more_vert),
+              onTap: () {
+                print(users[index].name);
+              },
+            );
+          },
+          separatorBuilder: (context, index) {
+            return Divider(height: 2, color: Colors.black, );
+          },
+          itemCount: users.length
+        ),
+      ),
+    );
+  }
+}
+```
