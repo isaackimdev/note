@@ -871,3 +871,19 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+## 12-2. 그리드 뷰
+
+그리드 뷰 GridView.builder() 생성자를 제공하며 이 생성자의 itemCount, itemBuilder 속성을 이용해 항목의 개수와 위젯을 지정한다. GridView.builder()에는 꼭 gridDelegate 속성을 설정해야 한다. 이 속성에 SliverGridDelegateWithFixedCrossAxisCount 객체를 지정해 주면 되는데, 이 객체의 crossAxisCount값이 한 줄에 함께 나와야 하는 항목의 개수이다.
+
+그리드 뷰에 방향을 지정하지 않으면 항목을 세로로 나열하며, 이때 crossAxisCount는 가로를 가리킨다. 만약 항목을 가로로 나열하면 scrollDirection 속성에 Axis.horizontal 이라고 설정하며 이때 crossAxisCount는 세로 방향을 가리킨다.
+
+
+## 12-3 페이지 뷰
+PageView와 children에 지정한 여러 위젯이 스와이프 이벤트가 발생할 때 순서대로 출력된다.
+
+페이지 뷰를 이용할 때 PageController 객체에 맨 처음 보일 페이지를 설정할 수 있다.
+
+첫 페이지 번호와 왼쪽 오른쪽에 있는 페이지를 현재 화면에서 어느 정도 보이게 할 것인지도 설정할 수 있다.
+
+
