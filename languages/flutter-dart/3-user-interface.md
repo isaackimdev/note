@@ -898,3 +898,11 @@ pubspec.yaml
 - Bottom Sheet
 - DataPickerDialog
 - TimePickerDialog
+
+## 12-5 탭바 뷰
+
+탭 컨트롤러로 지정
+- TabBar : 버튼
+- TabBarView : Tab 화면
+
+탭 화면을 쉽게 구성할 수 있다.
