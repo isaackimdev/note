@@ -887,3 +887,14 @@ PageView와 children에 지정한 여러 위젯이 스와이프 이벤트가 발
 첫 페이지 번호와 왼쪽 오른쪽에 있는 페이지를 현재 화면에서 어느 정도 보이게 할 것인지도 설정할 수 있다.
 
 
+## 12-4 다이얼로그 띄우기
+
+pubspec.yaml
+- intl: ^0.17.0
+
+다양한 다이얼로그 창을 띄울 수 있다.
+- 알림창
+- 알림창 + 입력
+- Bottom Sheet
+- DataPickerDialog
+- TimePickerDialog
