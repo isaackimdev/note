@@ -906,3 +906,24 @@ pubspec.yaml
 - TabBarView : Tab 화면
 
 탭 화면을 쉽게 구성할 수 있다.
+
+## 13-1 머터리얼 디자인
+
+여태 실습 코드 시작 위젯이 MaterialApp 이었다. 필수는 아니지만 권장사항이다.
+
+Material Design 철학을 적용하기 위한 위젯
+
+테마, 라우팅 정보 등을 설정할 수 있도록 도와준다.
+
+디버그 배너 보이기 - debugShowCheckedModeBanner
+- debugShowCheckedModeBanner: false 주면 된다.
+
+
+## 13-2 쿠퍼티노 디자인
+
+ios 스타일로도 만들고 싶다? 쿠퍼티노 디자인 사용
+
+flatform API를 사용해서 UI 디자인을 다르게 적용할 수 있다.
+- 안드로이드 : material
+- ios : cupertino
+
