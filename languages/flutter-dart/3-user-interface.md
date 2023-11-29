@@ -983,3 +983,5 @@ Navigator.push() 함수로 화면을 전환하는 방법은 화면이
 비효율적일 수 있다. 이때 MaterialApp의 routes 속성을 
 이용하면 앱의 화면을 등록하고 이 정보를 바탕으로 화면을
 전환할 수 있다.
+
+## 14-1. 내비게이션 사용: arguments, onGenerateRoute
