@@ -985,3 +985,171 @@ Navigator.push() 함수로 화면을 전환하는 방법은 화면이
 전환할 수 있다.
 
 ## 14-1. 내비게이션 사용: arguments, onGenerateRoute
+
+화면 전환할 때 데이터 전달
+
+push(), pushNamed(), pop() 함수로 화면을 전환할 때 어떤 함수 쓰냐에 따라 다름.
+
+### push() 함수로 화면 전환할 때 데이터 전달
+Navigator.push() 함수로 화면을 전환하려면 push() 함수의 두 번째  매개변수에
+라우트를 직접 준비해야 하며 라우트에서 전환할 위젯 객체를 생성해야 한다.
+따라서 다음 화면에 전달할 데이터는 생성자의 매개변수로 전달한다.
+
+```dart
+// 데이터 전달하기 "hello"
+// Page: One -> Two
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => TwoScreen("hello"))
+);
+```
+
+### pushNamed() 함수로 화면 전환할 때 데이터 전달
+Navigator.pushNamed() 함수로 화면을 전환할 때 데이터를 전달하려면 arguments라는 매개변수를 이용한다.
+
+```dart
+// arguments 속성에 10을 지정하여 라우트 이름이 /three인 화면에 10을 전달하는 예
+ElevatedButton(
+  onPressed: () {
+    Navigator.pushNamed(
+      context,
+      '/three',
+      arguments: 10
+    );
+  },
+  child: Text('Go Three Screen'),
+),
+```
+
+전달한 데이터는 다음 방식으로 얻을 수 있다.
+```dart
+int arg = ModalRoute.of(context)?.settings.arguments as int;
+```
+
+
+만약 여러 개의 데이터를 전달하려면 JSON으로 데이터를 구성한다.
+```dart
+// JSON 타입으로 데이터 여러 개 전달하기
+Navigator.pushNamed(
+  context,
+  '/three',
+  arguments: {
+    "arg1" : 10,
+    "arg2" : "hello"
+  }
+);
+```
+
+그러면 데이터를 받는 곳에서는 JSON 타입의 데이터를 Map 객체로 얻어서 이용하면 된다.
+```dart
+// JSON 타입의 데이터 받기
+Map<String, Object> args = ModalRoute.of(context)?.settings.arguments as Map<String, Object>;
+```
+
+arguments 속성으로 전달할 데이터는 String, int뿐만 아니라 개발자가 만든 클래스의 객체도 가능하다.
+```dart
+// 사용자 정의 객체 전달하기
+Navigator.pushNamed(
+  context,
+  '/three',
+  arguments: {
+    "arg1" : 10,
+    "arg2" : "hello",
+    "arg3" : User('kim','seoul')
+  }
+);
+```
+
+### pop() 함수로 화면 전환할 때 데이터 전달
+
+Navigator.pop() 함수를 이용해 이전 화면으로 되돌아갈 때 데이터를 전달하려면 pop() 함수의 두 번째 매개변수를 이용한다. 
+
+```dart
+// 이전 화면으로 되돌아갈 때 'world' 문자열을 전달하는 예시
+ElevatedButton(
+  onPressed: () {
+    Navigator.pop(context, 'world');
+  },
+  child: Text('Go Back')
+),
+```
+
+pop() 함수로 전달한 데이터는 화면을 전환할 때 사용했던 push()나 pushNamed() 함수의 반환값으로 받을 수 있다.
+
+```dart
+// 데이터 얻기
+onPressed: () async {
+  final result = await Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => TwoScreen("hello"))
+  );
+  print('result: ${result}');
+},
+```
+
+pop() 함수로 데이터를 전달할 때 문자열이나 숫자뿐만 아니라 개발자가 만든 클래스의 객체도 가능하다.
+다음은 User 클래스의 객체를 전달하는 예다.
+
+```dart
+// 사용자 정의 객체 전달하기
+ElevatedButton (
+  onPressed: () {
+    Navigator.pop(context, User("kim", "seoul"));
+  },
+  child: Text('Go Back')
+),
+```
+
+이렇게 전달한 사용자 정의 객체는 다음처럼 얻을 수 있다.
+```dart
+// 사용자 정의 객체 얻기
+onPressed: () async {
+  final result = await Navigator.pushNamed(
+    context,
+    '/three'
+  );
+  print('result:${(result as User).name}');
+},
+```
+
+### 동적 라우트 등록 방법 - onGenerateRoute
+앞에서 MaterialApp의 routes 속성에 라우트 이름을 등록하고 이 이름으로 화면을 전환하는 방법을 알아보았다. but MaterialApp에 라우트를 등록할 때 onGenerateRoute 속성을 이용하는 방법도 있다.
+routes와 onGenerateRoute 속성의 차이점을 보자.
+
+다음처럼 routes 속성에 라우트를 등록하면 '/two' 이름으로 화면을 전환할 때 항상 TwoScreen이 실행된다.
+```dart
+// 정적 라우트 등록
+routes: {
+  ... (생략) ...
+  '/two' : (context) => TwoScreen(),
+}
+```
+
+때로는 같은 라우트 이름으로 화면을 전환하더라도 상황에 따라
+다른 화면이 나와야 할 수 있다. 
+또한 화면 전환할 때 전달된 데이터를 분석해 데이터를 추가하거나 제거할 수 있다.
+
+```dart
+// routes와 onGenerateRoute 속성에 똑같은 라우트 이름 등록
+return MaterialApp(
+  initialRoute: '/',
+  routes: {
+    '/': (context) => OneScreen(),
+    '/two' : (context) => TwoScreen(),
+    '/three' : (context) => ThreeScreen()
+  },
+  onGenerateRoute : (settings) {
+    if (settings.name == '/two') {
+      return MaterialPageRoute(
+        builder: (context) => ThreeScreen(),
+        settings: settings
+      );
+    } else if (settings.name == '/four') {
+      return MaterialPageRoute(
+        builder: (context) => ThreeScreen(),
+        settings: settings
+      );
+    }
+  }
+)
+```
