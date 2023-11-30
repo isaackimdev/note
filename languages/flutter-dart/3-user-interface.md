@@ -1153,3 +1153,33 @@ return MaterialApp(
   }
 )
 ```
+
+
+## 14-1. 내비게이터 스택 제어하기
+
+내비게이터 스크린은 기본적으로 스택구조로 되어 있음.
+
+스크린은 싱글톤으로 관리되지 않는다. 같은 화면 객체가 계속 쌓일 수 있다.
+
+기본 화면 구조는 Stack
+
+### mybePop()과 canPop() 함수
+
+mybePop은 화면이 스택에 하나만 남았을 때 앱 종료하지 않고 남긴다.
+
+혹은 canPop으로 체크한 다음에 pop을 실행할 수 있다. 결과적으로 mybePop과 동일한 결과를 보일 수 있다.
+
+### pushReplacementNamed(), popAndPushNamed() 함수
+
+pushReplacementNamed(), popAndPushNamed()는 현재 위젯을 대체하거나 제거한 후 새로운 위젯을 실행하는 함수다.
+
+로그인 화면 같이 임시로 나올 화면을 호출할 때 사용한다.
+
+### PushNamedAndRemoveUntil()
+세번째 매개 변수에 true면 일반 push랑 동일하다.
+그런데 false가 return 되면 전체 스택을 날린다.
+혹은 특정 화면의 이름이 지정되었다면 특정 위치 이전까지 다 날린다.
+
+### popUntil() 함수
+몇개의 화면이 쌓였든지, 지정된 화면까지 스택에서 모두 날린다.
+
