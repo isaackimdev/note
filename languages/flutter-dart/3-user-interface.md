@@ -1283,3 +1283,49 @@ RouteInformation restoreRouteInformation(MyRoutePath configureation) {
 }
 ```
 
+#### 라우트 델리게이트 작성하기
+라우터 델리데이트는 라우트 경로를 분석해 적절하게 라우팅하는 내비게이터를 만들어 준다. 
+라우터 델리게이트는 RouterDelegate를 상속받아 작성해야 하며, with로 ChangeNotifier와 PopNavigatorDelegateMixin을 등록해야 한다.
+
+```dart
+// 라우트 델리게이트
+class MyRouterDelegate extends RouterDelegate<MyRouterPath> with ChangeNotifier, PopNavigatorRouterDelegateMixin<MyRoutePath> {
+  ... (생략) ...
+}
+```
+
+라우터 델리게이트는 라우팅 정보에 맞는 화면을 구성에 라우팅되게 하는 역할이므로 build() 함수에서 상황에 맞는 페이지를 포함하는 내비게이터를 반환해야 하며, 이 내비게이터 구성대로 화면이 출력한다.
+
+```dart
+// 내비게이터 구현하기
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+@override
+Widget build(BuildContext context) {
+  return Navigator( // -> widget
+    key: navigatorKey,
+    pages: [
+      MaterialPage(child: HomeScreen(_handleOnPressed)),
+      if(selectId != null) MaterialPage(child: DetailScreen(selectId))
+    ],
+    onPopPage: (route, result) {
+      ... (생략) ...
+    },
+  );
+}
+```
+
+RouteDelegate 클래스에는 currentConfiguration() 함수를 등록할 수도 있다.
+필수는 아니지만 currentConfiguration() 함수를 등록하면 build() 함수 호출 직전에 자동으로 호출된다.
+이 함수에서 만드는 라우트 경로가 정보 분석기의 restoreRouteInformation() 함수에 전달되어 앱의 라우팅 상태로 저장된다.
+결국 라우팅 때마다 호출되는 currentConfiguration() 함수에서 만든 정보가 앱의 라우팅 정보로 저장된다.
+```dart
+@override
+MyRoutePath get currentConfiguration {
+  if (selectId != null) {
+    return MyRoutePath.detail(selectId);
+  } else {
+    return MyRoutePath.home();
+  }
+}
+```
