@@ -1198,3 +1198,88 @@ pushReplacementNamed(), popAndPushNamed()는 현재 위젯을 대체하거나 �
 
 딥링크 예시: 카톡 
 - 알림>채팅창>채팅 목록이 나오는 케이스
+
+
+### 라우터 델리게이트와 정보 분석기
+화면 구성이 복잡할 때 라우터 델리게이트(RouterDelegate)와
+ 라우트 정보 분석기(RouteInformationParser)를 이용할 수도 있다. 
+ 라우트 정보 분석기는 화면을 전환하는 라우트 정보를 분석해 경로(RoutePath)에 담아 준다.
+ 라우터 델리게이트는 라우팅 대리자로서 정보 분석기가 분석한 경로를 받아 내비게이터를 만들어 준다.
+ 따라서 라우터 델리게이트를 이용하면 RouterDelegate가 라우팅을 담당한다.
+
+#### 라우트 경로 클래스 작성하기
+라우트 경로는 라우팅을 위한 정보를 담는 개발자 클래스다. 이 클래스를 작성하는 규칙은 특별히 없으며
+앱의 라우팅 설계에 맞게 작성하면 된다.
+
+다음 예시를 보자. 라우팅 정보로 상세 보기 화면에 전달할 id값을 속성으로 선언한다. 
+이 id값이 없으면 홈 화면을 출력하고, 있으면 상세 보기 화면을 출력하면서 id값을 전달한다.
+그리고 이 객체를 쉽게 생성할 수 있도록 생성자를 2개 선언한다.
+
+```dart
+// 라우트 경로 클래스
+class MyRoutePath {
+  String? id;
+
+  MyRoutePath.home() : this.id = null;
+  MyRoutePath.detail(this.id);
+}
+```
+
+#### 라우트 정보 분석기 작성하기
+라우트 정보 분석기는 RouteInformationParser를 상속받아 작성하는 개발자 클래스다.
+이 클래스에서 이용할 라우트 경로 객체를 제네릭 타입으로 지정해 준다.
+
+```dart
+// 라우트 정보 분석기
+class MyRouteInformationParser extends RouteInformationParser<MyRoutePath> {
+  ... (생략) ...
+}
+```
+RouteInformationParser는 2가지 작업을 하는 클래스다.
+- 앱의 라우팅 정보 분석 : 플랫폼이 앱을 처음 실행하거나 라우팅될 때 정보를 분석한다.
+- 앱의 라우팅 정보 저장 : 라우팅이 결정된 후 현재 라우팅 상태를 저장한다.
+
+앱의 라우팅 분석은 parseRouteInformation() 함수에 구현하며 저장은 restoreRouteInformation() 함수에 구현한다.
+parseRouteInformation() 함수는 꼭 재정의해야 하며 restoreRouteInformation() 함수는 선택이다.
+
+
+```dart
+// parseRouteInformation() 함수를 구현한 예
+@override
+Future<MyRoutePath> parseRouteInformation(RouteInformation routeInfomation) async {
+  final uri = Uri.parse(routeInformation.location ?? '/');
+  print('routeInformation.location : ${routeInformation.location}');
+  if (uri.pathSegments.length >= 2) {
+    var remaining = uri.pathSegments[1];
+    return MyRoutePath.detail(remaining);
+  } else {
+    return MyRoutePath.home();
+  }
+}
+
+```
+parseRouteInformation() 함수의 매개변수가 RouteInformation 객체이며 플랫폼에서 앱에 전달한 라우팅 정보이다.
+RouteInformation.location값은 문자열이며 일종의 앱이 실행되기 위한 URL이라고 보면 된다.
+안드로이드, iOS 앱으로 빌드해서 실행하면 대부분 null 이다. 즉, 앱을 실행하기 위한 특별한 URL 조건이 없다는 의미이다.
+
+그런데 웹 앱으로 빌드해서 실행하면 특정 URL 문자열이 전달될 수 있다. 만약 앱의 URL을 http://localhost:54603/#/ 으로
+가정하면 RouteInformaion.location값은 null이다. 그런데 앱의 URL을 http://localhost:54603/#/detail/world/10 으로
+가정하면 RouteInformation.location값은 /hello/world/10이다. 결국 앱이 실행되었을 때 이런 URL 등의 정보를 매개변수로
+받아 어떤 정보로 실행된 것인지를 분석해 그 결과를 라우트 경로에 담아서 반환해 주면 된다.
+
+restoreRouteInformation() 함수는 앱의 현재 라우팅 상태를 저장한다. 이 함수는 앱이 실행되면서 여러 번 호출될 수 있다.
+라우터 델리게이트에서 특정 화면으로 이동이 결정되면 자동으로 호출된다. 따라서 매개변수는 라우트 경로이며 반환값은 저장할 
+정보를 담고 있는 RouteInformation 객체다.
+
+```dart
+// restoreRouteInformation() 함수 구현
+@override
+RouteInformation restoreRouteInformation(MyRoutePath configureation) {
+  print('restoreRouteInformation.. id : ${configureation.id}');
+  if (configureation.id != null) 
+    return RouteInformaion(location: '/detail/${configureation.id}');
+  else
+    return RouteInformaion(location: '/');
+}
+```
+
