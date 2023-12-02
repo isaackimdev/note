@@ -1329,3 +1329,32 @@ MyRoutePath get currentConfiguration {
   }
 }
 ```
+
+setNewRoutePath() 함수는 꼭 재정의해야 하며 라우터 델리게이트가 초기화될 때 한 번만 호출된다.
+setNewRoutePath() 함수의 매개변수로 전달되는 라우트 경로는 정보 분석기의 parseRouteInformation() 
+함수에서 반환한 값이다. 즉, 정보 분석기에서 처음에 앱의 라우팅 정보를 분석하고 그 결과를 델리게이트의
+setNewRoutePath()에 전달해 초기 라우팅 정보를 만든다.
+
+```dart
+@override
+Future<void> setNewRoutePath(MyRoutePath configuration) async {
+  print('MyRouterDelegate... setNewRoutePath ... id : ${configuration.id}');
+  if(configuration.id != null) {
+    selectId = configuration.id;
+  }
+}
+```
+
+라우터 델리게이트와 정보 분석기를 이용하면 화면이 나오기까지 여러 함수가 호출되는데
+이를 그림으로 보면 다음과 같다.
+
+1. initial route / new intent
+2. RouteInformationParser
+  - parseRouteInformation()
+3. RouterDelegate
+  - setNewRoutePath()
+4. RouteInformationParser
+  - restoreRouteInformation()
+5. RouterDelegate
+  - build()
+6. Navigator
