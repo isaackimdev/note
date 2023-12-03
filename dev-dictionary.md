@@ -1,1 +1,1 @@
-- Android runtime, ART
+- ART : Android runtime

@@ -1,5 +1,8 @@
+# Flutter
+
 ## 1. flutter
-플러터(flutter) 하는 이유는 쉽게 말해서 크로스 플랫폼에서 동작하는 앱을 만들기 위함이다. Android, iOS, Windows, macOS, Linux, Web, Embedded, WebApp 등 여러 플랫폼에서 동작하는 앱을 같은 코드로 개발할 수 있다.
+Flutter는 Cross Platform에서 동작하는 App을 만드는 Framework다.
+다양한 운영체제 Android, iOS, Windows, macOS, Linux 다양한 환경 Web, Embedded, WebApp 등 여러 플랫폼에서 동작하는 앱을 같은 코드로 개발할 수 있다.
 
 - Flutter는 __크로스 플랫폼__ 프레임워크다.
 - 플러터는 다트(Dart) 언어를 사용한다.
@@ -17,6 +20,10 @@
 #### 개발 환경
 - OS : windows 10, 11
 - IDE : Android studio
+
+#### 플러터 설치 여부 확인하기
+`$ where flutter dart`
+
 
 #### 개발 환경 세팅 순서
 1. Flutter SDK 설치하기
