@@ -1345,16 +1345,38 @@ Future<void> setNewRoutePath(MyRoutePath configuration) async {
 }
 ```
 
-라우터 델리게이트와 정보 분석기를 이용하면 화면이 나오기까지 여러 함수가 호출되는데
-이를 그림으로 보면 다음과 같다.
+라우터 델리게이트와 정보 분석기를 이용하면 화면이 나오기까지 여러 함수가 호출되는데 이를 그림으로 보면 다음과 같다. 처음 라우팅되는 순간의 흐름이다.
 
-1. initial route / new intent
-2. RouteInformationParser
-  - parseRouteInformation()
-3. RouterDelegate
-  - setNewRoutePath()
-4. RouteInformationParser
-  - restoreRouteInformation()
-5. RouterDelegate
-  - build()
-6. Navigator
+![Alt text](./imgs/router-delegate.png)
+
+앱에서 버튼을 누를 때 화면을 전환하려면 라우터 델리게이트의 notifyListeners() 함수를 호출한다.
+다음 코드는 사용자가 버튼을 누를 때 호출할 함수이다.
+함수에서 적절한 이벤트를 처리한 후 notifyListeners() 함수를 호출해 화면을 전환한다.
+
+```dart
+void _handleOnPressed(String id) {
+  selectId = id;
+  print('MyRouterDelegate... notifylistener call..');
+  notifyListeners();
+}
+```
+
+앱의 화면이 전환될 때 라우터 델리게이터와 정보 분석기의 함수 호출 흐름은 다음 그림과 같다.
+
+![Alt text](./imgs/router-delegate2.png)
+
+#### 라우터 델리게이트와 정보 분석기 등록하기
+라우터 델리게이트와 정보 분석기를 만들었으면 이제 MaterialApp에 다음처럼 등록한다.
+
+```dart
+class _MainAppState extends State<MainApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerDelegate: MyRouterDelegate(),
+      routeInformationParser: MyRouteInformationParser(),
+    );
+  }
+}
+```
+
