@@ -17,6 +17,7 @@ https://github.com/isaackimdev
     - java
         - [io](./languages/java/io/io.md)
         - [ascii](./languages/java/ascii/ascii.md)
+        - [examples](./languages/java/examples)
         - [npe](./languages/java/npe/npe.md)
     - mssql
         - [cursor](/languages/mssql/cursor.md)
