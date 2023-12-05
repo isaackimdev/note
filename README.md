@@ -12,7 +12,7 @@ https://github.com/isaackimdev
         - [do it futter dart](/framework/flutter-dart/do-it-flutter-dart.md)
             - [1. flutter](./framework/flutter-dart/1-flutter.md)
             - [2. dart](./framework/flutter-dart/2-dart.md)
-            - [3. UI](./framework/flutter-dart/3-user-interface.md)
+            - [3. user interface](./framework/flutter-dart/3-user-interface.md)
 - languages
     - java
         - [io](./languages/java/io/io.md)
