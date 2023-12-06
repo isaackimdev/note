@@ -20,6 +20,7 @@ https://github.com/isaackimdev
         - [file](./languages/java/file/file.md)
         - [io](./languages/java/io/io.md)
         - [npe](./languages/java/npe/npe.md)
+        - [network](./languages/java/network/)
     - mssql
         - [cursor](/languages/mssql/cursor.md)
         - [find-sp-used-table](./languages/mssql/find-sp-used-table.md)
