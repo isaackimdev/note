@@ -15,9 +15,10 @@ https://github.com/isaackimdev
             - [3. user interface](./framework/flutter-dart/3-user-interface.md)
 - languages
     - java
-        - [io](./languages/java/io/io.md)
         - [ascii](./languages/java/ascii/ascii.md)
-        - [examples](./languages/java/examples)
+        - [baisc](./languages/java/basic/Basic.java)
+        - [file](./languages/java/file/file.md)
+        - [io](./languages/java/io/io.md)
         - [npe](./languages/java/npe/npe.md)
     - mssql
         - [cursor](/languages/mssql/cursor.md)

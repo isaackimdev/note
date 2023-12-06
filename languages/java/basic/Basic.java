@@ -1,4 +1,4 @@
-package languages.java.examples;
+package languages.java.basic;
 
 public class Basic {
     public static void main(String[] args) {

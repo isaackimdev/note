@@ -23,9 +23,11 @@ public class FileOutput {
         FileOutputStream fos = new FileOutputStream(file1, true);
         fos.write(65); // 'A'
 
+        // 문자열을 byte 배열에 담아 write로 입력
         byte[] by = "Hello world".getBytes();
-        fos.write(by, 6, 4);
+        fos.write(by, 6, 4); // worl
         fos.close();
-        
+
+        // 최종 파일에는 'Aworl' 이 입력된다.
     }
 }

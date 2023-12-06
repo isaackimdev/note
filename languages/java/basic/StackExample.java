@@ -1,4 +1,4 @@
-package languages.java.examples;
+package languages.java.basic;
 
 import java.util.Stack;
 
