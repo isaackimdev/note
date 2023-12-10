@@ -26,7 +26,45 @@ Widget
 - StatefulWidget
 - 상속 위젯
 
-보통 Stateless, Stateful을 사용하는데 Stateful은 상태(data)가 변화하는 것을 re-rendering해줄 때 사용한다. 개발할 때 무조건 statefulWidget만 사용하지 않는다.
+보통 Stateless, Stateful을 사용하는데 Stateful은 상태(data)가 변화하는 것을 re-rendering해줄 때 사용한다.
+개발할 때 무조건 statefulWidget만 사용하지 않는다.
+
+### Stateless Example
+```dart
+// main.dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Test"),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                  onPressed: () {},
+                  child: Text("사진 찍기(카메라)"),
+              ),
+              ElevatedButton(
+                  onPressed: () {},
+                  child: Text("사진 선택(앨범)"),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
 
 #### StatefulWidget
 statefulWidget은 state 클래스를 갖는다. setState라는 함수로 re-rendering할 수 있도록 한다.
