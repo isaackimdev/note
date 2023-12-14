@@ -19,8 +19,8 @@ https://github.com/isaackimdev
         - [baisc](./languages/java/basic/Basic.java)
         - [file](./languages/java/file/file.md)
         - [io](./languages/java/io/io.md)
-        - [npe](./languages/java/npe/npe.md)
         - [network](./languages/java/network/)
+        - [npe](./languages/java/npe/npe.md)
     - mssql
         - [cursor](/languages/mssql/cursor.md)
         - [find-sp-used-table](./languages/mssql/find-sp-used-table.md)
