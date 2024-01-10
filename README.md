@@ -14,7 +14,7 @@ https://github.com/isaackimdev
             - [2. dart](./framework/flutter-dart/2-dart.md)
             - [3. user interface](./framework/flutter-dart/3-user-interface.md)
 - languages
-    - java
+    - [java](./languages/java/README.md)
         - [ascii](./languages/java/ascii/ascii.md)
         - [baisc](./languages/java/basic/Basic.java)
         - [file](./languages/java/file/file.md)
