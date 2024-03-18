@@ -1,30 +1,30 @@
 public class Exam1 {
 	public static void main(String[] args) {
-		// String °´Ã¼ÀÇ »ı¼º ¹æ¹ı
-		String str1 = "ÀÚ¹Ù Programing";	// ¾à½ÄÇ¥Çö
+		// String ê°ì²´ì˜ ìƒì„± ë°©ë²•
+		String str1 = "ìë°” Programing";	// ì•½ì‹í‘œí˜„
 		String str2 = new String("Java");
 		System.out.println("str1 : " + str1);
 		System.out.println("str2 : " + str2);
 		System.out.println("----------");
-		// 1) ¹®ÀÚ¿­ÀÇ ±æÀÌ¸¦ Á¶È¸
+		// 1) ë¬¸ìì—´ì˜ ê¸¸ì´ë¥¼ ì¡°íšŒ
 		int str1_len = str1.length();
 		int str2_len = str2.length();
 		System.out.println("str1_len : " + str1_len);
 		System.out.println("str2_len : " + str2_len);
 		System.out.println("----------");
-		// 2) Æ¯Á¤ ¹®ÀÚ¿­ÀÌ Ã·À¸·Î ³ªÅ¸³ª´Â À§Ä¡¸¦ Á¶È¸
+		// 2) íŠ¹ì • ë¬¸ìì—´ì´ ì²¨ìœ¼ë¡œ ë‚˜íƒ€ë‚˜ëŠ” ìœ„ì¹˜ë¥¼ ì¡°íšŒ
 		int str1_pos = str1.indexOf(" ");
 		int str2_pos = str2.indexOf("a");
-		System.out.println("str1_pos : " + str1_pos);	// 0 ºÎÅÍ count > ¿ŞÂÊ¿¡¼­ ¿À¸¥ÂÊÀ¸·Î È®ÀÎ
-		System.out.println("str2_pos : " + str2_pos);	// 0 ºÎÅÍ count > ¿ŞÂÊ¿¡¼­ ¿À¸¥ÂÊÀ¸·Î È®ÀÎ
+		System.out.println("str1_pos : " + str1_pos);	// 0 ë¶€í„° count > ì™¼ìª½ì—ì„œ ì˜¤ë¥¸ìª½ìœ¼ë¡œ í™•ì¸
+		System.out.println("str2_pos : " + str2_pos);	// 0 ë¶€í„° count > ì™¼ìª½ì—ì„œ ì˜¤ë¥¸ìª½ìœ¼ë¡œ í™•ì¸
 		System.out.println("----------");
-		// 3) Æ¯Á¤ ¹®Àå¿­ÀÌ ³ªÅ¸³ª´Â ¸¶Áö¸· À§Ä¡¸¦ Á¶È¸
-		int str1_last_pos = str1.lastIndexOf(" ");	// Áß°£ ´Ü¾î ´ë¹®ÀÚ
-		int str2_last_pos = str2.lastIndexOf("a");	// Áß°£ ´Ü¾î ´ë¹®ÀÚ
-		System.out.println("str1_last_pos : " + str1_last_pos);	// 0 ºÎÅÍ count > ¿À¸¥ÂÊ¿¡¼­ ¿ŞÂÊÀ¸·Î È®ÀÎ
-		System.out.println("str2_last_pos : " + str2_last_pos);	// 0 ºÎÅÍ count > ¿À¸¥ÂÊ¿¡¼­ ¿ŞÂÊÀ¸·Î È®ÀÎ
+		// 3) íŠ¹ì • ë¬¸ì¥ì—´ì´ ë‚˜íƒ€ë‚˜ëŠ” ë§ˆì§€ë§‰ ìœ„ì¹˜ë¥¼ ì¡°íšŒ
+		int str1_last_pos = str1.lastIndexOf(" ");	// ì¤‘ê°„ ë‹¨ì–´ ëŒ€ë¬¸ì
+		int str2_last_pos = str2.lastIndexOf("a");	// ì¤‘ê°„ ë‹¨ì–´ ëŒ€ë¬¸ì
+		System.out.println("str1_last_pos : " + str1_last_pos);	// 0 ë¶€í„° count > ì˜¤ë¥¸ìª½ì—ì„œ ì™¼ìª½ìœ¼ë¡œ í™•ì¸
+		System.out.println("str2_last_pos : " + str2_last_pos);	// 0 ë¶€í„° count > ì˜¤ë¥¸ìª½ì—ì„œ ì™¼ìª½ìœ¼ë¡œ í™•ì¸
 		System.out.println("----------");
-		// 4) A¸¦ B·Î º¯°æÇÏ±â
+		// 4) Aë¥¼ Bë¡œ ë³€ê²½í•˜ê¸°
 		String new_str1 = str1.replace(" ", "_");
 		String new_str2 = str2.replace("a", "A");
 		System.out.println("str1 : " + str1);
@@ -32,55 +32,55 @@ public class Exam1 {
 		System.out.println("new_str1 : " + new_str1);
 		System.out.println("new_str2 : " + new_str2);
 		System.out.println("----------");
-		// 5) ´ë¼Ò¹®ÀÚ º¯°æ
+		// 5) ëŒ€ì†Œë¬¸ì ë³€ê²½
 		String upper = new_str2.toUpperCase();
 		String lower = new_str2.toLowerCase();
 		System.out.println("upper : " + upper);
 		System.out.println("lower : " + lower);
 		System.out.println("----------");
-		// 6) ¹®ÀÚ¿­ÀÇ ¾ÕµÚ °ø¹é Á¦°Å
+		// 6) ë¬¸ìì—´ì˜ ì•ë’¤ ê³µë°± ì œê±°
 		String input = "      enjoy java programming     " ;
-		String output = input.trim() ;		// trim() ¸Ş¼Òµå´Â ¾ÕµÚÀÇ °ø¹éÀ» Àß¶óÁÜ
+		String output = input.trim() ;		// trim() ë©”ì†Œë“œëŠ” ì•ë’¤ì˜ ê³µë°±ì„ ì˜ë¼ì¤Œ
 		System.out.println("input : " + input);
 		System.out.println("output : " + output);
-		// Áß°£ °ø¹é±îÁö Æ÷ÇÔÇÑ ¸ğµç °ø¹é Á¦°Å
+		// ì¤‘ê°„ ê³µë°±ê¹Œì§€ í¬í•¨í•œ ëª¨ë“  ê³µë°± ì œê±°
 		String output2 = input.replace(" ", "");
 		System.out.println("output2 : " + output2);
 		System.out.println("----------");
-		// 7) ¹®ÀÚ¿­ ºñ±³ÇÏ±â
+		// 7) ë¬¸ìì—´ ë¹„êµí•˜ê¸°
 		boolean isSame = str1.equals(str2);
 		if(isSame) {
-			System.out.println("°°´Ù.");
+			System.out.println("ê°™ë‹¤.");
 		}else {
-			System.out.println("´Ù¸£´Ù.");
+			System.out.println("ë‹¤ë¥´ë‹¤.");
 		}
 		System.out.println("----------");
-		// 8) ¹®ÀÚ¿­À» ÀÚ¸£±â
-		// - Ã¹ ¹øÂ° ÆÄ¶ó¹ÌÅÍ : ½ÃÀÛ À§Ä¡
-		// - µÎ ¹øÂ° ÆÄ¶ó¹ÌÅÍ : ³¡ À§Ä¡ µÚ
+		// 8) ë¬¸ìì—´ì„ ìë¥´ê¸°
+		// - ì²« ë²ˆì§¸ íŒŒë¼ë¯¸í„° : ì‹œì‘ ìœ„ì¹˜
+		// - ë‘ ë²ˆì§¸ íŒŒë¼ë¯¸í„° : ë ìœ„ì¹˜ ë’¤
 		String sub_str1 = str1.substring(3,4);
 		System.out.println("str1 : " + str1);
 		System.out.println("sub_str1 : " + sub_str1);
-		// µÎ ¹øÂ° ÇÇ¶ó¹ÌÅÍ°¡ ¾ø´Â °æ¿ì ³¡±îÁö ÀÚ¸¥´Ù.
+		// ë‘ ë²ˆì§¸ í”¼ë¼ë¯¸í„°ê°€ ì—†ëŠ” ê²½ìš° ëê¹Œì§€ ìë¥¸ë‹¤.
 		String sub_str2 = str1.substring(3);
 		System.out.println("sub_str2 : " + sub_str2);
 		System.out.println("----------");
-		// 9) Çü½Ä¿¡ µû¸¥ ¹®ÀÚ¿­ Ãâ·ÂÀ» À§ÇÑ static ¸Ş¼Òµå »ç¿ë
+		// 9) í˜•ì‹ì— ë”°ë¥¸ ë¬¸ìì—´ ì¶œë ¥ì„ ìœ„í•œ static ë©”ì†Œë“œ ì‚¬ìš©
 		/**
-		 * 		%d : Á¤¼ö
-		 * 		%s : ¹®ÀÚ¿­
-		 * 		%f : floatÇü ¼Ò¼ö
-		 * 		%3d : Á¤¼ö¸¦ 3ÀÚ¸®·Î ¸ÂÃç¼­ Ãâ·Â
+		 * 		%d : ì •ìˆ˜
+		 * 		%s : ë¬¸ìì—´
+		 * 		%f : floatí˜• ì†Œìˆ˜
+		 * 		%3d : ì •ìˆ˜ë¥¼ 3ìë¦¬ë¡œ ë§ì¶°ì„œ ì¶œë ¥
 		 */
 		int yy = 2018;
 		int mm = 5;
 		int dd = 3;
-		String gender = "³²ÀÚ";
-		String result = String.format("%d³â %02d¿ù %02dÀÏ %s",		// ºó°ø°£À» 0 À¸·Î Ã¤¿ö¶ó  => 05 , 03
-							yy,mm,dd,gender);						//String Å¬·¡½º, ÇÔ¼ö´Â static À¸·Î µÇ¾î ÀÕÀ½
+		String gender = "ë‚¨ì";
+		String result = String.format("%dë…„ %02dì›” %02dì¼ %s",		// ë¹ˆê³µê°„ì„ 0 ìœ¼ë¡œ ì±„ì›Œë¼  => 05 , 03
+							yy,mm,dd,gender);						//String í´ë˜ìŠ¤, í•¨ìˆ˜ëŠ” static ìœ¼ë¡œ ë˜ì–´ ì‡ìŒ
 		System.out.println(result);
 		System.out.println("----------");
-		// 10) ÁÖ¾îÁø ±ÛÀÚ¸¦ ±âÁØÀ¸·Î Àß¶ó³»¾î¼­ ¹è¿­·Î º¯È¯
+		// 10) ì£¼ì–´ì§„ ê¸€ìë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì˜ë¼ë‚´ì–´ì„œ ë°°ì—´ë¡œ ë³€í™˜
 		String src = "C++/Java/C#/Javascript/HTML";
 		String[] data = src.split("/");
 		for(int i = 0 ; i<data.length; i++) {
