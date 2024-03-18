@@ -65,6 +65,15 @@ public class Exam1 {
 		String sub_str2 = str1.substring(3);
 		System.out.println("sub_str2 : " + sub_str2);
 		System.out.println("----------");
+
+		// 오른쪽 끝 글자만 자르기
+		// result : 001 -> 1
+		String subStr = "001";
+		System.out.println("'"+ subStr + "' last char : "+ subStr.charAt(subStr.length()-1));
+		
+		String subStr2 = "1104567890";
+		System.out.println("subStr2 last 3 char : " + subStr2.substring(6, 10));
+
 		// 9) 형식에 따른 문자열 출력을 위한 static 메소드 사용
 		/**
 		 * 		%d : 정수

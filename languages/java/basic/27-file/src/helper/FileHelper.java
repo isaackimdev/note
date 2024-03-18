@@ -9,7 +9,7 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
 public class FileHelper {
-	//--- ½Ì±ÛÅæ °´Ã¼ »ı¼º ½ÃÀÛ ---
+	//--- ì‹±ê¸€í†¤ ê°ì²´ ìƒì„± ì‹œì‘ ---
 	private static FileHelper instance = null;
 	
 	public static FileHelper getInstance() {
@@ -24,62 +24,62 @@ public class FileHelper {
 	}
 	
 	private FileHelper() {}
-	//--- ½Ì±ÛÅæ °´Ã¼ »ı¼º ³¡ -----
+	//--- ì‹±ê¸€í†¤ ê°ì²´ ìƒì„± ë -----
 	/**
-	 * ÁÖ¾îÁø °æ·Î¿¡ data °ªÀ» ±â·ÏÇÏ°í ÀúÀåÇÑ´Ù.
-	 * @param filePath - ÀúÀåÇÒ ÆÄÀÏ °æ·Î
-	 * @param data - ÀúÀåÇÒ ³»¿ëÀ» ´ãÀ» ½ºÆ®¸²
-	 * @return boolean - ¼º°ø½Ã true, ½ÇÆĞ½Ã false
+	 * ì£¼ì–´ì§„ ê²½ë¡œì— data ê°’ì„ ê¸°ë¡í•˜ê³  ì €ì¥í•œë‹¤.
+	 * @param filePath - ì €ì¥í•  íŒŒì¼ ê²½ë¡œ
+	 * @param data - ì €ì¥í•  ë‚´ìš©ì„ ë‹´ì„ ìŠ¤íŠ¸ë¦¼
+	 * @return boolean - ì„±ê³µì‹œ true, ì‹¤íŒ¨ì‹œ false
 	 */
 	public boolean write(String filePath, byte[] data) {
 		boolean result = false;
-		/** ÆÄÀÏ ÀúÀå ÀıÂ÷ ½ÃÀÛ */
+		/** íŒŒì¼ ì €ì¥ ì ˆì°¨ ì‹œì‘ */
 		OutputStream out = null;
 		try {
 			out = new FileOutputStream(filePath);
-			// ÆÄÀÏ ¾²±â
+			// íŒŒì¼ ì“°ê¸°
 			out.write(data);
-			System.out.println("[INFO] ÆÄÀÏ ÀúÀåµÊ >> " + filePath);
-			// ÆÄÀÏ ÀúÀå ¼º°ø
+			System.out.println("[INFO] íŒŒì¼ ì €ì¥ë¨ >> " + filePath);
+			// íŒŒì¼ ì €ì¥ ì„±ê³µ
 			result = true;
 		} catch (FileNotFoundException e) {
-			System.out.println("[ERROR] ÀúÀå °æ·Î¸¦ Ã£À» ¼ö ¾øÀ½ >>" + filePath);
+			System.out.println("[ERROR] ì €ì¥ ê²½ë¡œë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ >>" + filePath);
 			//e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("[ERROR] ÆÄÀÏ ÀúÀå ½ÇÆĞ >>" + filePath);
+			System.out.println("[ERROR] íŒŒì¼ ì €ì¥ ì‹¤íŒ¨ >>" + filePath);
 			//e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("[ERROR] ¾Ë ¼ö ¾ø´Â ¿¡·¯ >>" + filePath);
+			System.out.println("[ERROR] ì•Œ ìˆ˜ ì—†ëŠ” ì—ëŸ¬ >>" + filePath);
 			//e.printStackTrace();
 		} finally {
 			try {
 				if(out != null) out.close();
 			} catch(IOException e) {
-				System.out.println("[ERROR] ÆÄÀÏ ´İ±â ½ÇÆĞ >> " + filePath);
+				System.out.println("[ERROR] íŒŒì¼ ë‹«ê¸° ì‹¤íŒ¨ >> " + filePath);
 			}
 		}
 		
 		return result;
 	}
 	/**
-	 * ¹®ÀÚ¿­À» byte[]·Î º¯È¯ÇÑ µÚ, ÆÄÀÏ¿¡ ÀúÀåÇÑ´Ù.
-	 * @param filePath - ÀúÀåÇÒ ÆÄÀÏ °æ·Î
-	 * @param content - ÀúÀåÇÒ ³»¿ë
-	 * @param encType - ÀÎÄÚµù Çü½Ä
-	 * @return boolean - ¼º°ø½Ã true, ½ÇÆĞ½Ã false
+	 * ë¬¸ìì—´ì„ byte[]ë¡œ ë³€í™˜í•œ ë’¤, íŒŒì¼ì— ì €ì¥í•œë‹¤.
+	 * @param filePath - ì €ì¥í•  íŒŒì¼ ê²½ë¡œ
+	 * @param content - ì €ì¥í•  ë‚´ìš©
+	 * @param encType - ì¸ì½”ë”© í˜•ì‹
+	 * @return boolean - ì„±ê³µì‹œ true, ì‹¤íŒ¨ì‹œ false
 	 */
 	public boolean writeString(String filePath, String content, String encType) {
 		boolean result = false;
 		byte[] data = null;
 		
 		try {
-			// ¹®ÀÚ¿­À» byte[] º¯È¯
+			// ë¬¸ìì—´ì„ byte[] ë³€í™˜
 			data = content.getBytes(encType);
 		} catch (UnsupportedEncodingException e) {
-			System.out.println("[ERROR] ÀÎÄÚµù ÁöÁ¤ ¿¡·¯");
+			System.out.println("[ERROR] ì¸ì½”ë”© ì§€ì • ì—ëŸ¬");
 			//e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("[ERROR] ¾Ë ¼ö ¾ø´Â ¿¡·¯");
+			System.out.println("[ERROR] ì•Œ ìˆ˜ ì—†ëŠ” ì—ëŸ¬");
 			//e.printStackTrace();
 		}
 		
@@ -87,59 +87,59 @@ public class FileHelper {
 		return result;
 	}
 	/**
-	 * ÁÖ¾îÁø °æ·ÎÀÇ ÆÄÀÏÀ» ÀĞ°í, ³»¿ëÀ» ½ºÆ®¸²À¸·Î ¸®ÅÏÇÑ´Ù.
-	 * @param filePath - ÀĞ¾î¾ß ÇÒ ÆÄÀÏÀÇ °æ·Î
-	 * @return ÀĞÇôÁø ³»¿ë
+	 * ì£¼ì–´ì§„ ê²½ë¡œì˜ íŒŒì¼ì„ ì½ê³ , ë‚´ìš©ì„ ìŠ¤íŠ¸ë¦¼ìœ¼ë¡œ ë¦¬í„´í•œë‹¤.
+	 * @param filePath - ì½ì–´ì•¼ í•  íŒŒì¼ì˜ ê²½ë¡œ
+	 * @return ì½í˜€ì§„ ë‚´ìš©
 	 */
 	public byte[] read(String filePath) {
 		byte[] data = null;
-		/** ÆÄÀÏ ÀĞ±â */
+		/** íŒŒì¼ ì½ê¸° */
 		InputStream in = null;
 		
 		try {
 			in = new FileInputStream(filePath);
-			// ÀĞÀº ³»¿ëÀ» ´ã±â À§ÇÑ ¹è¿­Àº ÆÄÀÏÀÇ ¿ë·®¸¸Å­ »çÀÌÁî¸¦ ÇÒ´çÇÑ´Ù.
-			// in.available() --> ¿­·Á ÀÖ´Â ÆÄÀÏÀÇ Å©±â
+			// ì½ì€ ë‚´ìš©ì„ ë‹´ê¸° ìœ„í•œ ë°°ì—´ì€ íŒŒì¼ì˜ ìš©ëŸ‰ë§Œí¼ ì‚¬ì´ì¦ˆë¥¼ í• ë‹¹í•œë‹¤.
+			// in.available() --> ì—´ë ¤ ìˆëŠ” íŒŒì¼ì˜ í¬ê¸°
 			data = new byte[in.available()];
-			// ÆÄÀÏ ÀĞ±â - ÆÄ¶ó¹ÌÅÍ·Î Àü´ŞµÈ ¹è¿­ ¾È¿¡, ÆÄÀÏÀÇ ³»¿ëÀ» ´ã¾ÆÁØ´Ù.
+			// íŒŒì¼ ì½ê¸° - íŒŒë¼ë¯¸í„°ë¡œ ì „ë‹¬ëœ ë°°ì—´ ì•ˆì—, íŒŒì¼ì˜ ë‚´ìš©ì„ ë‹´ì•„ì¤€ë‹¤.
 			in.read(data);
-			System.out.println("[INFO] ÆÄÀÏ ÀĞ±â ¼º°ø >> " + filePath);
+			System.out.println("[INFO] íŒŒì¼ ì½ê¸° ì„±ê³µ >> " + filePath);
 		} catch (FileNotFoundException e) {
-			System.out.println("[ERROR] ÀúÀå °æ·Î¸¦ Ã£À» ¼ö ¾øÀ½ >> " + filePath);
+			System.out.println("[ERROR] ì €ì¥ ê²½ë¡œë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ >> " + filePath);
 			//e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("[ERROR] ÆÄÀÏ ÀĞ±â ½ÇÆĞ >> " + filePath);
+			System.out.println("[ERROR] íŒŒì¼ ì½ê¸° ì‹¤íŒ¨ >> " + filePath);
 			//e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("[ERROR] ¾Ë ¼ö ¾ø´Â ¿¡·¯ >> " + filePath);
+			System.out.println("[ERROR] ì•Œ ìˆ˜ ì—†ëŠ” ì—ëŸ¬ >> " + filePath);
 			//e.printStackTrace();
 		} finally {
 			try {
-				if(in != null) in.close(); // ÆÄÀÏ ½ºÆ®¸² ´İ±â
+				if(in != null) in.close(); // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ ë‹«ê¸°
 			} catch (IOException e) {
-				System.out.println("[ERROR] ÆÄÀÏ ´İ±â ½ÇÆĞ >> " + filePath);
+				System.out.println("[ERROR] íŒŒì¼ ë‹«ê¸° ì‹¤íŒ¨ >> " + filePath);
 			}
 		}
 		
 		return data;
 	}
 	/**
-	 * ÆÄÀÏÀÇ ³»¿ëÀ» ¹®ÀÚ¿­·Î ¸®ÅÏÇÑ´Ù.
-	 * @param filePath - ÀĞ¾î¾ß ÇÒ ÆÄÀÏÀÇ °æ·Î
-	 * @param encType - ÀÎÄÚµù Çü½Ä
-	 * @return String - ÀĞÀº ³»¿ë¿¡ ´ëÇÑ ¹®ÀÚ¿­
+	 * íŒŒì¼ì˜ ë‚´ìš©ì„ ë¬¸ìì—´ë¡œ ë¦¬í„´í•œë‹¤.
+	 * @param filePath - ì½ì–´ì•¼ í•  íŒŒì¼ì˜ ê²½ë¡œ
+	 * @param encType - ì¸ì½”ë”© í˜•ì‹
+	 * @return String - ì½ì€ ë‚´ìš©ì— ëŒ€í•œ ë¬¸ìì—´
 	 */
 	public String readString(String filePath, String encType) {
 		String content = null;
 		byte[] data = this.read(filePath);
-		// ³»¿ëÀ» ¹®ÀÚ¿­·Î º¯È¯ÇÑ´Ù.		
+		// ë‚´ìš©ì„ ë¬¸ìì—´ë¡œ ë³€í™˜í•œë‹¤.		
 		try {
 			content = new String(data, encType);
 		} catch (UnsupportedEncodingException e) {
-			System.out.println("[ERROR] ÀÎÄÚµù ÁöÁ¤ ¿¡·¯");
+			System.out.println("[ERROR] ì¸ì½”ë”© ì§€ì • ì—ëŸ¬");
 			//e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("[ERROR] ¾Ë ¼ö ¾ø´Â ¿¡·¯");
+			System.out.println("[ERROR] ì•Œ ìˆ˜ ì—†ëŠ” ì—ëŸ¬");
 			//e.printStackTrace();
 		}
 		
