@@ -70,9 +70,9 @@ public class Exam1 {
 		// result : 001 -> 1
 		String subStr = "001";
 		System.out.println("'"+ subStr + "' last char : "+ subStr.charAt(subStr.length()-1));
-		
+		// 마지막 세글자 자르기
 		String subStr2 = "1104567890";
-		System.out.println("subStr2 last 3 char : " + subStr2.substring(6, 10));
+		System.out.println("subStr2 last 3 char : " + subStr2.substring(7, 10));
 
 		// 9) 형식에 따른 문자열 출력을 위한 static 메소드 사용
 		/**
