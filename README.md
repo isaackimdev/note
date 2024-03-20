@@ -28,3 +28,4 @@ https://github.com/isaackimdev
         - [select-table-info](./languages/mssql/select-table-info.md)
         - [system-function](./languages/mssql/system-function.md)
         - [trigger](./languages/mssql/trigger.md)
+    - [javascript](./languages/javascript.md)
