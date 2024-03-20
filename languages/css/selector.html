@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>셀렉터 만들기</title>
+<style type="text/css">
+h3 , li{
+	color: brown;
+}
+/* 자식 셀렉터 */
+div > div > strong {	/* 기존의 strong 기능을 바꿔치기 함 */
+	background:yellow;
+}
+/* 자손 셀렉터 */
+ul strong {
+	color: dodgerblue;	
+}
+/* class 셀렉터 */
+.warning {
+	color:red;
+}
+/* id 셀렉터*/
+#list {
+	background: mistyrose;
+}
+/* 자손 셀렉터 */
+#list span {
+	color:forestgreen;
+}
+/* 가상 클래스 셀렉터 */
+h3:first-letter{
+	color:red;
+}
+/* 가상 클래스 셀렉터 */
+li:hover {
+	background: yellowgreen;
+}
+</style>
+</head>
+<body class="main">
+
+<h3>Web Programming</h3>
+<hr>
+
+<div>
+	<div>2학기 <strong>학습내용</strong> 입니다.</div>
+	<ul id="list">
+		<li><span>HTML</span></li>
+		<li><strong>CSS</strong></li>
+		<li>JAVASCRIPT</li>
+	</ul>
+	<div class="warning">60점 이하는 F</div>
+</div>
+	
+</body>
+</html>

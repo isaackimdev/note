@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>08-데이터전송</title>
+
+<script type ="text/javascript">
+	function test() {
+		var name = document.getElementById("user_name");
+		if(name.value == "") {
+			alert("입력값이 없음");
+		}
+	}
+</script>
+
+</head>
+<body>
+
+<form action="result.html" name="fome1" method="get">
+	<fieldset style ="border : 1px solid gray;">
+		<legend>이름 입력하기</legend>
+		<div>
+			<Label for="user_name">이름:</Label>
+			<input type="text" name="user_name" id="user_name"> <!-- name 값이 변수  -->
+		</div>
+		<div>
+			<input type="submit" value="입력완료"> <!-- 바로 데이터 보내기 -->
+			<input type="reset" value="다시작성">
+			<input type="button" value="일반버튼" onclick="test()"> <!-- Javascript의 이벤트를 통해서 보내기 -->
+			<input type="image" src="img/ok.png" alt="입력완료">
+		</div>
+	</fieldset>
+</form>
+
+
+</body>
+</html>

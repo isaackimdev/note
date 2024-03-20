@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05-항목선택하기</title>
+</head>
+<body>
+	<form action="exam4.html">
+		<fieldset style="border: 1px solid black;">	<!-- 블록태그 -->
+			<legend>취미 선택하기</legend>
+			<div>
+				<!-- 체크박스 -->
+				<input type="checkbox" name="hobby" id="hobby1" value="축구" checked>
+				<label for="hobby1" style="color: red;">축구</label>
+				<input type="checkbox" name="hobby" id="hobby2" value="농구" >
+				<label for="hobby2">농구</label>
+				<input type="checkbox" name="hobby" id="hobby3" value="야구" >
+				<label for="hobby3">농구</label>
+			</div>	
+		</fieldset>
+		<br>
+		<fieldset style="border : 1px solid black">
+			<legend>성별 선택하기</legend>
+			<div>
+				<!-- 라디오 버튼 -->
+				<input type="radio" name="gender" id="gender_m" value="M" checked>
+				<label for="gender_m" >남자</label>		<!--  for에 id 값을 넣는다. -->
+				<input type="radio" name="gender" id="gender_f" value="F" >
+				<label for="gender_f" >여자</label>
+			</div>
+		</fieldset>
+
+
+
+		<input type="submit" value="보내기">
+	</form>
+</body>
+</html>

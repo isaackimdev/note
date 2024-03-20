@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04-텍스트 입력하기</title>
+</head>
+<body>
+<!-- 입력 내용을 감싸기 위한 부분 -->
+<form action="exam3.html">
+	<!-- 입력 내용에 대한 그룹을 명시하는 부분 -->
+	<fieldset style="border: 1px solid red;">
+		<!--  그룹의 제목 -->
+		<legend>내용 입력하기</legend>
+		<!--  입력 요소 배치 -->
+		<div>
+			<!-- 모양이 제일 다양한 input Tag type -->
+			<!-- for는 현재페이지에서 id로 쓰여있는 값을 위한 문구로 보면 됨 -->
+			<label for="user_id">아이디</label>
+			<!-- name 은 서버로 보낼 변수 이름 // id는 현재 페이지에서 사용될 id -->
+			<input type="text" name="user_id" id="user_id" maxlength="20">
+		</div>
+		<div>
+			<label for="user_name">회원이름</label>
+			<input type="text" name="user_name" id="user_name" maxlength="20">
+		</div>
+		<div>
+			<label for="user_pw">비밀번호</label>
+			<input type="password" name="user_pw" id="user_pw" maxlength="20">
+		</div>
+		<div>
+			<label for="memo">자기소개</label>
+			<textarea name="memo" id="memo" maxlength="100"></textarea>
+		</div>
+		<div>
+			<label for="data">숨겨진 항목</label>
+			<input type="hidden" name="data" id="data" value="숨겨진 데이터">
+		</div>
+		<input type="submit" value="보내기">
+	</fieldset>
+</form>
+</body>
+</html>

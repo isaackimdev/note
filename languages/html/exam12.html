@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>12-테이블 예제</title>
+</head>
+<body>
+	<!--  게시판 제목  -->
+	
+	<div id="title">
+		<h1>공지사항</h1>
+		<h2>우리 사이트의 새로운 소식을 알려드립니다.</h2>
+	</div>
+	
+	<hr>
+	
+	<!-- 게시물 리스트 -->
+	
+	<div id="list">
+	<table border="1" width="100%">
+		<!-- 상단부분 -->
+		<thead>
+			<tr>
+				<th width="10%">번호</th> <th width="350">제목</th> <th>작성자</th> <th>조회수</th> <th>작성일</th>
+			</tr>
+		</thead>
+		<!-- 본문부분 -->
+		<tbody align="center">
+			<tr>
+				<td width="10%"> 3 </td>
+				<td align="left"> <a href="#">웹 표준 + 웹 접근성 실무완성 수강안내 </a> </td>
+				<td> 3 </td>
+				<td> 123 </td> 
+				<td> 2014-05-01 </td>
+			</tr>
+			<tr>
+				<td width="10%"> 2 </td> 
+				<td align="left"> <a href="#">HTML5+반응형웹 수강안내 </a> </td> 
+				<td> 3 </td> 
+				<td> 123 </td> 
+				<td> 2014-05-01 </td>
+			</tr>
+			<tr>
+				<td width="10%"> 1 </td> 
+				<td align="left"> <a href="#">Javascript+jQuery+Ajax 수강안내</a> 
+				</td> <td> 3 </td> 
+				<td> 123 </td> 
+				<td> 2014-05-01 </td>
+			</tr>
+			<tr>
+				<td colspan="5"> <a href="#">1</a> <a href="#">2</a> <a href="">3</a> <a href="">4</a> <a href="">5</a> </td> 
+			</tr>
+		</tbody>	
+		<!-- 하단 부분-->
+		<tfoot>
+			<tr>
+				<td colspan="5" align="right"><a href="">새 글 쓰기</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+	
+</body>
+</html>

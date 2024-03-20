@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01-단어, 문장강조</title>
+<style type="text/css">
+span {	
+	font-weight: bold;	
+	color: #0000ff;
+	font-style: italic;
+	text-decoration: underline;
+}
+</style>
+</head>
+<body>
+	<!-- font 태크 사용법 -->
+	<div>
+		<font size="1">크기=1</font><br>
+		<font size="3" color="#ff6600">크기=3, 색상=오렌지</font><br>
+		<font size="5" face="맑은고딕">크기=5, 글꼴 =맑은고딕</font><br>
+		<font size="7" color="#0000ff" face="궁서">크기=7, 색상=파랑, 글꼴=궁서</font>
+	</div>
+	<hr>
+	<!-- font 태크 중첩 사용 -->
+	<div>
+		<font size="3" color="#003300" face="굴림">
+			폰트태그는<font size-"5" color="#ff0000" face="궁서">중첩사용도 </font> 가능합니다.
+		</font>
+	</div>
+	<hr>
+	<!-- 글자의 모양 -->
+	<div>
+		<strong>글자를 굵게 표시합니다.</strong><br>
+		<sup><u>글자에 밑줄을 표시합니다.</u></sup>
+		<s><i>글자를 기울임 표시합니다.</i></s><br>
+		<strong><u><i>글자의 모양을 의미하는 태그 역시 중첩이 가능합니다.</i></u></strong>
+	</div>
+	<hr>
+	<!-- 단어나 문장의 영역 지정 -->
+	<div>
+		<span>SPAN</span> 태그는
+		<span>문장 단위로 텍스트 영역을 지정하는 것</span>인데,
+		그 자체로는 아무 역할도 하지 않고,
+		문장의 특정 구역에 <span>CSS 스타일</span>을 지정할 때 사용합니다.
+	</div>
+	<!-- 특수문자 출력 -->
+	<div>
+		<p><>""</p>
+		<>""<br>
+		&lt;&gt;&quot;&quot;<br>
+		공 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;백<br>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>06-드롭다운</title>
+</head>
+<body>
+<form action="exam5.html">
+	<fieldset style="border: 1px solid gray;">
+		<legend>이동통신사 선택하기</legend>
+		<div>
+			<!-- 드롭다운 (싱글타입)-->
+			<label for="telecom">이동통신사 선택</label>
+			<select name="telecom" id="telecom">
+				<option value="SKT">SKTelecom</option>
+				<option value="KT">KT</option>
+				<option value="U+">LG U+</option>
+			</select>
+		</div>
+	</fieldset>
+	<br>
+	<fieldset style="border : 1px solid gray;">
+		<legend>스마트폰 운영체제 선택하기</legend>
+		<div>
+			<!-- 드롭다운 (멀티타입) -->
+			<label for="smartphone">스마트폰 운영체제</label>
+			<select name="smartphone" id="smartphone" multiple>
+				<option value="android">안드로이드</option>
+				<option value="iOS">iOS</option>
+				<option value="window">Window</option>
+			</select>
+		</div>
+	</fieldset>
+	
+	<input type="submit" value="보내기">
+</form>
+</body>
+</html>

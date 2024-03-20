@@ -16,6 +16,9 @@ https://github.com/isaackimdev
     - [jQuery](./framework/jQuery/jQuery.md)
         - [selector.html](./framework/jQuery/selector.html)
 - languages
+    - [css](./languages/css/css.md)
+        - [selector.html](./languages/css/selector.html)
+    - [html](./languages/html/html.md)
     - [java](./languages/java/README.md)
         - [ascii](./languages/java/ascii/ascii.md)
         - [baisc](./languages/java/basic/Basic.java)
@@ -30,6 +33,5 @@ https://github.com/isaackimdev
         - [select-table-info](./languages/mssql/select-table-info.md)
         - [system-function](./languages/mssql/system-function.md)
         - [trigger](./languages/mssql/trigger.md)
-    - javascript
-        - [javascript](./languages/javascript/javascript.md)
+    - [javascript](./languages/javascript/javascript.md)
         
