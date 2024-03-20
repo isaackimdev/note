@@ -6,13 +6,14 @@ https://github.com/isaackimdev
     - [codeup](./algorithm/codeup/README.md)
     - [java-basic](./algorithm/java-basic/README.md)
 - framework
-    - [mybatis](./framework/mybatis.md)
     - flutter-dart
         - [flutter-study-exmaple](https://github.com/isaackimdev/flutter-study)
         - [do it futter dart](/framework/flutter-dart/do-it-flutter-dart.md)
             - [1. flutter](./framework/flutter-dart/1-flutter.md)
             - [2. dart](./framework/flutter-dart/2-dart.md)
             - [3. user interface](./framework/flutter-dart/3-user-interface.md)
+    - [mybatis](./framework/mybatis.md)
+    - [jQuery](./framework/jQuery.md)
 - languages
     - [java](./languages/java/README.md)
         - [ascii](./languages/java/ascii/ascii.md)
@@ -28,4 +29,6 @@ https://github.com/isaackimdev
         - [select-table-info](./languages/mssql/select-table-info.md)
         - [system-function](./languages/mssql/system-function.md)
         - [trigger](./languages/mssql/trigger.md)
-    - [javascript](./languages/javascript.md)
+    - javascript
+        - [javascript](./languages/javascript/javascript.md)
+        
