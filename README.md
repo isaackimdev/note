@@ -13,7 +13,8 @@ https://github.com/isaackimdev
             - [2. dart](./framework/flutter-dart/2-dart.md)
             - [3. user interface](./framework/flutter-dart/3-user-interface.md)
     - [mybatis](./framework/mybatis.md)
-    - [jQuery](./framework/jQuery.md)
+    - [jQuery](./framework/jQuery/jQuery.md)
+        - [selector.html](./framework/jQuery/selector.html)
 - languages
     - [java](./languages/java/README.md)
         - [ascii](./languages/java/ascii/ascii.md)

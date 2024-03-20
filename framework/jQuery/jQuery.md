@@ -4,7 +4,7 @@
 - 사용방법 : 보통 html 파일 상단에 jQuery lib 소스를 연결 후 사용
 
 ```html
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="libs/jquery-3.3.1.min.js"></script>
 <script>
     function hello($) {
         // .은 class 선택자, #은 id 선택자
@@ -21,50 +21,10 @@
 </body>
 ```
 
-- html Element 선택 방법
+- html Element 선택 방법, 선택자(selector)
+	- 예제 : [selector.html](selector.html)
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-div#container{
-	width: auto;
-	border:5px solid #ff00ff;
-}
-div#container > h1#title {
-	background-color: #d5d5d5;
-	padding: 10px;
-}
-div#container div.box {
-	padding: 10px;
-	background-color: #ffff00;
-	font:20px '굴림';
-}
-div#container > ul {
-	list-style: none;
-	padding: 10px;
-	margin: 0px;
-	width: auto;
-	border: 5px solid #00ff00;
-}
-div#container > ul > li:first-child, li:last-child {
-	border: 3px dotted red;
-	padding: 3px 10px;
-}
-pre {
-	font : 14px/130% 'Courier New';
-	background: #eee;
-	padding: 10px 20px;
-	margin: 10px auto;
-	border: 1px solid #555;
-	border-radius: 20px;
-}
-</style>
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
+```js
 	$(function() {
 		// id값에 의한 접근. 가장 일반적인 방법이다.
 		$("#title").html("두번째 제목");
@@ -84,26 +44,25 @@ pre {
 		$("ul > li:first-child").html("First-Child");
 		$("ul > li:last-child").html("Last-Child");
 	});
-</script>
-</head>
-<body>
+```
 
-<div id="container">
-	<h1 id="title"></h1>
-	<div class="box"></div>
-	<ul>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
-<p></p>
-<pre></pre>
-<pre name='source'></pre>
+```html
+<body>
+	<div id="container">
+		<h1 id="title"></h1>
+		<div class="box"></div>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<p></p>
+	<pre></pre>
+	<pre name='source'></pre>
 </body>
-</html>
 ```
 
 - event listener : 특정 요소의 event를 감지한다.
