@@ -1,0 +1,239 @@
+@charset "UTF-8";
+@import url(common.css);	/* 다른 css파일을 css로 추가하는 방법 @import */
+/* '나눔고딕체' 이고, 웹 폰트를 활용  */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 가로 폭 지정 및 가운데 정렬 */
+#wrap {
+	width: 760px;
+	margin: 0 auto;
+	/* snb 영역에 우측의 선을 배경이미지로 설정 */
+	background:url(../../img/bg_snb.png) repeat-y 170px 0;
+}
+body > #wrap {	/* wrap 영역의 높이를 브라우저 높이에 꽉 채운다. */
+	height: auto;
+	min-height: 100%;
+}
+
+/* header start */
+/* 어떤 영영에 'position: absolute' 를 지정할 경우에는,
+	그영역을 감싸는 부분에 반드시 'position: relative' 를 지정한다.
+	그 상위 영역이 'absolute' 위치의 기준이 된다. */
+#header {
+	position: relative;
+	/*  밑쪽의 안쪽여백과 border 및 배경 이미지 설정  */
+	padding-bottom: 99px;
+	border-bottom: 1px solid #cccccc;
+	/* #fff : 선을 지우는 용도 */
+	background: #fff url(../../img/bg_header.png) no-repeat 50% 100%;	/*#fff 는 흰색*/
+}
+.logo { 	/* 안쪽 여백 지정 */
+	padding: 12px 0 12px 26px;
+}
+.logo a {	/* LOGO라는 텍스트대신 이미지로 대체 */
+	display: block;
+	overflow: hidden;
+	width:90px;
+	height:30px;
+	background: url(../../img/logo.png) no-repeat;	/*  ../../  상위폴더를 나타냄 */
+	/* 이미지가 나타나면 텍스트는 화면에 필요가 없으므로
+	'text-indent: -9999em, ' 로 화면 밖으로 보내버림  */
+	text-indent: -9999em;
+	
+}
+.topnav {	/* 오른쪽 배치, 'absolute'로 위치 지정 */
+	position: absolute;
+	right: 35px;
+	top: 18px;
+}
+.topnav dd {
+	float: left;
+	padding-right: 11px;
+	margin-right: 10px;
+	background: url(../../img/bg_topnav.png) no-repeat 100% 50%;
+}
+.topnav dd:last-child {
+	padding-right: 0;
+	margin-right: 0;
+	background: none;
+}
+.topnav dd a {
+	color: black;
+	font-size: 0.9em;
+}
+.mainnav {
+	padding-left: 50px;
+	background-color: #005B9B;
+}
+.mainnav:after {	/* 상위영역인 메뉴바의 float 해제  */
+	content: '';
+	display: block;
+	clear: both;	
+}
+.mainnav li { /* float 설정*/
+	float: left;
+}
+.mainnav li a {	/* font 속성지정 : 폰트 두께, 폰트 크기, line-height, 서체  */
+	display: block;
+	padding: 0 13px;
+	background-color: #005B9B;
+	color:#ffffff;
+	font: bold 16px/40px 'Nanum Gothic', sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;	
+}
+.mainnav li a:hover {	/* 마우스가 올라왔을 때 동작 설정 : 글자색, 배경색 변경 */
+	color: #660000;
+	background-color: #ffcc00;
+}
+/* header end */
+
+/* container start */
+#container {	
+	/* container와 footer의 간격 지정 */
+	padding-bottom: 121px;
+}
+
+#container:after {	/* footer의 float를 해제 */
+	content: '';
+	display: block;
+	clear:both;	
+}
+/* snb */
+.snb {	/* 가로 폭 지정 및 왼쪽 배치  */
+	float: left;
+	width: 170px;
+}
+.snb h2 {	/* 타이틀 설정 */
+	padding:28px 14px 8px 0;
+	margin-left:11px;
+	margin-bottom:15px;
+	border-bottom:1px solid #cccccc;
+	color: #005B9B;
+	fonr-family: 'Nanum Gothic',sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: right;
+}
+.snb ul {
+	margin-left:11px;
+}
+.snb ul a {
+	display: block;
+	padding-right:14px;
+	color: #005B9B;
+	fonr-family: 'Nanum Gothic',sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+	text-decoration: none;
+	line-height: 30px;	/* 텍스트간의 줄 간격  */
+}
+.snb ul a:hover {
+	color: #660000;
+	text-decoration: underline;
+}
+/* content */
+#content {	/* 가로 폭 지정 및 오른쪽 배치*/
+	position: relative;
+	float:right;
+	width:560px;
+}
+.locate {
+	position: absolute; 	/* 고정 시킴 absolute */
+	right: 28px;
+	top: 26px;
+	color: #ccc;	/* 밝은 회색 */
+	font-size: 0.9em;
+	word-spacing: 0.3em;	/* 단어들의 간격을 살짝 벌림. */
+}
+.locate a {
+	color: #666666;
+}
+.locate strong {
+	font-weight: normal;
+	color: #666666;
+	word-spacing: 0em;
+}
+#content h2 { /* 상단 타이트 설정*/
+	padding: 24px 0;
+	color: #005B9B;
+	fonr-family: 'Nanum Gothic',sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+#content .thum {
+	float: left;
+	margin-left: 14px;
+}
+#content .thum img {
+	width: 114px;
+	height: 111px;
+	border: 1px solid #cccccc;	
+}
+#content .text {
+	margin-left: 148px;
+}
+#content .text p {
+	margin-bottom: 15px;
+	line-height: 1.4;
+}
+/* container end */
+
+/* footer start */
+#footer {
+	position: relative;
+	margin-top: -101px;
+	background-color: #fff;		/* 선을 지우는 용도 */
+}
+#footer .footerArea {
+	border-top: 1px solid #cccccc;
+	padding: 0;		/* 내부 여백 제거 */
+	width: 760px;
+	height:100px;	/* 자체 높이값 지정 */
+	margin: 0 auto;
+	color: #666;
+	font-size:0.9em;
+}
+#footer .footerArea:after {	/* 하위 항목인 btmnav의 float 지정에 대한 float 해제 */
+	content: '';
+	display: block;
+	clear: both;	
+}
+
+.btmnav {
+	float: right;
+	margin-right: 30px;	/* 개별 외부 여백 설정 */
+	margin-top: 18px;	/* 개별 외부 여백 설정 */
+}
+.btmnav dd {
+	float:left;
+}
+.btmnav dd:after {
+	content: '|';
+	padding: 0 0.7em;
+	color: #999;
+}
+.btmnav dd:last-child:after {
+	content: '';
+	padding : 0 0;
+}
+.copy {
+	float: left;
+	margin-left: 20px;	/* 개별 외부 여백 설정 */
+	margin-top: 18px;	/* 개별 외부 여백 설정 */
+	line-height: 1.8;
+}
+/* footer end */
+
+
+
+
+
+
+
+
+
+
+
+

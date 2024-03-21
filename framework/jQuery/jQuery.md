@@ -1,7 +1,7 @@
 # jQuery
 
-- jQuery : jQuery는 javascript 기반 라이브러리
-- 사용방법 : 보통 html 파일 상단에 jQuery lib 소스를 연결 후 사용
+- jQuery : jQuery는 javascript 기반 library
+- usage  : html 파일 상단에 jQuery lib 연결 후 사용
 
 ```html
 <script type="text/javascript" src="libs/jquery-3.3.1.min.js"></script>
@@ -123,3 +123,7 @@ div {
 </body>
 </html>
 ```
+
+### jQuery basic examples
+- [1](./basic/exam01.jsp) [2](./basic/exam02.jsp) [3](./basic/exam03.jsp) [4](./basic/exam04.jsp) [5](./basic/exam05.jsp)
+

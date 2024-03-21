@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>표 테두리</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+thead {
+	background: darkgray;
+	height: 40px;
+}
+td, th {
+	text-align: center;
+	padding: 5px;
+	height: 15px;
+	width:100px;
+}
+tr {
+	border-bottom: 1px solid darkgray;
+}
+</style>
+</head>
+<body>
+	
+	<h3>2017년 1학기 성적 </h3>
+	
+	<hr>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>이름</th><th>Html</th><th>CSS</th>
+			</tr>
+		</thead>
+		
+		<tbody align="center">
+			<tr>
+				<td>홍길동</td><td>80</td><td>70</td>
+			</tr>
+			<tr>
+				<td>고길동</td><td>95</td><td>99</td>
+			</tr>
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<th>합</th><th>175</th><th>169</th>
+			</tr>
+		</tfoot>
+		
+	</table>
+	
+</body>
+</html>

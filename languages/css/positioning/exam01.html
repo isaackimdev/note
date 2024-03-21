@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>display 프로퍼티</title>
+<style type="text/css">
+div{
+	border: 2px solid yellowgreen;
+	color:blue;
+	background: aliceblue;
+}
+span {
+	border: 3px dotted red;
+	background: yellow;
+}
+div#d1 {
+	display:none;
+}
+div#d2 {
+	display: inline;
+	height: 50px;
+}
+div#d3 {
+	display: inline-block; /* 인라인 블록에서는 가로세로 지정 할 수 있음 */
+	height: 50px;
+}
+span#s1 {
+	display:block;
+}
+</style>
+</head>
+<body>
+<h3>인라인, 인라인 블록, 블록</h3>
+<hr>
+나는 <div>div</div> 입니다.<br><br>
+나는 <div id="d1">div(none)</div> 입니다.<br><br>
+나는 <div id="d2">div(inline)</div> 입니다.<br><br>
+나는 <div id="d3">div(inline-block)</div> 입니다.<br><br>
+나는 <div id="d4">div<span id="s1">span(block)</span>입니다.</div><br><br>
+
+
+</body>
+</html>

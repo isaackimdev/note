@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>절대 배치</title>
+<style type="text/css">
+div {
+	display: inline-block;
+	position: absolute;
+	border: 1px solid lightgray;
+}
+div > p {
+	display: inline-block;
+	height: 20px;
+	width: 15px;
+	background: lightgray;
+	position:absolute;
+}
+p#p1 {
+	left: 50px; top: 30px;
+}
+p#p2 {
+	left: 100px; top: 0px;
+}
+p#p3 {
+	left: 100px; top: 80px;
+}
+p#p4 {
+	left: 150px; top: 110px;
+}
+p#p5 {
+	left: 30px; top: 130px;
+}
+
+
+</style>
+</head>
+<body>
+<h3>Merry Chrismas!</h3>
+<hr>
+<p>메리 크리스마스 </p>
+<div>
+	<img alt="크리스마스 트리" src="img/christmastree.png" 
+	width="200" height="200">
+	<p id="p1">M</p>
+	<p id="p2">E</p>
+	<p id="p3">R</p>
+	<p id="p4">R</p>
+	<p id="p5">Y</p>
+</div>
+</body>
+</html>

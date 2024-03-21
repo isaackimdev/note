@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>float layout, 2Column</title>
+<style type="text/css">
+* {		/* CSS의 초기화 */
+	margin: 0;
+	padding: 0;
+}
+body {
+ font: 12px Tahoma, sans-serif;
+}
+li {
+	list-style: none;
+}
+div#wrap {
+	width: 800px;
+	margin: 0 auto;
+	background-color:silver;
+}
+div#header {
+	background-color: red;
+}
+div#Container {
+	background-color: cyan;
+}
+div.nav {
+	float: left;
+	width: 180px;
+	background-color: lime;
+}
+div.content {
+	float: right;
+	width:600px;
+	background-color: lime;
+}
+#footer {
+	margin-top: 30px;
+	background: green;
+}
+/* clear를 지정한 위치가 float를 지정한 뒤에, float이 지정된 박스를 감싸고 있는 <div가 끝나기 
+   전 (#container:after)이다. 이렇게 작성하면 '#container' 영역에 배경을 비롯한 여러 가지 박스 모델
+   속성들이 제대로 나타난다. */
+#Container:after {
+	content: "";
+	display:block;
+	clear:both;
+}
+#footer {
+	position: fixed;
+	bottom: 10px;
+	width: 800px;
+}
+</style>
+</head>
+<body>
+
+<div id="wrap">	<!-- 전체를 감싸는 블럭 태그 -->
+	<div id="header">
+		<h1>LOGO</h1>
+		<p>This website is...</p>		
+	</div>
+	
+	<div id="Container">
+		<div class="nav">
+			<h2>Navigate</h2>
+				<ul>
+					<li><a href="#">Menu 1</a></li>
+					<li><a href="#">Menu 2</a></li>
+					<li><a href="#">Menu 3</a></li>
+				</ul>
+		</div>
+		<div class="content">
+			<h2>Content Title</h2>
+			<p>
+			Pellentesque habitant morbi tristique senectus et netus et
+			malesuada fames ac turpis egestas. Vestibulum tortor quam,
+			feugiat vitae, ultricies eget, tempor sit amet, ante.
+			Donec eu libero sit amet quam egestas semper. Aenean ultricies
+			mi vitae est. Mauris placerat eleifend leo. Quisque sit amet
+			est et sapien ullamcorper pharetra. Vestibulum erat wisi,
+			condimentum sed, commodo vitae, ornare sit amet, wisi.
+			Aenean fermentum, elit eget tincidunt condimentum, eros
+			ipsum rutrum orci, sagittis tempus lacus enim ac dui.
+			Donec non enim in turpis pulvinar facilisis. Ut felis.
+			Praesent dapibus, neque id cursus faucibus, tortor neque
+			egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.
+			Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+			</p>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<address>Seoul, Korea</address>
+	</div>
+</div>
+
+</body>
+</html>
