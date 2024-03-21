@@ -1,0 +1,14 @@
+@charset "UTF-8";
+p {
+	color: red;
+	font-size: 15px;
+}
+
+.p3 {				
+	color: red;
+	font-size:30px;		
+}
+.p4 {			
+	color: magenta;
+	font-size:30px;	
+}

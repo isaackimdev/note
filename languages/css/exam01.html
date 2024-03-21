@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 문서구조 시맨틱 태그 사용</title>
+
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	height: 100%
+}
+.header {
+	width: 100%;
+	height: 15%;
+	background: yellow;
+}
+.nav {
+	width: 15%;
+	height: 70%;
+	background: orange;
+	float: left;
+}
+.section{
+	width: 70%;
+	height:70%;
+	background: olivedrab;
+	float:left;
+}
+.aside {
+	width:15%;
+	height:70%;
+	background:orange;
+	float: left;
+}
+.footer {	
+	width: 100%;
+	height: 15%;
+	background: plum;
+	clear: both;	
+}
+tr {
+	height: 30px;
+}
+
+</style>
+
+</head>
+<body>
+
+	<div class="header">
+		<h2>공지사항</h2>
+	</div>
+	<div class="nav">nav</div>
+	<div class="section"><table border="1" width="100%">
+		<!-- 상단부분 -->
+		<thead>
+			<tr>
+				<th width="10%">번호</th> <th width="350">제목</th> <th>작성자</th> <th>조회수</th> <th>작성일</th>
+			</tr>
+		</thead>
+		<!-- 본문부분 -->
+		<tbody align="center">
+			<tr>
+				<td width="10%"> 3 </td>
+				<td align="left"> <a href="#">웹 표준 + 웹 접근성 실무완성 수강안내 </a> </td>
+				<td> 3 </td>
+				<td> 123 </td> 
+				<td> 2014-05-01 </td>
+			</tr>
+			<tr>
+				<td width="10%"> 2 </td> 
+				<td align="left"> <a href="#">HTML5+반응형웹 수강안내 </a> </td> 
+				<td> 3 </td> 
+				<td> 123 </td> 
+				<td> 2014-05-01 </td>
+			</tr>
+			<tr>
+				<td width="10%"> 1 </td> 
+				<td align="left"> <a href="#">Javascript+jQuery+Ajax 수강안내</a> 
+				</td> <td> 3 </td> 
+				<td> 123 </td> 
+				<td> 2014-05-01 </td>
+			</tr>
+			<tr>
+				<td colspan="5"> <a href="#">1</a> <a href="#">2</a> <a href="">3</a> <a href="">4</a> <a href="">5</a> </td> 
+			</tr>
+		</tbody>	
+		<!-- 하단 부분-->
+		<tfoot>
+			<tr>
+				<td colspan="5" align="right"><a href="">새 글 쓰기</a></td>
+			</tr>
+		</tfoot>
+	</table></div>
+	<div class="aside">aside</div>
+	<div class="footer">footer</div>
+
+</body>
+</html>
