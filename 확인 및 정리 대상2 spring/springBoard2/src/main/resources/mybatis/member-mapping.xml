@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.member">
+
+	<!-- 회원 가입 -->
+	<insert id="memberInsert" parameterType="memberDTO"> <!-- 원래는 클래스 풀네임을 줘야 하지만 -->
+		INSERT INTO member 
+		VALUES(#{name},#{id},#{pwd},#{gender},#{email1},#{email2},
+		#{tel1},#{tel2},#{tel3},#{addr},sysdate)
+	</insert>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="memberModify" parameterType="memberDTO">
+		UPDATE member
+		SET name=#{name},pwd=#{pwd},gender=#{gender},email1=#{email1},email2=#{email2},
+		tel1=#{tel1},tel2=#{tel2},tel3=#{tel3},addr=#{addr}
+		WHERE id = #{id}
+	</update>
+
+	<!-- <select>의 resultType은 int, String, memberDTO, Map을 쓴다.
+	boolean은 사용못한다. <select>의 결과로 받은 값만 resultTyp으로 사용할 수 있다.
+	 -->	
+	 <!-- 한명의 member정보 보기 -->
+	<select id="memberGet" parameterType="String" resultType="memberDTO">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+	
+	<!-- 로그인 -->					<!-- map 풀 네임을 써줘야 함. -->
+	<select id="memberLogin" parameterType="java.util.Map" resultType="String">
+		SELECT name FROM member WHERE id=#{id} and pwd=#{pwd}
+	</select>
+	
+	<!-- 아이디 중복확인 -->
+	<select id="isExistId" parameterType="String" resultType="String">
+		SELECT name FROM member WHERE id=#{id}
+	</select>
+	
+</mapper>

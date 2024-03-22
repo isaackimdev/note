@@ -1,0 +1,54 @@
+<!-- 1depth 카테고리 -->
+<select name="category1" id="category1-1">
+  <option>----- 선택하세요 -----</option>
+  <option value="의류" data-target="#category2-1">의류</option>
+  <option value="디지털/가전" data-target="#category2-2">디지털/가전</option>
+</select>
+
+<!-- 의류에 종속된 2depth 카테고리 -->
+<select name="category2" id="category2-1">
+  <option>----- 선택하세요 -----</option>
+  <option value="여성의류" data-target="#category2-1-1">여성의류</option>
+  <option value="남성의류/캐주얼의류" data-target="#category2-1-2">남성의류/캐주얼의류</option>
+</select>
+
+<!-- 디지털/가전 2depth 카테고리 -->
+<select name="category2" id="category2-2">
+  <option>----- 선택하세요 -----</option>
+  <option value="TV/냉장고/세탁기" data-target="#category2-2-1">TV/냉장고/세탁기</option>
+  <option value="노트북/데스크탑" data-target="#category2-2-2">노트북/데스크탑</option>
+</select>
+
+<!-- 의류 > 여성의류에 종속된 3dpeth 카테고리 -->
+<select name="category3" id="category2-1-1">
+  <option>----- 선택하세요 -----</option>
+  <option value="티셔츠">티셔츠</option>
+  <option value="블라우스/셔츠/남방">블라우스/셔츠/남방</option>
+  <option value="가디건">가디건</option>
+  <option value="니트/스웨터">니트/스웨터</option>
+</select>
+
+<!-- 의류 > 남성의류/캐주얼의류에 종속된 3dpeth 카테고리 -->
+<select name="category3" id="category2-1-2">
+  <option>----- 선택하세요 -----</option>
+  <option value="캐주얼셔츠/남방">캐주얼셔츠/남방</option>
+  <option value="긴팔티/맨투맨신규코너">긴팔티/맨투맨신규코너</option>
+  <option value="청바지인기코너">청바지인기코너</option>
+  <option value="캐주얼 바지/팬츠">캐주얼 바지/팬츠</option>
+</select>
+
+<!-- 디지털/가전 > TV/냉장고/세탁기에 종속된 3dpeth 카테고리 -->
+<select name="category3" id="category2-2-1">
+  <option>----- 선택하세요 -----</option>
+  <option value="3D TV">3D TV</option>
+  <option value="김치냉장고">김치냉장고</option>
+  <option value="드럼세탁기">드럼세탁기</option>
+</select>
+
+<!-- 디지털/가전 > 노트북/데스크탑에 종속된 3dpeth 카테고리 -->
+<select name="category3" id="category2-2-2">
+  <option>----- 선택하세요 -----</option>
+  <option value="노트북">노트북</option>
+  <option value="브랜드PC">브랜드PC</option>
+  <option value="조립PC">조립PC</option>
+</select>

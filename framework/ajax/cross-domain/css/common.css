@@ -1,0 +1,29 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+h1.title {
+	font-size: large;
+	border-left: 10px solid #7BAEB5;
+	border-bottom: 1px solid #7BAEB5;
+	padding: 10px;
+	width: auto;
+	background-color: #fff;
+}
+
+div.exec, div.console {
+	padding: 20px 15px;
+	border-bottom: 1px solid #7BAEB5;
+}
+
+div.console {
+	font-family: 'Courier New'
+	font-size: 12px;
+	font-style: italic;
+	line-height: 130%;
+}
+
+div.example {
+	padding: 10px 30px;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.goodsMapper">
+
+	<!-- sql 태그들 -->
+	
+	<insert id="insertGoods" parameterType="test02.GoodsVO">
+		INSERT INTO goods
+		VALUES(#{code},#{name},#{price},#{maker})
+	</insert>	<!-- #{code} : getter는 소문자로 작성 -->
+
+	<update id="updateGoods" parameterType="test02.GoodsVO">
+		UPDATE goods
+		SET
+		name=#{name}, price=#{price}, maker=#{maker}
+		WHERE
+		code = #{code}
+	</update>
+
+	<delete id="deleteGoods" parameterType="test02.GoodsVO">
+		DELETE FROM goods WHERE
+		code = #{code}
+	</delete>
+	
+	<select id="getGoods" parameterType="test02.GoodsVO" resultType="test02.GoodsVO">
+		SELECT * FROM goods	WHERE code = #{code}
+	</select>
+
+	<select id="getGoodsList" resultType="test02.GoodsVO">
+		SELECT * FROM goods order by CODE ASC
+	</select>
+	
+	<!-- 조건절에 값들을 많이 사용해야 할 경우 -->
+	<select id="selectGoodsByCodeAndPriceAndMaker" parameterType="test02.GoodsVO" 
+		resultType="test01.GoodsVO">
+		SELECT * FROM GOODS
+		WHERE code LIKE #{code} AND price > #{price} AND maker=#{maker}
+	</select>
+</mapper>

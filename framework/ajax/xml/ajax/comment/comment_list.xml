@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<comment>
+    <result>true</result>
+    <message></message>
+    <total_count>24</total_count>
+    <item>
+        <num>1</num>
+        <writer>
+            <![CDATA[홍길동]]>
+        </writer>
+        <content>
+            <![CDATA[Ajax로 구현하는 덧글 예제 입니다. 잘 되는지 볼까요?]]>
+        </content>
+        <datetime>
+            <![CDATA[2018-03-15 12:21:42]]>
+        </datetime>
+    </item>
+    <item>
+        <num>2</num>
+        <writer>
+            <![CDATA[고길동]]>
+        </writer>
+        <content>
+            <![CDATA[jQuery로 Ajax를 구현하면 매우 쉽습니다.]]>
+        </content>
+        <datetime>
+            <![CDATA[2018-03-15 12:21:42]]>
+        </datetime>
+    </item>
+    <item>
+        <num>3</num>
+        <writer>
+            <![CDATA[이영희]]>
+        </writer>
+        <content>
+            <![CDATA[Hello jQuery~ Hello Ajax~]]>
+        </content>
+        <datetime>
+            <![CDATA[2018-03-15 12:21:42]]>
+        </datetime>
+    </item>
+</comment>

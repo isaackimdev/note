@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="anno7"/>
+	
+	<bean id="student" class="anno7.Student"
+		 p:name="홍길동" p:address="부산" p:age="17"/>
+	<bean id="grade" class="java.lang.Integer">	
+		<constructor-arg value="4"/> <!-- 일반자료형을 wrapper 클래스로 만들어서 주입시킬 수 있음 -->
+	</bean>	
+</beans>
+
+	<!-- context는 Component캘르스들을 읽겠다. -->
+	<!-- bean=[student] 를 만들고.. 값으로 p태그를 사용하여
+	< p:name=value > 를 사용하여 변수를 set 해준다. 아래 tab, Namespaces에서 선택 가능
+		변수도 클래스와 같이 사용되어질 수 있음.
+		
+		Resource는 name 이름이 같은 값을 찾아주는 것이고 (이름 지정)
+		Autowrired 는 기본 값으로 이름을 같은 것을 찾아 줌		 
+	-->

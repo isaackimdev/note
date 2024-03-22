@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.scoreMapper">
+
+	<!-- sql 태그들 -->
+	
+	<insert id="insertScore" parameterType="test.bean.ScoreVO">
+		INSERT INTO score1
+		VALUES(#{studNo}, #{name}, #{kor}, #{eng}, #{mat}, #{tot}, #{avg}, sysdate)
+	</insert>	<!-- #{code} : getter는 소문자로 작성 -->
+
+	<update id="updateScore" parameterType="test.bean.ScoreVO">
+		UPDATE score1
+		SET
+		name=#{name}, kor=#{kor}, eng=#{eng}, mat=#{mat}, tot=#{tot}, avg=#{avg}
+		WHERE
+		studNo = #{studNo}
+	</update>
+
+	<delete id="deleteScore" parameterType="test.bean.ScoreVO">
+		DELETE FROM score1 WHERE
+		studNo = #{studNo}
+	</delete>
+	
+	<select id="getScore" parameterType="test.bean.ScoreVO" resultType="test.bean.ScoreVO">
+		SELECT * FROM score1 WHERE studNo = #{studNo}
+	</select>
+
+	<select id="getScoreList" resultType="test.bean.ScoreVO">
+		SELECT * FROM score1 order by studNo ASC
+	</select>
+	
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.scoreMapper">
+
+	<insert id="insertScore" parameterType="test.bean.ScoreVO">
+		INSERT INTO score1
+		VALUES(#{studNo},#{name},#{kor},#{eng},#{mat},#{tot},#{avg},sysdate) <!-- sysdate는 그냥 문자열로 넣음 -->
+	</insert>
+
+	<update id="updateScore" parameterType="test.bean.ScoreVO">
+		UPDATE score1
+		SET	kor=#{kor}, eng=#{eng}, mat=#{mat}, tot=#{tot}, avg=#{avg}
+		WHERE studNo = #{studNo}
+	</update>
+	
+	
+	<delete id="deleteScore" parameterType="test.bean.ScoreVO">
+		DELETE FROM score1 WHERE studNo = #{studNo}
+	</delete>
+	
+	<select id="getScore" parameterType="test.bean.ScoreVO" 
+			resultType="test.bean.ScoreVO">
+		SELECT * FROM score1 WHERE studNo = #{studNo}
+	</select>
+
+	<select id="getScoreList" resultType="test.bean.ScoreVO">
+		SELECT * FROM score1 order by studNo ASC
+	</select>
+	
+	<!-- 클래스 세팅 할때 쓰는거라 안씀 -->
+<!-- 	<resultMap type="#modelname" id="YourResultSet">
+		<id property="param1" column="columnname1" />
+		<result property="param2" column="columnname2" />
+		<result property="param3" column="columnname3" />
+	</resultMap> -->
+
+
+</mapper>

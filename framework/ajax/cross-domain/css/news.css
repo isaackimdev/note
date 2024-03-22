@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+body {
+	padding-bottom: 20px;
+}
+
+#list li {
+	border-bottom: 1px dotted #ccc;
+}
+
+#list .text {
+	display: block;
+	width: auto;
+	padding: 10px 20px;
+	height: 60px;
+}
+
+#list .text span {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#list .text .title {
+	font-size: 1.1em;
+	font-weight: bold;
+	line-height: 150%;
+}
+
+#list .text .desc {
+	font-size: 1em;
+	line-height: 150%;
+}
+
+#list .text .info {
+	font-size: 0.8em;
+	line-height: 150%;
+}
+
+#list #more {
+	height: 100px;
+	text-align: center;
+	cursor: hand;
+	line-height: 100px;
+}
+
+#list #more:hover {
+	background: #D9EDF7;
+}

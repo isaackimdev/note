@@ -1,0 +1,35 @@
+기본 세팅
+
+>> 디펜던시 추가 
+	1. mybatis
+	2. mybatis - spring 
+	* 버전 유의할 것.
+	
+	>> 마이바티스 설정 파일 ORM 추가.
+	1. 프로젝트 이름 > new > other > mybatis db.properties 만들기 mapping / mybatis-config.xml 만들기
+
+
+위 세개 폴더는 >> resources 폴더로 이동
+
+	
+>> db.properties.만 >> spring 폴더에 집어 넣음
+
+db.properties 수정 JDBC 연결 값
+DAO값 입력
+mapping.xml.... 
+sql 문 수정
+
+mybatis-config.xml 수정
+ - <typeAliases> 로 별명설정,
+ 	직접 클래스 경로로 줘도 되지만, 별명 설정한 값을 줘도 됨.
+ 	
+ 마이바티스 설정 끝
+ ------------------------------------------
+ 
+ application
+ 에서 dataSource 설정
+ 
+ >> 마이바티스에 연동
+
+
+

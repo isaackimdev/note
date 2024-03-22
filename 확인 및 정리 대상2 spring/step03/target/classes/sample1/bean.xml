@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="messageBean" class="sample1.MessageBeanImpl">
+		<constructor-arg>	<!-- 생성자의 벨류 값 설정 -->
+			<value>strawberry</value>
+		</constructor-arg>
+		
+		<property name="cost">	<!-- setCost() 함수를 호출 -->
+			<value>3000</value>
+		</property>
+	</bean>
+</beans>

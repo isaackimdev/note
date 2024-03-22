@@ -1,0 +1,91 @@
+기존
+MVC 기본 세팅
+1. 메이븐 업데이트
+2. 프로젝트 properties > paset의 java버전 1.8로 변경
+3. pom.xml 버전 및 레포지토리, 디펜던시 추가
+4. mvccofig에서 mvc:resource 자바스크립트 등록
+5. web.xml 서블릿 추가
+
+신규
+>>>>> MVC 패턴
+1. 서블릿 기본 제공되있음. dispatcher
+2. >> url 패턴 변경 >> *.do 
+3. mvc-confix.xml : 에 bean으로 org.springframework.web.servlet.view.InternalResourceViewResolver
+					설정 되어 있었음
+					- viewResolver 써도 되고 안써도 됨
+
+4. mvc-config에
+
+ 	<!-- Controller 등록 -->
+	만든 클래스 콘트롤러 등록
+	<bean id="loginContoller" class="board.controller.LoginController"></bean>
+	<bean id="boardListController" class="board.controller.BoardListController"></bean>
+	<bean id="boardViewController" class="board.controller.BoardViewController"></bean>
+	<bean id="boardDeleteController" class="board.controller.BoardDeleteController"></bean>
+	<bean id="boardWriteController" class="board.controller.BoardWriteController"></bean>
+	<bean id="boardWriteFormController" class="board.controller.BoardWriteFormController"></bean>
+	>> 톰캣서버에 쭉 만들어서 관리 함.
+	
+	<!--  HandlerMapping 등록 -->
+ 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+ 		<property name="mappings">	<!-- map class가 만들어져 있을 것으로 예상 -->
+ 			<props>
+ 				<prop key="/member/login.do">loginController</prop>
+ 				<prop key="/board/boardList.do">boardListController</prop>
+ 				<prop key="/board/boardView.do">boardViewController</prop>
+ 				<prop key="/board/boardDelete.do">boardDeleteController</prop>
+ 				<prop key="/board/boardWrite.do">boardWriteController</prop>
+ 				<prop key="/board/boardWriteForm.do">boardWriteFormController</prop>
+ 			</props>
+ 		</property>
+ 	</bean>
+ 	
+ 	<삭제 대상>
+ 	우리가 만든 클래스
+ 	dispatcher
+ 	handler
+ 	viewResolver
+ 	
+ 5. model and view 는 데이터 공유와 return 값을 대체 함.
+	
+	우리가 만든 Controller 삭제
+	
+	각 기능 controller 에 Spring framework에서 ㅈ제공하는 controller를 [임포트 상속받음]
+	
+	함수명 리턴자료형을 MedelAndView로 수정 
+	
+	리턴값 수정
+	
+	처리된 데이터와 처리할 파일들을 줌..
+	----------------------------------------------
+		@Override
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("로그인 처리");
+		// 1. 사용자 입력 정보 추출
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		// 2. DB 연동 처리
+		MemberDAO memberDAO = new MemberDAO();
+		String name = memberDAO.login(id, pwd);
+		// 3. 화면 네비게이션
+		ModelAndView modelAndView = new ModelAndView();
+		if(name == null) {	// 로그인 실패
+			// response.sendRedirect("loginForm.jsp");
+			//return "loginForm";
+			modelAndView.setViewName("loginForm.jsp");
+			
+		}	else {		// 로그인 성공
+			HttpSession session = request.getSession();	// 세션 얻어오기
+			session.setAttribute("memId", id);
+			session.setAttribute("memName", name);
+			// forward 방식으로 보내면 폴더명이 안바뀜
+			// 다른 폴더 일때는 sendRedirect가 편함..
+			// return "../board/boardList.do?pg=1";
+			modelAndView.setViewName("redirect:../board/boardList.do?pg=1");
+		}
+		return modelAndView;
+	}
+	-------------------------------------------
+	
+	
+	

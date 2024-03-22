@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 디폴트 scope="singleton" 또는 "prototype" -->
+	<!-- Foo foo0 = new Foo(); 와 동일 -->
+	<bean id="foo0" class="sample2.Foo" scope="singleton"/>
+	<!-- Foo foo1 = new Foo("테스트"); 와 동일 -->
+	<bean id="foo1" class="sample2.Foo">
+		<constructor-arg value="테스트"/>
+	</bean>
+	<!-- Foo foo2 = new Foo(25, "Hello"); 와 동일 -->
+	<bean id="foo2" class="sample2.Foo">
+		<constructor-arg index="0">
+			<value>25</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="Hello"/>
+	</bean>
+	<!-- Foo foo3 = new Foo(25, "Hello", true); 와 동일 -->
+	<bean id="foo3" class="sample2.Foo">
+		<constructor-arg value="50"/>	<!-- index 생략 가능 -->
+		<constructor-arg value="안녕"/>
+		<constructor-arg value="true"/>
+	</bean>
+	<!-- Foo foo4 = new Foo(25, "Hello", true); 와 동일 -->
+	<bean id="foo4" class="sample2.Foo">
+		<constructor-arg type="int" value="50"/>	<!-- index 생략 가능 -->
+		<constructor-arg type="java.lang.String" value="안녕"/>
+		<constructor-arg type="boolean" value="true"/>
+	</bean>
+	<!-- Foo foo5 = new Foo(bar); 와 동일 -->
+	<bean id="foo5" class="sample2.Foo">
+		<constructor-arg>
+			<ref bean="bar"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Foo foo6 = new Foo(bar); 와 동일 -->
+	<bean id="foo6" class="sample2.Foo">
+		<constructor-arg ref="bar"/>
+	</bean>
+	
+	<!-- Bar bar = new Bar(); 와 동일 -->
+	<bean id="bar" class="sample2.Bar"></bean>
+</beans>

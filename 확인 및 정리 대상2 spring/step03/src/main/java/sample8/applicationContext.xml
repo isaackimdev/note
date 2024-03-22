@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 객체 생성해줌 -->
+	<bean id="emp1" class="sample8.Emp">
+		<constructor-arg name="name" value="강호동"/>
+		<constructor-arg name="salary" value="1500000"/>
+	</bean>
+	<bean id="emp2" class="sample8.Emp">
+		<constructor-arg name="name" value="이순신"/>
+		<constructor-arg name="salary" value="2500000"/>
+	</bean>
+	
+	
+	<bean id="developer" class="sample8.Developer">
+		<constructor-arg name="emp" ref="emp1"/> <!-- 객체기 때문에 ref 속성을 사용 -->
+		<constructor-arg name="dept" value="개발 1팀"/>	
+	</bean>
+	
+	<bean id="engineer" class="sample8.Engineer">
+		<constructor-arg name="emp" ref="emp2"/>
+		<constructor-arg name="dept" value="기술 1팀"/>
+	</bean>
+	
+	
+</beans>

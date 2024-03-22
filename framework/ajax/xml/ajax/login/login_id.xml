@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<login>
+    <result>false</result>
+    <message>가입되지 않은 아이디 입니다.</message>
+</login>

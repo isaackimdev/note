@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 클래스에 별명 설정 -->
+	<typeAliases>
+		<typeAlias type="board.bean.BoardDTO" alias="boardDTO"/>
+	</typeAliases>
+	<!-- SQL Mapper 설정  -->
+	<mappers>
+		<mapper resource="mybatis/board-mapping.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
+

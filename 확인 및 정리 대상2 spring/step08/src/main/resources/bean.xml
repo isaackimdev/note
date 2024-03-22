@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="goodsDAO" class="test01.GoodsDAO"/>
+	<bean id="goodsService" class="test01.GoodsServiceImpl">
+		<property name="goodsDAO" ref="goodsDAO"/>
+	</bean>
+
+</beans>
+
+	<!-- 
+		 마이바티스 사용하기 전 Help 에서 ORM 플러그인 설치
+		마이바티스 프로젝트 폴더에서 만들기
+		
+		이전에 pom.xml에 마이바티스에 관한 것 dependency로 다운로드
+		
+		중괄호 기준으로 클래스 사우이  { } 중괄호 블럭을 namespace라고 함
+		namespace : 클래스
+	-->

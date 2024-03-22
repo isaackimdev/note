@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<bean id="goodsDAO" class="test02.GoodsDAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	<bean id="goodsService" class="test02.GoodsServiceImpl">
+		<property name="goodsDAO" ref="goodsDAO"/>
+	</bean>
+
+	<!-- properties 파일 설정 -->
+	<context:property-placeholder location="classpath:db.properties" />
+	<!-- DataSource 설정 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<!-- Spring과 Mybatis 연동 설정 -->
+	<!-- 
+		마이바티스를 사용하면, SqlSessionFactory는
+		SqlSessionFactoryBuilder를 사용해서 생성한다.
+		마이바티스 스프링 연동모듈에서는, SqlSessionFactoryBean이 대신 사용된다.
+	 -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">	<!-- library 추가 -->
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config2.xml"/>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sessionFactory"/>
+	</bean>	
+	<!-- Transaction -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!--  aop의 around로 동작은 한다. -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>
+
+<!-- 
+		 마이바티스 사용하기 전 Help 에서 ORM 플러그인 설치
+		마이바티스 프로젝트 폴더에서 만들기
+		
+		이전에 pom.xml에 마이바티스에 관한 것 dependency로 다운로드
+		
+		중괄호 기준으로 클래스 사우이  { } 중괄호 블럭을 namespace라고 함
+		namespace : 클래스
+-->

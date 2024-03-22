@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>boardList</title>
+</head>
+<body>
+<p>글쓰기가 완료되었씁니다.</p><br>
+<a href="/19-board/index.jsp">메인 화면</a>
+</body>
+</html>

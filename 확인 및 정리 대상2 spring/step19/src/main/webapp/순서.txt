@@ -1,0 +1,18 @@
+
+1. mvc-config.xml 파일에 설정하기
+
+	<bean id="viewResolver" 
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" 
+				value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/imageboard"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="contentType" value="text/html; charset=UTF-8"/>
+	</bean>
+	<!-- 반드시 id="multipartResolver"를 사용해야 한다. -->
+	<!-- 스프링 내부에 이름이 위 이름으로만 저장되어 있기 때문에 위 이름을 사용해야만 한다. -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5242880"/>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>

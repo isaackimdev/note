@@ -1,0 +1,9 @@
+{
+    "school": {
+        "subject": {
+            "title": "Javascript+jQuery+Ajax",
+            "time": "매주 월/수/금 오후 7시00분~10시00분",
+            "teacher": "홍길동"
+        }
+    }
+}

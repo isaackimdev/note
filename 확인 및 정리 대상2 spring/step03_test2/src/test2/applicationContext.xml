@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- CalcAdd => 생성자 초기화 -->
+	<bean id="calcAdd" class="test2.CalcAdd">
+		<constructor-arg value="25"/>
+		<constructor-arg>
+			<value>36</value>
+		</constructor-arg>
+	</bean>
+	<!-- CalcMul => setter 초기화 -->
+	<bean id="calcMul" class="test2.CalcMul">
+		<property name="x" value="25"/>
+		<property name="y">
+			<value>36</value>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+

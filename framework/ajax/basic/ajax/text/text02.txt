@@ -1,0 +1,5 @@
+<div style="margin-bottom: 10px"
+	<h1 style="color:red">Ajax를 통해서 다른 파일을 읽어옵니다.</h1>
+	<h2 style="color:blue">다른 내용은 HTML태그로 구성될 수 도 있습니다.</h2>
+	<img src="img/icon.png" alt="jQuery" />
+</div>
