@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// eval 내장함수
+	document.write("*** eval 내장함수 ***<br>");
+	alert("TEST1");
+	var str ="100 + 1";
+	document.write(str + "<br>");
+	var result = eval(str);
+	document.write(result + "<br><br>");
+
+	// Number, parseInt 내장함수 
+	document.write("*** number, parseInt 내장함수 ***<br>");
+	var value1 = "100";
+	var num1 = Number(value1);
+	var num2 = parseInt(value1);
+	document.write(num1+"<br>");
+	document.write(num2+"<br>");
+	// 문자열 그대로 100.6 이라는 실수값을 리턴한다.
+	var value2 ="100.6";
+	var num3 = Number(value2);
+	
+	// 반올림이 아니라 내림 처리된다.
+	var num4 = parseInt(value2);
+	
+	document.write(num3+"<br>");
+	document.write(num4+"<br>");
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

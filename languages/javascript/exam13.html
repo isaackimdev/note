@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//결과 : "NaN"
+	var a = Number("a");
+	document.write("a=" + a + "<br>");
+	// "NaN" + 1 지만 "NaN1"이 아닌 "NaN"이 된다.
+	var a_num = a + 1;
+	document.write("a_num=" + a_num + "<br>");
+	// "NaN" + "str"이므로 "NaNstr"이 된다.
+	var a_str = a + "str";
+	document.write("a_str=" + a_str + "<br>");
+	//////////////////////////
+	var v1 = "가나다라";
+	var v2 = "123456";
+	
+	var is_num1 = !isNaN(v1);
+	var is_num2 = !isNaN(v2);
+	
+	if(is_num1) {
+		document.write(v1 + "은(는) 숫자입니다.<br>");
+	} else {
+		document.write(v1 + "은(는) 숫자가 아닙니다.<br>");
+	}
+	
+	if(is_num2) {
+		document.write(v2 + "은(는) 숫자입니다.<br>");
+	} else {
+		document.write(v2 + "은(는) 숫자가 아닙니다.<br>");
+	}
+	//////////////////////////////
+	function sumInt(x, y) {
+		var isStrX = !isNaN(x);
+		var isStrY = !isNaN(y);
+		// 둘 중 하나라도 숫자 모양이 아니라면, 실행을 중단하고 메시지를 리턴
+		if (!isStrX || !isStrY) {
+			return "숫자 형태이거나 숫자값이 전달되어야 합니다."
+		}
+		
+		var result = parseInt(x) + parseInt(y);
+		return result;
+	}
+	
+	var sum1 = sumInt("a", 1);
+	var sum2 = sumInt("1", "2");
+	var sum3 = sumInt(100, "5.1");
+	var sum4 = sumInt(-1, "-100");
+	
+	document.write(sum1 + "<br>");
+	document.write(sum2 + "<br>");
+	document.write(sum3 + "<br>");
+	document.write(sum4 + "<br>");
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

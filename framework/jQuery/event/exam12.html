@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/event.css">
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// window 는 자바스크립트 내장객체 : 브라우저를 관리하는 것
+		$(window).resize(function() {
+			$("#result").html("<p>" +$(window).width()+"x" +
+					$(window).height() + "</p>");
+		});
+	});
+</script>
+</head>
+<body>
+<h1>창크기 조절 이벤트</h1>
+<div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/event.css">
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#input > input[type='text']").focus(function() {
+			$("#result").html("포커스가 들어갔습니다.");
+		});
+		
+		$("#input > input[type='text']").blur(function() {
+			$("#result").html("포커스가 나왔습니다.");
+		});
+		// 페이지가 열리면서 자동으로 포커스 설정
+		$("#input > input[type='text']").focus();
+	});
+</script>
+</head>
+<body>
+<h1>Hover Event Check</h1>
+<div id="input">
+	<input type="text">
+</div>
+<h2>result</h2>
+<div id="result"></div>
+</body>
+</html>

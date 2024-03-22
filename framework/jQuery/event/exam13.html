@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bowserEvent(3)</title>
+<link rel="stylesheet" type="text/css" href="css/scroll.css">
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$(window).scroll(function() {
+			$("#console").html("스크롤이 이동되었습니다.");
+			// 3초 후에 #console요소의 내용을 지운다.
+			setTimeout(function() {
+				$("#console").html("");
+			}, 3000);
+		});
+	});
+</script>
+</head>
+<body>
+<div class="gradientStyle">
+	<h1>scroll event</h1>
+	<div id="console"></div>
+</div>
+</body>
+</html>

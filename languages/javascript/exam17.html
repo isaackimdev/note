@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- body 보다 먼저 실행 -->
+<script type="text/javascript">
+	window.onload = function() {	
+		// 내용을 입력받는 대화상자	
+		var susik = prompt("사칙연산의 수식을 입력하세요. (예 : 100+50)", "");
+		// 입력받은 문자열을 수식으로 변환한다.(내장함수 사용)
+		var ev = eval(susik);
+		var result = susik + "=" + ev;
+		//document.write(result);
+		document.getElementById("question").innerHTML = result;/* 브라우저가 아직 body를 인식하지 못한상태 */
+	}
+</script>
+</head>
+<!-- 페이지가 처음 열려서 웹 브라우저에게 HTML태그의 인식이 완료된 후,
+		자동으로 insertQuestion() 함수가 호출되도록 함 -->
+
+
+<body>
+
+<!-- 
+<body onload="insertQuestion()">
+ -->
+	<h1 id="question"></h1>
+</body>
+</html>

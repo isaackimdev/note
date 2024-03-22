@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function doSubmit1() {
+		var name = document.getElementById("name").value;		// value값을 가지고 오기
+		var job = document.getElementById("job").value;
+		
+		var gender_str;
+		var hobby_str="";
+		
+		var gender = document.getElementById("gender_m");
+		
+		var hobby1 = document.getElementById("hobby1");
+		var hobby2 = document.getElementById("hobby2");
+		var hobby3 = document.getElementById("hobby3");
+		
+		if(gender.checked) {
+			gender_str=document.getElementById("gender_m").value;
+		} else {
+			gender_str=document.getElementById("gender_f").value;	
+		}
+		
+		
+		if (hobby1.checked) {
+			hobby_str += hobby1.value + " ";
+		}
+		if (hobby2.checked) {
+			hobby_str += hobby2.value + " ";
+		}
+		if (hobby3.checked) {
+			hobby_str += hobby3.value + " ";
+		}
+		
+		
+		var result = name + ", " + gender_str + ", " + job + ", " + hobby_str ;
+		
+		alert(result);
+		
+	}
+	function doSubmit2() {
+		// 폼 객체
+		var form = document.form1;	// document 는 현재 페이지에서 form1 을 가지고 온다.
+		// text 요소의 입력여부 검사
+		alert(form.name.value+"");
+		
+		if(form.name.value =="") {	//    if(!form.name.value) 처럼 약식으로도 가능..
+			alert("이름을 입력해 주세요.");
+			form.name.focus();
+			return false;
+		}
+		// 라디오 버튼의 입력여부 검사.
+		if(!form.gender[0].checked  &&  !form.gender[1].checked) {
+			alert("성별을 선택해 주세요.");
+			form.name.focus();
+			return false;	
+		}
+		// select 요소에 대한 선택위치 검사 
+		if(form.job.selectedIndex < 1) {
+			alert("직업을 선택해 주세요.");
+			form.job.focus();
+			return false;		
+		}
+		// 체크박스의 선택여부 검사
+		var chk = false;
+		for(var i=0; i<form.hobby.length; i++) {
+			if(form.hobby[i].checked) {
+				chk = true;
+				break;
+			}
+		}
+		if(!chk) {
+			alert("취미를 선택해 주세요.");
+			form.hobby[0].focus();
+			return false;	
+		}
+		// 입력확인하기
+		if(confirm("입력하신 내용이 맞습니까?")) {
+			form.submit();	// form 태그의 데이터를 서버로 보내기
+		}		
+		
+	}
+	
+</script>
+</head>
+<body>
+	<form name="form1">
+		<fieldset>
+		
+			<legend>회원가입</legend>
+			
+			<label>이름</label>
+			<input id="name" type="text" name="name"> <br>
+			
+			<label>성별</label>
+			<input id="gender_m" type="radio" value="M" name="gender"> 남자
+			<input id="gender_f" type="radio" value="F" name="gender"> 여자
+			<br>	<!-- NAME으로 묶어 줌 -->
+			
+			<label>직업</label>
+			<select name="jop" id="job">
+				<option>-------선택하세요-------</option>
+				<option value="프로그래머">프로그래머</option>
+				<option value="퍼블리셔">퍼블리셔</option>
+			</select>
+			<br>
+			
+			<label>취미</label>
+			<input type="checkbox" name ="hobby" id="hobby1" value="축구"><label for="hobby1">축구</label>
+			<input type="checkbox" name ="hobby" id="hobby2" value="농구"><label for="hobby2">농구</label>
+			<input type="checkbox" name ="hobby" id="hobby3" value="배구"><label for="hobby3">배구</label>
+			<br>	<!-- NAME으로 묶어 줌 -->
+			
+			<input type="button" value="제출" name="제출" onclick="doSubmit2()">
+			<input type="reset" value="리셋">
+			
+		</fieldset>
+	</form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function doPrint(num) {
+		var msg = "doPrint()가" + num + "회 실행되었습니다.";
+		alert(msg);
+		document.getElementById("myid").innerHTML = msg;
+	}
+	
+	doPrint(1);
+</script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		doPrint(2);
+	</script>
+	
+	<h1 id="myid">안녕하세요</h1>
+
+	<script type="text/javascript">
+		doPrint(3);
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+

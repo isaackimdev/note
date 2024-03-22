@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/**
+ * 배열 : 하나의 값 안에 여러개의 변수를 그룹화 하는 단위
+ 		배열이 생성되면 그 안의 값들은 0부터 순서대로 일련번호를 부여받는다.
+ 		(배열의 인덱스)
+ */
+ // 배열의 생성
+ var myarray1 = new Array("홍길동", "자바스크립트", "강사");
+ // 아래의 방법도 사용 가능합니다.
+ // var myarray1 = ["홍길동", "자바스크립트", "강사"];
+ 
+ // 배열에 저장된 값들을 읽기
+ document.write(myarray1[0] + " <br>");
+ document.write(myarray1[1] + " <br>");
+ document.write(myarray1[2] + " <br>");
+ 
+ // 배열에 저장된 값 변경
+ myarray1[0] = "Hong gildong";
+ myarray1[1] = "Javascript";
+ myarray1[2] = "Teacher";
+ 
+ document.write(myarray1[0] + " <br>");
+ document.write(myarray1[1] + " <br>");
+ document.write(myarray1[2] + " <br>");
+ // 빈 배열의 생성
+ var myarray2 = new Array();
+ // 아래의 방법도 사용 가능합니다.
+ // var myarray = [];
+ 
+ // 반복문을 통하여 배열의 칸을 확장하고 값을 저장
+ for(var i=0; i<10; i++) {
+	 myarray2[i] = i;
+ }
+ 
+ document.write("배열의 길이 : " + myarray2.length + "<br>");
+ // 반복문을 배열의 길이만큼 반복하도록 설정하고 값을 출력
+ for(var i=0; i<10; i++) {
+	document.write(myarray2[i] + "<br>");
+ }
+ 
+ 
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

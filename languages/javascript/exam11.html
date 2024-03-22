@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 파라미터를 갖는 함수의 정의
+	function f(x,y) {
+		var z = x+y;
+		// 값이 10보다 작을 경우, 실행중단
+		if(z<10) {
+			return;
+		}
+		return z;
+	}
+	
+	// 함수의 호출 --> 파라미터를 전달한다.
+	var a = f(2,1);
+	var b = f(5,7);
+	var c = f(10,5);
+	
+	document.write("<h1>" + a + "</h1>");
+	document.write("<h1>" + b + "</h1>");
+	document.write("<h1>" + c + "</h1>");
+	
+	
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

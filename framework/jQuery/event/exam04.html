@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/event.css">
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	// html 문서가 모두 출력된 후. 함수 실행됨
+	$(function() {
+		$('#input').hover(function() {
+			/** 마우스 커서가 올라감 */
+			$('#result').html("Mouse Enter Event");
+		}, function() {
+			/** 마우스 커서가 나감 */
+			$('#result').html("Mouse Leave Event");
+		});
+	});
+
+	</script>
+</head>
+<body>
+<h1>Hover Event Check</h1>
+<div id="input">
+	Mouse Over or out
+</div>
+<h2>result</h2>
+<div id="result"></div>
+</body>
+</html>

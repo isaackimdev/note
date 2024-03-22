@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>mouseEvent</title>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/** 마우스 버튼을 누름 */
+		$("#input").mousedown(function() {
+			$("#result").html("Mouse Down Event");
+		});
+		/** 마우스 버튼을 누른 상태에서 뗌 */
+		$("#input").mouseup(function() {
+			$("#result").html("Mouse Up Eevent");
+		});
+		/** 마우스 커서가 올라감 */
+		$("#input").mouseenter(function() {
+			$("#result").html("Mouse enter Eevent");
+		});
+		/** 마우스 커서가 빠져나감 */
+		$("#input").mouseleave(function() {
+			$("#result").html("Mouse Leave Eevent");
+		});
+	});
+</script>
+</head>
+<body>
+<h1>마우스 이벤트 확인하기</h1>
+<div id="input">
+	Do it in Here~!!
+</div>
+<h2>결과</h2>
+<div id="result"></div>
+
+</body>
+</html>

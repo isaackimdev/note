@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+	객체는 자주 사용하게 될 기능들을 묶어서 외부의 스크립트 파일로 분리해 내는 용도로 주로 사용한다.
+	이렇게 코딩해 놓은 스크립트 파일은 여러개의 HTML파일에 의해서 참조하여 재사용할 수 있다.
+ -->
+<script type="text/javascript" src="calc.js"></script>
+<script type="text/javascript">
+	document.write("<h1>calc</h1>");
+	calc.setValue(100, 50);
+	calc.x = 500;
+	calc.y = 100;
+	calc.result();
+</script>
+</head>
+<body>
+	
+</body>
+</html>

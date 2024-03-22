@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/event.css">
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	// 키 코드값을 파라미터로 받아서 키보드의 이름을 리턴하는 함수
+	function getKeyName(keyCode) {
+		// 키 코드와 버튼 이름에 대한 JSON 배열 정의
+		var keyMap = [
+			{code: 8, name: "backspace"},
+			{code: 9, name: "tab"},
+			{code: 13, name: "enter"},
+			{code: 16, name: "shift"},
+			{code: 17, name: "ctrl"},
+			{code: 18, name: "alt"},
+			{code: 19, name: "pausebreak"},
+			{code: 20, name: "capslock"},
+			{code: 21, name: "han/eng"},
+			{code: 25, name: "hanja"},
+			{code: 27, name: "esc"},
+		];
+		// 반복문을 배열의 크기만큼 진행
+		for(var i=0; i<keyMap.length; i++) {
+			// JSON의 특정 값과 키코드가 같다면?
+			if(keyMap[i].code == keyCode) {
+				// 값을 리턴 --> 즉시 종료
+				return keyMap[i].name;
+			}
+		}
+	}
+	
+	$(function() {
+		$("#input > input[type='text']").keydown(function(e) {
+			$('#result').html(e.which + "번 키 눌러짐 &gt;&gt; "
+					+ getKeyName(e.which));
+		});
+	});
+</script>
+</head>
+<body>
+<h1>Key Event Check</h1>
+<div id="input">
+	<input type="text">
+</div>
+<h2>result</h2>
+<div id="result"></div>
+</body>
+</html>

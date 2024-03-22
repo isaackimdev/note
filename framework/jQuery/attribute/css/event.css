@@ -1,0 +1,99 @@
+* {
+	padding: 0;
+	margin: 10px;
+}
+
+#input, #result {
+	border: 5px solid #D5D5D5;
+	text-align: center;
+	width: auto;
+	font-weight: bold;
+}
+
+#input {
+	background: #eef;
+	padding: 5px;
+}
+
+#input:after {
+	content: '';
+	display: block;
+	float: none;
+	clear: both;
+}
+
+#input > input, #input > select, #input > div, #input > button, #input > div > button {
+	width: 99%;
+	text-align: center;
+	display: block;
+	font-size: 17px;
+	color: #222;
+	background: #eef;
+	border: 3px solid #d3d3d3;
+	margin: 5px auto;
+	padding: 5px 0;
+}
+
+#input > h3 {
+	text-align: left;
+	margin: 0;
+	padding: 10px 0 0 0;
+}
+
+#input > h3:before {
+	content: '';
+	display: block;
+	float: none;
+	clear: both;
+}
+
+#input > label {
+	margin: 0;
+	padding: 0;
+	display: block;
+	float: left;
+	padding-bottom: 10px;
+}
+
+#input > label > input {
+	width: auto !important;
+	display: inline;
+}
+
+h2 {
+	padding-top: 10px;
+}
+
+#result {
+	padding: 50px;
+	font-size: 17px;
+	color: #500;
+	background: #5AAEFF;
+	padding: 50px;
+}
+
+#input .myButton {
+	box-shadow: inset 0px 1px 0px 0px #54a3f7;
+	background: linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color: #007dc1;
+	border-radius: 3px;
+	border: 1px solid #124d77;
+	display: inline-block;
+	color: #ffffff;
+	font-family: arial;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #154682;
+}
+
+#input .myButton:hover {
+	background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color: #0061a7;
+}
+
+#input .myButton:active {
+	position: relative;
+	top: 1px;
+}

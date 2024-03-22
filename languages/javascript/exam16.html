@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		
+	function sum(x, y) {
+		return x+y;
+	}
+	/** (1) id가 question인 요소안에 10+50의 결과를 지정한다. */
+	function showResult() {
+		var result = sum(10, 50);
+		var red_result ="<font color ='red'>" + result + "</font>";
+		document.getElementById("question").innerHTML = red_result;
+	}
+	
+	/** (2) id가 question인 요소안에 "?"를 지정한다. */
+	function hideResult() {
+		var question = "?";
+		document.getElementById("question").innerHTML = question;
+	}
+	
+	</script>
+</head>
+<body>
+	
+	<!-- (3) <h1> 태그 위에 마우스를 올렸을 때, showResult() 호출 -->
+	<!-- (4) <h1> 태그 위에 마우스를 내렸을 때, hideResult() 호출 -->	
+	
+	<h1 onmouseover="showResult()" onmouseout="hideResult()">
+		10 + 50 = <span id="question">?</span>
+	</h1>
+	
+	<p>	결과를 보시려면 수식위에 마우스를 올리세요	</p>
+	
+</body>
+</html>

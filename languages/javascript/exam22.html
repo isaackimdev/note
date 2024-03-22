@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function printTime() {
+		// 현재 시각을 구한다.
+		var days = ["일","월","화","수","목","금","토"];
+		var mydate = new Date();
+		var yy = mydate.getFullYear();
+		var mm = mydate.getMonth() + 1; 
+		var dd = mydate.getDate();
+		var hh = mydate.getHours();
+		var mi = mydate.getMinutes();
+		var ss = mydate.getSeconds();
+		// 오늘의 요일 수 얻어오기
+		var i = mydate.getDay();
+		var day = days[i];
+		// 완성된 현재 시각 
+		var result = yy + "-" + mm + "-" + dd + " " + hh + ":" + mi
+		+ ":" + ss + " " + day + "요일";
+		// id속성값이 timer인 요소에게 결과를 출력한다.
+		document.getElementById("timer").innerHTML = result;
+	}
+	
+	window.onload = function() {	/*  HTML 이 인식된 후 함수호출  */
+		// printTime 함수를 1초에 한번씩 반복해서 자동 호출한다. ( 내장 객체 )
+		setInterval(printTime, 1000);	
+	}
+</script>
+</head>
+<body>
+	<h1 id="timer"></h1>
+</body>
+</html>
