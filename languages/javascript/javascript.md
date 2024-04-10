@@ -1,5 +1,27 @@
 # javascript
 
+## 브라우저 객체 조직도
+window 
+- history
+- location
+- document
+    - image
+    - links
+    - anchors
+    - forms
+        - button
+        - radio
+        - textarea
+        - hidden
+        - checkbox
+        - fileupload
+        - password
+        - select
+        - reset
+        - submit
+        - text
+
+
 ## window 객체
 - window.onload : Web Page 로드된 후 이벤트 감지
     - 함수를 적용해주면 웹 페이지 로드 후 실행된다. 
