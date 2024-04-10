@@ -1,4 +1,6 @@
-Spring bean
+# spring
+
+## Spring bean
 
 speing bean과 의존 관계
 
@@ -83,3 +85,130 @@ speing bean과 의존 관계
         - 세션당 객체를 공유해야 할 때 사용
     - Application
         - 어플리케이션 전역에 하나의 인스턴스만 생성
+
+
+## Spring Boot & DB
+1. spring Boot DB 연동 : spring boot가 지원하는 DB 연동 방식
+    - JDBC(Java Database Connectivity)
+        1. Java에서 DB와 통신하기 위한 표준 API
+        2. JDBC 드라이버를 클래스 패스에 추가하고 DB와 연동
+        3. Spring Boot 에서는 자동 설정을 통해 DataSource를 구성
+        4. JDBC Template 을 제공하여, 쿼리 실행 및 트랜잭션 관리
+        4. application.properties or application.yml에 DB 연결 구성
+    - Spring Data JDBC
+        1. JDBC를 사용하여 DB와 상호작용하는 방식 중 하나
+        2. 객체와 관계형 데이터베이스 간 매핑을 간단히 처리하는 기능 제공
+        3. 특정 Repository 인터페이스를 작성하고 Spring Data JDBC의 
+            자동 매핑 기능을 사용하여 객체를 DB에 저장하거나 조회
+        4. SQL 직접 작성 X, 객체를 기반으로 DB 조작
+    - NoSQL 데이터베이스
+        1. Spring Boot는 NoSQL DB에 대해서도 지원
+            - ex : MongoDB -> Spring Data MongoDB 지원
+            - MongoDB에 대한 Repository 인터페이스와 자동 매핑 기능을 제공하여 객체를 MongoDB에 저장 및 조회
+        2. NoSQL 데이터베이스에 따라 다른 방식 사용 가능
+        3. 각 데이터베이스에 대한 의존성을 추가하여 연동
+    - Spring Data JPA
+        1. JPA (Java Persistence API) : ORM (Object-Relational Mapping)을 위한 자바 표준 인터페이스
+        2. JPA를 사용하여 DB와 상호작용
+        3. JPA Entity 클래스를 작성하고, JpaRepository 인터페이스를 사용하여 각종 DB 작업을 수행
+        4. Spring Boot는 자동으로 EntityManagerFactory와 JPA 트랜잭션을 관리
+        5. application.properties나 application.yml에 JPA 설정 구성
+
+    - 데이터베이스 중심에서 객체중심으로 변화하고 있다.
+
+2. JPA
+    - JPA
+        - Java Persistence API
+        - Java 진영의 ORM 기술 표준, 즉 표준 인터페이스
+            - EJB 엔티티 빈 -> 원래 제공되던 표준
+            - 누군가 Hibernate를 만듦 (open source)
+            - 자바의 새로운 표준 : JPA
+        - JPA는 표준 인터페이스, Hibernate는 구현체 중 하나
+    - ORM
+        - Object-Relational Mapping
+        - 객체와 관계형 데이터베이스를 매핑 해주는 역할
+        - ORM 프레임워크가 객체와 관계형 DB 사이에서 매핑
+
+JPA 동작 방식
+```java
+JavaApplication {
+    JVM {
+    
+    StudentDAO -> persist(Entity객체)
+    StudentDAO -> find -> return Entity객체 -> StudentDAO
+
+        JPA {
+            persist -> Entity 분석, Insert 쿼리, JDBC API 활용 RDB와 상호작용
+            fine -> select 쿼리, JDBC API 활용 ResultSet 매핑 RDB와 상호작용
+
+            JDBC API {
+                
+                DB와 쿼리 호출 및 응답
+
+                persist -> DB에 Insert
+                select -> DB에 select 후 응답을 받아 return
+
+            }
+        }
+    }
+}
+
+쿼리 호출(Insert, select)
+<=> DB { }
+응답
+
+```
+
+3. Spring Data JPA
+    1. JPA를 사용하면 좋은 이유
+        1. 객체지향 설계 가능
+        2. 생산성이 좋고 유지보수 편함
+        3. 성능이 우수함
+        4. 자바 표준
+        5. 트랜잭션 관리가 용이
+    2. Spring Data JPA를 사용하면 좋은 이유
+        1. JPA를 좀더 편리하게 쓸 수 있음
+        2. JPA Repository를 직접 구현하지 않고, 메서드의 이름 규칙을 따라 사용하면 단순한 CRUD 정도는 다 수행
+        3. 커스터마이징 가능
+        4. 페이징, 정렬, 동적 쿼리 처리 등 편리한 기능 제공
+
+실습
+```java
+
+// 아래 형식으로 테이블이 그대로 만들어 진다.
+@Entity
+@Getter @Setter
+public class Customer {
+    @Id @GeneratedValue
+    private Long id;
+    private String name;
+}
+
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+}
+```
+
+
+## Spring & Transaction
+1. 트랜잭션의 특징
+    1. ACID 속성 : 트랜잭션에 있는 속성
+        - Atomicity (원자성)
+            1. 트랜잭션은 원자적인 작업 단위를 의미
+            2. 트랜잭션 내의 모든 작업이 전부 수행 되거나 전혀 수행되지 않아야함
+            3. 수행 중간에 오류 발생하거나 중단되어도 이전상태로 롤백되어야함
+        - Consistency (일관성)
+            1. 트랜잭션이 수행되기 전과 후에 데이터베이스는 일관된 상태를 유지
+            2. 즉, 트랜잭션이 실행되기전에 정의된 일련의 규칙과 제약 조건들이 항상 만족되어야함
+        - Isolation (고립성)
+            1. 복수의 트랜잭션이 동시에 수행될 때, 각 트랜잭션은 다른 트랜잭션에 영향을 미치지 않는 독립적인 작업 단위로 간주
+            2. 트랜잭션은 다른 트랜잭션의 중간 상태를 볼 수 없고, 중간 결과를 공유하거나 영향을 미칠 수 없음
+        - Durability (지속성)
+            1. 트랜잭션이 성공적으로 완료되면, 그 결과는 영구적으로 반영
+            2. 시스템에 장애가 발생하거나 전원이 차단되어도, 트랜잭션이 커밋된 결과는 보존
+            3. 데이터의 일관성을 유지하기 위해 로그 기록 등을 활용하여 데이터 복구
+
+2. Spring Transaction 관리 방식
+    1. 프로그래밍적인 방식
+        1. 개발자가 직접 트랜잭션을 제어하는 방식
+        2. 트랜잭션 시작, 종료, 롤백 등을 개발자가 명시적으로 작성
