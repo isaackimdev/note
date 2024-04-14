@@ -426,3 +426,83 @@ class HelloContollerTest {
 }
 ```
 
+2. Service
+```java
+@SpringBootTest(classes = {HelloServiceImpl.class, HelloRepository.class})
+class HelloServiceImplTest {
+    @MockBean HelloRepository helloRepository;  // 가정한다.
+    @Autowired HelloServiceImpl helloService;
+
+    @Test
+    public void getStudentTest() {
+        Student student = new Student();
+        student.setName("kim");
+        when(helloRepository.findByName("kim")).thenReturn(Optional.of(student)); // 가정
+
+        StudentDto studentDto = helloService.getStudent("kim");
+
+        assertEquals("kim", studentDto.getName());
+        assertThat("kim").isEqualTo(studentDto.getName());
+
+        verify(helloRepository).findByName("kim");
+    }
+
+    @Test
+    public void saveStudentTest() {
+        Student student = new Student();
+        student.setName("kim");
+        when(helloRepository.save(student)).thenReturn(student); // 가정
+
+        StudentDto studentDto = helloService.saveStudent("kim");
+
+        assertEquals("kim", studentDto.getName());
+        assertThat("kim").isEqualTo(studentDto.getName());
+    }
+}
+```
+
+
+
+## Spring AOP
+1. 관점 지향 프로그래밍
+2. Spring AOP
+
+### 1. 관점 지향 프로그래밍
+- AOP
+    - Aspect-Oriented Programming
+    - AOP를 활용하여 핵심 기능과 부가 기능을 분리
+    - AOP는 OOP를 더욱 잘 지킬 수 있게 보완
+
+1. 관점 지향 프로그래밍
+
+    commerce application
+    - 회원관리(로깅, 보안, 트랜잭션)
+    - 주문관리(로깅, 보안, 트랜잭션)
+    - 상품관리(로깅, 보안, 트랜잭션)
+    - 핵심기능(부가기능)
+
+    공통적인 것만 모아서 모듈화한 것이 AOP
+
+### 2. Spring AOP
+1. AOP 구성요소
+    1. Target : 어떤 대상에 부가기능을 부여할 것인가?
+    2. Advice : 어떤 부가기능을 제공할 것인가?
+        - Before, AfterReturning, AfterThrowing, After, Around
+    3. Join Point : 어디에 적용할 것인가?
+        - Method(★), Field, Object, Constructor
+    4. Point cut : 실제 advice가 적용될 지점
+        - Spring AOP에서는 advice가 적용될 메서드를 선정
+
+2. AOP 구현 방법
+    1. 컴파일 시점 : 코드에 공통 기능 삽입
+    2. 클래스 로딩 시점 : 바이트 코드에 공통 기능 삽입
+    3. 런타임 시점에 프록시 객체를 생성하여 공통 기능 삽입
+        - Spring에서 사용하는 방식
+        - 컴파일러나 클래스 로더 조작기 설정할 필요가 없음
+        - 메서드 오버라이딩 방식으로, 메서드 실행시점에만 AOP 적용 가능
+        - Spring 컨테이너가 관리할 수 있는 빈에만 AOP 적용
+        - AspectJ를 직접 사용 X, AspectJ의 기능을 차용
+
+3. AOP 동작 방식
+![aop1](./spring/aop1.png)
+
