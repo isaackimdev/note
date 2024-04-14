@@ -209,6 +209,79 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             3. 데이터의 일관성을 유지하기 위해 로그 기록 등을 활용하여 데이터 복구
 
 2. Spring Transaction 관리 방식
+    - 프로그래밍적인 방식
+    - 선언적인 방식
+
     1. 프로그래밍적인 방식
         1. 개발자가 직접 트랜잭션을 제어하는 방식
         2. 트랜잭션 시작, 종료, 롤백 등을 개발자가 명시적으로 작성
+        3. 방식
+            - PlatformTransactionManger : 트랜잭션 관리(시작, 종료, 롤백 등)를 담당하는 인터페이스
+            - TransactionDefinition : 트랜잭션 속성(전파, 격리, 제한 시간 등)을 정의하는 인터페이스
+
+        ```java
+        @Service
+        @RequiredArgsConstructor
+        public class ProductService {
+            private final ProductRepository productRepository;
+            private final PlatformTransactionManager transactionManager;
+
+            public void updateProductPrice(Long productId, double newPrice) {
+                DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+
+                transactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+
+                TransactionStatus transactionStatus = transactionManager.getTransaction(transactionDefinition);
+
+                try {
+                    Product product = productRepository.findById(productId);
+                    product.setPrice(newPrice);
+                    productRepository.save(product);
+
+                    transactionManager.commit(transactionStatus);
+                } catch (Exception e) {
+                    transactionManager.rollback(transactionStatus);
+                    throw e;
+                }
+            }
+        }
+        ```
+
+
+    2. 선원적인 방식 (Annotation 이용) - 위 방식을 개선
+        1. @Transactional 어노테이션을 활용, 선언적으로 트랜잭션 관리
+        2. 어노테이션만 추가하면 트랜잭션 시작, 종료, 롤백 등 자동 처리
+        3. 옵션을 추가하여 전파 속성, 격리 속성, 제한 시간 등 설정 가능
+        4. 개발자가 직접 트랜잭션 제어코드 작성하지 않아도 됨
+        5. 메서드 수준에서 트랜잭션의 경계를 명확하게 설정할 수 있음
+    
+        ```java
+        @Service
+        @RequiredArgsConstructor
+        public class ProductService {
+            private final ProductRepository productRepository;
+
+            @Transactional
+            public void updateProductPrice(Long productId, double newPrice) {
+                Product product = productRepository.findById(productId);
+                product.setPrice(newPrice);
+                productRepository.save(product);
+            }
+        }
+        ```
+
+    3. 스프링 트랜잭션 속성 관리
+        1. 트랜잭션 전파 (propagation)
+            1. REQUIRED : 메서드가 호출되는 곳에서 이미 실행 중인 트랜잭션이 있으면 해당 트랜잭션에 참여, 없으면 새로운 트랜잭션 시작
+            2. REQUIRED_NEW : 항상 새로운 트랜잭션 시작. 이미 실행 중인 트랜잭션 있더라도 일시 중지하고 새로운 트랜잭션 시작
+            3. SUPPORTS : 메서드가 호출되는 곳에서 실행 중인 트랜잭션 있을 경우 해당 트랜잭션에 참여, 없으면 트랜잭션 없이 실행
+            4. NOT_SUPPORTED : 메서드가 호출되는 곳에서 실행 중인 트랜잭션 있으면 일시 중지하고 트랜잭션 없이 실행
+            5. NEVER : 메서드가 호출되는 곳에서 실행중인 트랜잭션 있으면 예외 발생
+        2. 격리 레벨 (isolataion level)
+            1. DEFAULT : 데이터베이스의 기본 격리 수준을 사용
+            2. READ_UNCOMMITTED : 커밋되지 않은 데이터를 다른 트랜잭션에서도 읽을 수 있음 (가장 낮은 격리 수준)
+            3. READ_COMMITTED : 커밋된 데이터만 다른 트랜잭션에서 읽을 수 있음 (기본 격리 수준)
+            4. REPEATABLE_READ : 같은 데이터를 여러 번 읽어도 결과가 항상 일관성 있음
+            5. SERIALIZABLE : 동시에 실행되는 트랜잭션들이 순차적으로 실행되는 것처럼 결리 (가장 높은 격리 수준)
+
+
