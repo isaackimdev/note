@@ -285,3 +285,144 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             5. SERIALIZABLE : 동시에 실행되는 트랜잭션들이 순차적으로 실행되는 것처럼 결리 (가장 높은 격리 수준)
 
 
+## Spring TEST
+1. 테스트 주도 개발
+2. JUnit5
+3. Spring 실무 Test Code
+
+### 1. 테스트 주도 개발
+
+#### TDD
+- Test Driven Development(테스트 주도 개발)
+- 테스트 코드를 먼저 짜는 방식
+- 해당 테스트를 통과할 수 있도록 실제 코드 작성
+- 개발 시 설계와 일치하는 결과를 도출할 수 있음
+- 팀원 간 개발 방향 일치
+
+
+#### 1. 테스트의 종류
+1. 유닛(단위) 테스트 - 개발자 테스트
+2. 통합 테스트 - 개발자 참여 테스트
+3. 인수 테스트
+
+#### 2. 테스트 코드를 작성하는 목적
+1. 코드의 안정성을 높일 수 있음
+2. 기능 추가나 변경 시 사이드 이팩트를 최소화
+3. 코드의 작성된 목적을 정확하게 알려줌
+    - 코드에 불필요한 요소를 넣을 확률 감소
+    - 팀원 간 정확한 개발 방향 공유
+
+
+#### 3. F.I.R.S.T 원칙
+1. Fast : 테스트 코드의 실행은 빠르게 진행
+2. Independent : 독립적인 테스트가 가능해야 함
+3. Repeatable : 테스트는 매번 같은 결과를 만들어야 함
+4. Self-Validating : 테스트는 그 자체로 실행하여 결과를 확인할 수 있어야 함
+5. Timely : 단위 테스트는 비즈니스 콛가 완성되기 전에 구성하고 테스트 가능해야 함
+
+
+
+### 2. JUnit
+#### 1. 개념
+1. 자바 진영의 대표적인 테스트 F/W
+2. 단위 테스트를 위한 다양한 도구를 제공
+3. 어노테이션 기반으로 동작
+4. 어설트를 이용해 실젯값과 기댓값을 비교하여 결과 확인
+5. JUnit5는 Jupiter, Platform, Vintage 모듈로 구성
+#### 2.Junit5 주요 모듈
+- junit-jupiter
+    1. JUnit5의 핵심 모듈, 주요 기능들을 제공
+    2. 테스트 실행, Assertion, Parameterized Test, 테스트 인스턴스 라이프 사이클 관리 등을 지원
+- junit-vintage
+    1. JUnit4와 호환성을 제공하기 위한 모듈
+    2. JUnit4 기반의 테스트 코드를 실행할 수 있도록 도와줌
+    3. JUnit4 + JUnit5 기능을 혼합해서 사용 가능
+- junit-platform-commons
+    1. JUnit Platform의 공통 기능을 제공하는 모듈
+    2. 유틸리티, 어노테이션, 테스트 실행 관리 기능 등을 제공
+- junit-platform-engine
+    1. JUnit Platform의 엔진 API를 제공하는 모듈
+    2. 다양한 실행환경에서 JUnit5가 실행될 수 있도록 도와주는 역할
+    3. 이 모듈을 이용하면 다른 테스트 엔진과 통합하여 사용 가능
+
+#### 3. JUnit Annotation - Lifecycle Annotation
+1. @Test : 테스트용 메서드를 표현하는 어노테이션
+2. @BeforeEach : 각 테스트 메서드가 시작되기 전 실행 되어야하는 메서드 표현
+3. @AfterEach : 각 테스트 메서드가 시작된 후 실행 되어야 하는 메서드 표현
+4. @BeforeAll : 테스트 시작 전에 실행 되어야하는 메서드 (static 처리 필요)
+5. @AfterAll : 테스트 종료 후에 실행 되어야하는 메서드 (static 처리 필요)
+
+#### 4. JUnit Annotation - Main Annotation
+- @SpringBootTest
+    1. 통합 테스트 용도로 사용되는 어노테이션
+    2. @SpringBootApplication을 찾아가 하위의 모든 Bean을 스캔하여 로드
+    3. 이후 테스트용 Application Context를 만들어 Bean을 추가하고, MockBean을 찾아가 교체
+- @ExtendWith
+    1. JUnit4에서 @RunWith로 사용되던 어노테이션이 ExtendWith로 변경
+    2. 메인으로 실행될 클래스를 지정
+    3. @SpringBootTest는 디폴트로 @ExtendWith가 추가 되어있음
+- @WebMvcTest([클래스명].class)
+    1. 명시된 클래스만 실제로 로드하여 테스트
+    2. 매개변수 없이 작성하면 @Controller, @RestController, @RestControllerAdvice 등 컨트롤러와 관련된 Bean이 로드
+    3. 스프링의 모든 Bean을 로드하는 @SpringBootTest 대신 컨트롤러 관련 코드만 테스트할 때 사용
+- @AutoConfigureMockMvc
+    1. spring.test.mockmvc의 설정을 로드하면서, MockMvc의 의존성을 자동으로 주입
+    2. MockMvc 클래스 REST API를 테스트할 수 있는 클래스
+- @AutoWired
+    1. 필요한 의존 객체의 타입에 해당하는 Bean을 찾아 주입
+    2. @SpringBootTest에 의해 띄워진 Bean들 중 찾아서 주입
+        - 이미 구현된 내용을 사용함
+- @MockBean
+    1. 테스트할 클래스에서 주입받고 있는 개체에 대해 가짜 객체를 생성해주는 어노테이션
+    2. 해당 객체는 실제 행위를 하지 않음
+    3. 내부의 구현을 테스트를 사용하는 사용자에게 위임
+
+
+
+### 3. 스프링 실무 테스트 코드
+1. Controller
+```java
+@WebMvcTest(HelloController.class)
+class HelloContollerTest {
+    @Autowired private MockMvc mockMvc;
+    @MockBean HelloServiceImpl helloService;
+
+    // Get방식 테스트
+    @Test
+    void getStudentTest() throws Exception {
+        given(helloService.getStudent("kim")).willReturn(new StudentDto("kim"));
+
+        String name = "kim";
+
+        mockMvc.perform(get("/hello/v1?name="+name))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.name").value("kim"))
+            .andDo(print());
+
+        verify(helloService).getStudent("kim");
+    }
+
+    // Post 방식 테스트
+    @Test
+    void postStudentTest() throws Exception {
+        given(helloService.saveStudent("kim")).willReturn(new StudentDto("kim"));
+
+        StudentDto testStudent = new StudentDto("kim");
+
+        String testJson = new ObjectMapper().writeValueAsString(testStudent);
+
+        mockMvc.perform(
+            post("/hello/v1")
+                .content(testJson)
+                .contentType(MediaType.APPLICATION_JSON)
+            )
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.name").value("kim"))
+            .andDo(print());
+
+        verify(helloService).saveStudent("kim");
+    }
+
+}
+```
+
