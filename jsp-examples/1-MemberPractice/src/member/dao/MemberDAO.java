@@ -9,18 +9,18 @@ import java.sql.SQLException;
 import member.bean.MemberDTO;
 
 // Data Access Object
-public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
-	String driver = "oracle.jdbc.driver.OracleDriver";	// ÆĞÅ°Áö°¡ ÀÖÀ½..
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";	// ¿À¶óÅ¬ ÁÖ¼Ò url
+public class MemberDAO { //DBì— ì—°ê²°í•˜ëŠ” í´ë˜ìŠ¤
+	String driver = "oracle.jdbc.driver.OracleDriver";	// íŒ¨í‚¤ì§€ê°€ ìˆìŒ..
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";	// ì˜¤ë¼í´ ì£¼ì†Œ url
 	String username = "jspexam";
 	String password = "m1234";
 	
-	Connection conn;				// ¿¬°á API
-	PreparedStatement pstmt;		// µ¿Àû ÇÒ´ç API
-	ResultSet rs;					// °á°ú ¼Â API
+	Connection conn;				// ì—°ê²° API
+	PreparedStatement pstmt;		// ë™ì  í• ë‹¹ API
+	ResultSet rs;					// ê²°ê³¼ ì…‹ API
 	
-	// OracleDriver Å¬·¡½º°¡ µî·ÏµÇ¾î ÀÖ´Â Áö È®ÀÎ
-	// 1. µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°áÇÏ´Â µå¶óÀÌ¹ö ÆÄÀÏÀ» Ã£´Â´Ù. »ı¼ºÀÚ
+	// OracleDriver í´ë˜ìŠ¤ê°€ ë“±ë¡ë˜ì–´ ìˆëŠ” ì§€ í™•ì¸
+	// 1. ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°í•˜ëŠ” ë“œë¼ì´ë²„ íŒŒì¼ì„ ì°¾ëŠ”ë‹¤. ìƒì„±ì
 	public MemberDAO() {
 		try {
 			Class.forName(driver);
@@ -28,7 +28,7 @@ public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
 			e.printStackTrace();
 		}
 	}
-	// 2. ¿¬°áÀ» °ü¸®ÇÏ´Â Connection °´Ã¼¸¦ »ı¼ºÇÑ´Ù.
+	// 2. ì—°ê²°ì„ ê´€ë¦¬í•˜ëŠ” Connection ê°ì²´ë¥¼ ìƒì„±í•œë‹¤.
 	public Connection getConnection() {
 		try {
 			conn = DriverManager.getConnection(url, username, password);
@@ -46,16 +46,16 @@ public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
 			e.printStackTrace();
 		}
 	}
-	// 3. SQL ÀÛ¾÷ Ã³¸® 
-	public int write(MemberDTO memberDTO) {	// write ¼­¹ö¿¡¼­ ÀúÀåµÈ DTO¸¦ DB¿¡ ÀúÀåÇÏ±â À§ÇØ ¸Å°³ º¯¼ö¸¦ DTO·Î ¹ŞÀ½.
+	// 3. SQL ì‘ì—… ì²˜ë¦¬ 
+	public int write(MemberDTO memberDTO) {	// write ì„œë²„ì—ì„œ ì €ì¥ëœ DTOë¥¼ DBì— ì €ì¥í•˜ê¸° ìœ„í•´ ë§¤ê°œ ë³€ìˆ˜ë¥¼ DTOë¡œ ë°›ìŒ.
 		int su = 0;
-		conn = getConnection();	// µå¶óÀÌ¹ö ¸Å´ÏÀú¸¦ ÅëÇÏ¿© ¿À¶óÅ¬ÀÇ, À¯Àú¸í, ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇÏ¿© Á¢¼ÓÇÑ´Ù.
-		String sql = "insert into member values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";	// sql¹® À» ÀÛ¼º
+		conn = getConnection();	// ë“œë¼ì´ë²„ ë§¤ë‹ˆì €ë¥¼ í†µí•˜ì—¬ ì˜¤ë¼í´ì˜, ìœ ì €ëª…, íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì—¬ ì ‘ì†í•œë‹¤.
+		String sql = "insert into member values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";	// sqlë¬¸ ì„ ì‘ì„±
 		
-		// µ¿Àû ÇÒ´ç
+		// ë™ì  í• ë‹¹
 		try {
-			pstmt = conn.prepareStatement(sql);		// µ¿ÀûÇÒ´ç¿¡´Ù°¡ << ¿¬°áconn µ¿ÀûÇÒ´ç sql¹® µî·Ï
-			pstmt.setString(1, memberDTO.getName());	// sql ( ? ) ¼ø¿¡´Ù°¡ µ¿ÀûÇÒ´ç
+			pstmt = conn.prepareStatement(sql);		// ë™ì í• ë‹¹ì—ë‹¤ê°€ << ì—°ê²°conn ë™ì í• ë‹¹ sqlë¬¸ ë“±ë¡
+			pstmt.setString(1, memberDTO.getName());	// sql ( ? ) ìˆœì—ë‹¤ê°€ ë™ì í• ë‹¹
 			pstmt.setString(2, memberDTO.getId());
 			pstmt.setString(3, memberDTO.getPwd());
 			pstmt.setString(4, memberDTO.getGender());
@@ -65,7 +65,7 @@ public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
 			pstmt.setString(8, memberDTO.getTel2());
 			pstmt.setString(9, memberDTO.getTel3());
 			pstmt.setString(10, memberDTO.getAddr());
-			su = pstmt.executeUpdate();	// µ¿ÀûÇÒ´çÀÇ °³¼ö°¡ ¾÷µ¥ÀÌÆ® µÇ¾ú´ÂÁö È®ÀÎ
+			su = pstmt.executeUpdate();	// ë™ì í• ë‹¹ì˜ ê°œìˆ˜ê°€ ì—…ë°ì´íŠ¸ ë˜ì—ˆëŠ”ì§€ í™•ì¸
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -73,7 +73,7 @@ public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
 		}
 		return su;
 	}
-	// 4. SQL ¹®À¸·Î DB¿¡¼­ ¼±ÅÃ °Ë»öÇÏ¿© name ¹İÈ¯ ±â´É
+	// 4. SQL ë¬¸ìœ¼ë¡œ DBì—ì„œ ì„ íƒ ê²€ìƒ‰í•˜ì—¬ name ë°˜í™˜ ê¸°ëŠ¥
 	public String login (String id, String pwd) {
 		String name = null;
 		conn = getConnection();
@@ -85,7 +85,7 @@ public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {	// ´ÙÀ½ÀÇ °ªÀÌ ÀÖ´Ù¸é ´Ù ºÒ·¯¿À°Å¶ó. Generic Âü°í
+			if (rs.next()) {	// ë‹¤ìŒì˜ ê°’ì´ ìˆë‹¤ë©´ ë‹¤ ë¶ˆëŸ¬ì˜¤ê±°ë¼. Generic ì°¸ê³ 
 				name = rs.getString("name");
 			}
 		} catch (SQLException e) {
@@ -95,7 +95,7 @@ public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
 		}
 		return name;
 	}
-	// 5. ¾ÆÀÌµğ Áßº¹È®ÀÎÇÏ±â 
+	// 5. ì•„ì´ë”” ì¤‘ë³µí™•ì¸í•˜ê¸° 
 	public boolean isExistId(String id) {
 		boolean exist= false;
 		conn = getConnection();
@@ -107,7 +107,7 @@ public class MemberDAO { //DB¿¡ ¿¬°áÇÏ´Â Å¬·¡½º
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				exist = true;	// id Á¸ÀçÇÔ => id »ç¿ë ºÒ°¡´É
+				exist = true;	// id ì¡´ì¬í•¨ => id ì‚¬ìš© ë¶ˆê°€ëŠ¥
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
