@@ -1,4 +1,4 @@
-package member.dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import member.bean.MemberDTO;
+import member.MemberDTO;
 
 // Data Access Object
 public class MemberDAO { //DB에 연결하는 클래스

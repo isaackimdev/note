@@ -1,12 +1,12 @@
-<%@ page import="member.dao.MemberDAO"%>
+<%-- <%@ page import="member.dao.MemberDAO"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// 데이터
 	request.setCharacterEncoding("utf-8");
 	String id = request.getParameter("id");
 	// DB
-	MemberDAO memberDAO = new MemberDAO();
-	boolean exist = memberDAO.isExistId(id);
+	// MemberDAO memberDAO = new MemberDAO();
+	// boolean exist = memberDAO.isExistId(id);
 %>
 <!DOCTYPE html>
 <html>
@@ -26,14 +26,14 @@
 </head>
 <body>
 <form action="checkId.jsp" method="post"> <!-- 중복체크 창이 있기에 자기 자신을 다시 보낼 것.. -->
-	<% if (exist) { %>
+	<%-- <% if (exist) { %>
 		<%=id %>는 사용중입니다. <br><br>
 		아이디 <input type="text" name="id">
 			<input type="submit" value="중복체크">
 	<% } else { %>
 		<%=id %>는 사용 가능합니다. <br><br>
 		<input type="button" value="사용" onclick="checkIdClose()">
-	<% } %>
+	<% } %> --%>
 </form>
 </body>
 </html>

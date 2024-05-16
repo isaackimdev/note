@@ -17,24 +17,24 @@ public class HelloServlet extends HttpServlet {
         super();
     }
 
-	@Override	// È®ÀÎ¿ëµµ... ¼­ºí¸´ Á¾·á½Ã ½ÇÇà 
+	@Override	// È®ï¿½Î¿ëµµ... ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	public void destroy() {
 		System.out.println("destroy()...");
 	}
 
-	@Override	// È®ÀÎ¿ëµµ... ¼­ºí¸´ ½ÃÀÛ½Ã¿¡ ½ÇÇà
+	@Override	// È®ï¿½Î¿ëµµ... ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("init()...");
 	}
 
-	// ÁhÀç ÀÌ °ÍÀº
-	// <servlet ¼­ºí¸´ = JSP>
-	// 1. Data Ã³¸® : Å¬¶óÀÌ¾ðÆ®¿¡¼­ ³Ñ¾î¿Â dataÃ³¸®
-	// 2. HTML ¹®¼­¸¸µé±â : Å¬¶óÀÌ¾ðÆ®·Î ÀÀ´äÀ¸·Î º¸³»ÁÙ ¹®¼­
+	// ï¿½hï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	// <servlet ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = JSP>
+	// 1. Data Ã³ï¿½ï¿½ : Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ dataÃ³ï¿½ï¿½
+	// 2. HTML ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// request ¿äÃ» , response ÀÀ´ä		
+		// request ï¿½ï¿½Ã» , response ï¿½ï¿½ï¿½ï¿½		
 		System.out.println("doGet()...");
-		// ÀÌÈÄÀÇ ¹®ÀÚ¿­À» html·Î ÀÎ½ÄÇØ¶ó 
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ htmlï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ø¶ï¿½ 
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
@@ -43,8 +43,8 @@ public class HelloServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("Hello Servlet!!<br>");
-		out.println("¾È³çÇÏ¼¼¿ä ¼­ºí¸´!!<br>");
-		out.println("¾È³çÇÏ¼¼¿ä ¼­ºí¸´!!<br>");	
+		out.println("ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!!<br>");
+		out.println("ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!!<br>");	
 		out.println("</body>");
 		out.println("</html>");
 	}
@@ -55,10 +55,10 @@ public class HelloServlet extends HttpServlet {
 
 }
 /*
- *  < ÀÌÅ¬¸³½º >
- *  1. ¼­¹ö±¸µ¿
- *  2. À¥ºê¶ó¿ìÀú ±¸µ¿
- *  3. À¥ºê¶ó¿ìÀú ¿äÃ»
+ *  < ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ >
+ *  1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *  2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ *  3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»
  *  
  * */
 

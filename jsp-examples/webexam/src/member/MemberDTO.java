@@ -1,4 +1,4 @@
-package member.bean;
+package member;
 // Data Transfer Object
 public class MemberDTO {
 	private String name;

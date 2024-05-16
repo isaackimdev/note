@@ -9,11 +9,12 @@
 <body>
 	
 	<h2> index page </h2>
-	
+	<% if (session.getAttribute("id") == null) {%>
 	<a href="../member/signupForm.jsp">Sign up</a><br>
 	<a href="../member/loginForm.jsp">login</a><br>
-	
+	<% } else { %>
 	<a href="../member/logout.jsp">logout</a>
+	<% } %>
 	
 </body>
 </html>
