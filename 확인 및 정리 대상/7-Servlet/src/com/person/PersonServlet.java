@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-// annotation À¸·Î µî·ÏÇÏ±â ¼­ºí¸´µî·Ï µÎ¹øÂ° ¹æ¹ı
+// annotation ìœ¼ë¡œ ë“±ë¡í•˜ê¸° ì„œë¸”ë¦¿ë“±ë¡ ë‘ë²ˆì§¸ ë°©ë²•
 @WebServlet("/PersonServlet")
 public class PersonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,10 +16,10 @@ public class PersonServlet extends HttpServlet {
     public PersonServlet() {
         super();
     }
-    // ÅèÄ¹¼­¹ö°¡ doGetÀ» È£Ãâ ÇÔ.
+    // í†°ìº£ì„œë²„ê°€ doGetì„ í˜¸ì¶œ í•¨.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		// 1. µ¥ÀÌÅÍ
+		// 1. ë°ì´í„°
 		String name = request.getParameter("name");
 		
 		String gender = request.getParameter("gender");
@@ -28,7 +28,7 @@ public class PersonServlet extends HttpServlet {
 		String color = request.getParameter("color");
 		String[] subject = request.getParameterValues("subject");
 		
-		// 2. ÀÀ´ä
+		// 2. ì‘ë‹µ
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
@@ -42,29 +42,29 @@ public class PersonServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body bgcolor="+ color + ">");
 		out.println("<ul>");
-		out.println("<li> ÀÌ¸§ : " + name + "</li>");
-		out.println("<li> ¼ºº° : ");
-		if(gender.equals("m")) out.println("³²ÀÚ");
-		else out.println("¿©ÀÚ");
+		out.println("<li> ì´ë¦„ : " + name + "</li>");
+		out.println("<li> ì„±ë³„ : ");
+		if(gender.equals("m")) out.println("ë‚¨ì");
+		else out.println("ì—¬ì");
 		out.println("</li>");
-		out.println("<li> Ãë¹Ì : ");
-										// .length¶ó´Â ¹è¿­ÀÇ ±æÀÌ ±¸ÇÏ´Â ±â´É ÇÔ¼ö¸¦ ¾²±â ‹š¹®¿¡ ¿¹¿Ü¸¦ Àâ¾ÆÁà¾ß ÇÔ..
-		if(hobby != null) {				// error Áß 500Àº servlet ÄÚµå¿¡¼­ ¿¡·¯¹ß»ı , 404´Â ÆÄÀÏÀÌ ¾øÀ½
+		out.println("<li> ì·¨ë¯¸ : ");
+										// .lengthë¼ëŠ” ë°°ì—´ì˜ ê¸¸ì´ êµ¬í•˜ëŠ” ê¸°ëŠ¥ í•¨ìˆ˜ë¥¼ ì“°ê¸° ë–„ë¬¸ì— ì˜ˆì™¸ë¥¼ ì¡ì•„ì¤˜ì•¼ í•¨..
+		if(hobby != null) {				// error ì¤‘ 500ì€ servlet ì½”ë“œì—ì„œ ì—ëŸ¬ë°œìƒ , 404ëŠ” íŒŒì¼ì´ ì—†ìŒ
 			for(int i =0 ; i < hobby.length; i++) {
 				out.println(hobby[i]);	
 			}
 		}
 		out.println("</li>");
-		out.println("<li> »ö±ò : " + color + "</li>");
-		out.println("<li> °ú¸ñ : ");
+		out.println("<li> ìƒ‰ê¹” : " + color + "</li>");
+		out.println("<li> ê³¼ëª© : ");
 		if(subject != null) {
 			for(int i =0 ; i < subject.length; i++) {
 				out.println(subject[i]);
 			}
 		}
 		out.println("</li><br>");
-		out.println("<a href='#' onclick=\"history.back(); return false;\">µÚ·Î</a>");
-		//out.println("<a href='javascript:history.go(-1)'>µÚ·Î</a>");
+		out.println("<a href='#' onclick=\"history.back(); return false;\">ë’¤ë¡œ</a>");
+		//out.println("<a href='javascript:history.go(-1)'>ë’¤ë¡œ</a>");
 		out.println("</ul>");
 		out.println("</body>");
 		out.println("</html>");

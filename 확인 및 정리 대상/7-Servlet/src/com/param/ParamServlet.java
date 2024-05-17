@@ -23,18 +23,18 @@ public class ParamServlet extends HttpServlet {
 		super.init(config);
 	}
 
-	// ÅèÄ¹¼­¹ö°¡ doGetÀ» È£Ãâ ÇÔ.
-    // È£ÃâÇÒ¶§ µ¥ÀÌÅÍ¸¦ ³Ñ¾î¿Â °ªÀ» request °´Ã¼·Î ¹ŞÀ½
+	// í†°ìº£ì„œë²„ê°€ doGetì„ í˜¸ì¶œ í•¨.
+    // í˜¸ì¶œí• ë•Œ ë°ì´í„°ë¥¼ ë„˜ì–´ì˜¨ ê°’ì„ request ê°ì²´ë¡œ ë°›ìŒ
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// ÅèÄÏ¼­¹ö°¡ ¸¸µé¾î¼­ request / response °´Ã¼ »ı¼ºÇÏ¿© >> doGet¿¡ Àü´Ş
-		// ³Ñ¾î¿Â µ¥ÀÌÅÍ´Â request °´Ã¼¿¡ ÀúÀå
+	// í†°ì¼“ì„œë²„ê°€ ë§Œë“¤ì–´ì„œ request / response ê°ì²´ ìƒì„±í•˜ì—¬ >> doGetì— ì „ë‹¬
+		// ë„˜ì–´ì˜¨ ë°ì´í„°ëŠ” request ê°ì²´ì— ì €ì¥
 				
-		// 1. µ¥ÀÌÅÍ
+		// 1. ë°ì´í„°
 		String name = request.getParameter("name");
 		String str_age = request.getParameter("age");
-		// ¸ğµç µ¥ÀÌÅÍ´Â ¹®ÀÚ¿­ String Å¸ÀÔÀ¸·Î ¼­¹ö·Î ³Ñ¾î ¿Â´Ù.
+		// ëª¨ë“  ë°ì´í„°ëŠ” ë¬¸ìì—´ String íƒ€ì…ìœ¼ë¡œ ì„œë²„ë¡œ ë„˜ì–´ ì˜¨ë‹¤.
 		int age = Integer.parseInt(str_age);
-		// 2. ÀÀ´ä
+		// 2. ì‘ë‹µ
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
@@ -42,9 +42,9 @@ public class ParamServlet extends HttpServlet {
 		out.println("<title>Servlet</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println(name + "´ÔÀÇ ³ªÀÌ´Â" + age + "»ì ÀÌ¹Ç·Î, ");
-		if(age>= 19) out.println("¼ºÀÎÀÔ´Ï´Ù.");
-		else out.println("Ã»¼Ò³âÀÔ´Ï´Ù.");
+		out.println(name + "ë‹˜ì˜ ë‚˜ì´ëŠ”" + age + "ì‚´ ì´ë¯€ë¡œ, ");
+		if(age>= 19) out.println("ì„±ì¸ì…ë‹ˆë‹¤.");
+		else out.println("ì²­ì†Œë…„ì…ë‹ˆë‹¤.");
 		out.println("</body>");
 		out.println("</html>");
 		
