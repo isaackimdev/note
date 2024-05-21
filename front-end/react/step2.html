@@ -1,0 +1,25 @@
+<!-- 
+  명령형 프로그래밍에서 선언형 프로그래밍인 리액트 도입 과정
+  1. react library 추가한다.
+  2. jsx 설정
+  
+ -->
+<html>
+  <body>
+    <div id="app"></div>
+
+    <!-- react is the core React library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- react-dom provides DOM-specific methods that enable you to use React with the DOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 스크립트에 JSX를 쓸 수 있게 해주는 라이브러리이다. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- type 또한 jsx 로 변경한다. -->
+    <script type="text/jsx"> 
+      const app = document.getElementById('app');
+      const root = ReactDOM.createRoot(app);
+      root.render(<h1>development. Preview. Ship.</h1>);
+    </script>
+
+  </body>
+</html>
