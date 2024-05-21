@@ -16,33 +16,33 @@ public class MessageController extends HttpServlet {
     public MessageController() {
         super();
     }    
-    // 1. À¥ºê¶ó¿ìÀú ¿äÃ» ¹Ş±â (get ¹æ½Ä)
+    // 1. ì›¹ë¸Œë¼ìš°ì € ìš”ì²­ ë°›ê¸° (get ë°©ì‹)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doRequest(request, response);
 	}
-	// 1. À¥ºê¶ó¿ìÀú ¿äÃ» ¹Ş±â (post ¹æ½Ä)
+	// 1. ì›¹ë¸Œë¼ìš°ì € ìš”ì²­ ë°›ê¸° (post ë°©ì‹)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doRequest(request, response);
 	}
 	protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ¼±¾ğ
+		// ì„ ì–¸
 		String message = null;
 		Object result = null;
-		// 2. ¿äÃ» Á¤º¸ È®ÀÎ
+		// 2. ìš”ì²­ ì •ë³´ í™•ì¸
 		message = request.getParameter("message");
-		// 3. ¿äÃ» ÀÛ¾÷ Ã³¸® (·ÎÁ÷ Ã³¸®) : data Ã³¸® => java Å¬·¡½º¿¡¼­ Ã³¸®
+		// 3. ìš”ì²­ ì‘ì—… ì²˜ë¦¬ (ë¡œì§ ì²˜ë¦¬) : data ì²˜ë¦¬ => java í´ë˜ìŠ¤ì—ì„œ ì²˜ë¦¬
 		if(message == null) {
-			result = "Àü´ŞµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.";
+			result = "ì „ë‹¬ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.";
 		} else if(message.equals("host")) {
-			result = "°í±æµ¿ ÀÔ´Ï´Ù.";
+			result = "ê³ ê¸¸ë™ ì…ë‹ˆë‹¤.";
 		} else if(message.equals("guest")) {
-			result = "È«±æµ¿ ÀÔ´Ï´Ù.";
+			result = "í™ê¸¸ë™ ì…ë‹ˆë‹¤.";
 		} else {
-			result = "Å¸ÀÔÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.";
+			result = "íƒ€ì…ì´ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		}
-		// 4. ¿äÃ» Ã³¸® °á°ú¸¦ request °´Ã¼¿¡ ÀúÀå
+		// 4. ìš”ì²­ ì²˜ë¦¬ ê²°ê³¼ë¥¼ request ê°ì²´ì— ì €ì¥
 		request.setAttribute("result", result);
-		// 5. ÀÀ´äÀ» À§ÇÑ view¸¦ ¼±ÅÃÇÏ°í, forward Ã³¸® : View Ã³¸® (HTML ¹®¼­ ÀÛ¼º)
+		// 5. ì‘ë‹µì„ ìœ„í•œ viewë¥¼ ì„ íƒí•˜ê³ , forward ì²˜ë¦¬ : View ì²˜ë¦¬ (HTML ë¬¸ì„œ ì‘ì„±)
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/messageView.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -20,7 +20,7 @@ public class BoardController extends HttpServlet {
     public BoardController() {
         super();
     }
-    // 1. À¥ºê¶ó¿ìÀú ¿äÃ» ¹Ş±â (post/get ¹æ½Ä)
+    // 1. ì›¹ë¸Œë¼ìš°ì € ìš”ì²­ ë°›ê¸° (post/get ë°©ì‹)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
@@ -30,11 +30,11 @@ public class BoardController extends HttpServlet {
 	}
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		// 2. ¿äÃ» Á¤º¸ È®ÀÎ
+		// 2. ìš”ì²­ ì •ë³´ í™•ì¸
 		String command = request.getServletPath();
 		// command = /boardWriteForm.do
 		System.out.println("command = " + command);
-		// 3. ¿äÃ» ÀÛ¾÷ Ã³¸® (·ÎÁ÷ Ã³¸®)
+		// 3. ìš”ì²­ ì‘ì—… ì²˜ë¦¬ (ë¡œì§ ì²˜ë¦¬)
 		String forward = null;
 		Action action = null;
 		if(command.equals("/boardWriteForm.do")) {
@@ -52,7 +52,7 @@ public class BoardController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		// 4. ÀÀ´äÀ» À§ÇÑ view¸¦ ¼±ÅÃÇÏ°í, forward Ã³¸®
+		// 4. ì‘ë‹µì„ ìœ„í•œ viewë¥¼ ì„ íƒí•˜ê³ , forward ì²˜ë¦¬
 		if(forward != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
 			dispatcher.forward(request, response);

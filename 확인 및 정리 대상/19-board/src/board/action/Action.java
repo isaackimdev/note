@@ -7,10 +7,3 @@ public interface Action {
 	public String execute(HttpServletRequest request, 
 			HttpServletResponse response) throws Exception;
 }
-
-
-
-
-
-
-

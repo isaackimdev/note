@@ -16,12 +16,12 @@ public class BoardDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	DataSource ds = null;
+	DataSource ds = null;	// connection pool ê´€ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
 	
 	public BoardDAO() {
 		try {
 			Context context = new InitialContext();
-			// Tomcat ÀÎ °æ¿ì, "java:comp/env/"¸¦ ºÙ¿©¾ß ÇÑ´Ù.
+			// Tomcat ì¸ ê²½ìš°, "java:comp/env/"ë¥¼ ë¶™ì—¬ì•¼ í•œë‹¤.
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -54,7 +54,7 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}
-	// ±Û µî·Ï
+	// ê¸€ ë“±ë¡
 	public int insertArticle(BoardBean boardBean) {
 		String sql = "insert into board2 values " + 
 				"(seq_num.nextval, ?, ?, ?, ?, ?, " + 

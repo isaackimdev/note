@@ -1,17 +1,17 @@
 package board.bean;
 
 public class BoardBean {
-	private int board_num;;
-	private String board_name;
-	private String board_pass;
-	private String board_subject;
-	private String board_content;
-	private String board_file;
-	private int board_re_ref;
-	private int board_re_lev;
-	private int board_re_seq;
-	private int board_readcount;
-	private String board_date;
+	private int board_num;			// 글 번호
+	private String board_name;		// 글 작성자
+	private String board_pass;		// 글 비밀번호
+	private String board_subject;	// 글 제목
+	private String board_content;	// 글 내용
+	private String board_file;		// 첨부파일
+	private int board_re_ref;		// 관련글번호
+	private int board_re_lev;		// 답글레벨
+	private int board_re_seq;		// 관련글중 출력순서
+	private int board_readcount;	// 조회수
+	private String board_date;		// date
 	
 	public int getBoard_num() {
 		return board_num;
