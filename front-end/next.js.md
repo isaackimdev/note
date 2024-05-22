@@ -61,3 +61,10 @@ export default function Page() {
     return <h1>Hello, Next.js!</h1>
 }
 ```
+
+
+
+### 유의사항
+- Next는 기본적으로는 Server Component를 사용한다.
+- useState는 Server Component에서 사용할 수 없다.
+- Client Component로 사용할 경우, 파일 최상단에 `'use client';` 를 선언한다.

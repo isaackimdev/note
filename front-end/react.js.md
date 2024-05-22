@@ -14,3 +14,9 @@ Q : What is the difference between props and state?
 A : Props are read-only information that's passed to components. State is information that can change over time, usually triggered by user interaction.
 ```
 
+## from react.js to next.js
+index.html 파일이 있는 곳에 빈 package.json 생성 후 아래 명령어 실행
+
+```sh
+npm install react@latest react-dom@latest next@latest
+```
