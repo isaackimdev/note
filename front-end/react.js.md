@@ -4,8 +4,13 @@
 
 - ex1 : html + js 코드에서 react.js library를 추가하여 명령형에서 선언형 코드로 변환
 - ex2 : JSX
+- ex3 : Components - 모듈
+- ex4 : Props - 데이터 전달
+- ex5 : State - 모듈 내 실시간 상태관리, hook 이라고도 함.
 
-Components, Props, State
+```
+Q : What is the difference between props and state?
 
-- ex3 : Components
-- ex4 : Props (Chapter 6)
+A : Props are read-only information that's passed to components. State is information that can change over time, usually triggered by user interaction.
+```
+

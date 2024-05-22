@@ -6,63 +6,31 @@
     2.2. script type 수정 jsx
   3. Component 작성, 컴포넌트 대문자
   4. Props
+  5. state
  -->
 <html>
   <body>
     <div id="app"></div>
 
-    <!-- react is the core React library -->
+    
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <!-- react-dom provides DOM-specific methods that enable you to use React with the DOM -->
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <!-- 스크립트에 JSX를 쓸 수 있게 해주는 라이브러리이다. -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- type 또한 jsx 로 변경한다. -->
     <script type="text/jsx"> 
       const app = document.getElementById('app');
 
-      /* props 통째로 전달하는 방법
-      function Header(props) {
-        console.log(props);
-        return <h1>development. Preview. Ship.</h1>;
-      }
-      */
-
-      /* props 개별 속성을 전달하는 방법
-      function Header({title}) {
-        console.log(title);
-        return <h1>{title}</h1>;
-      }
-      */
-
-      /* 일반 TEXT와 props의 값을 같이 사용하는 방법
-      function Header({ title }) {
-        return <h1>{`Cool ${title}`}</h1>;
-      }
-      */
-
-      /* 별도의 title 생성 함수를 두고, 함수 호출하여 html el을 만드는 방식
-      function createTitle(title) {
-        if(title) {
-          return title;
-        } else {
-          return 'Default title';
-        }
-      }
-
-      function Header({title}) {
-        return <h1>{createTitle(title)}</h1>
-      }
-      */
-
-      // 3항 연산으로 text 값 생성기
       function Header({ title }) {
         return <h1>{title ? title : 'Default Title'}</h1>;
       }
-      
 
       function HomePage() {
+        const [likes, setLikes] = React.useState(0);
+
         const names = ['Ace bi', 'isa kim', 'tak im']
+
+        function handleClick() {
+          setLikes(likes + 1);
+        }
 
         return (
           <div>
@@ -72,6 +40,8 @@
                 <li key={name}>{name}</li>
               ))}
             </ul>
+            
+            <button onClick={handleClick}>Like({likes})</button>
           </div>
         )
       }

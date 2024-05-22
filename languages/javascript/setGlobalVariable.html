@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        function setGlobalVar() {
+            // 이런 형식으로 자주 쓰이지는 않으나, 버튼 클릭하여 글로벌 변수를 세팅한다.
+            globalVar = {
+                hello : function(v) {
+                    alert("hello, "+ v);
+                }
+            }
+        }
+
+        function greet() {
+            var name = prompt("your name?");
+            if(name == null) name = "world";
+            globalVar.hello(name);
+        }
+    </script>
+
+    <input type="button" value="setGlobalVar" onclick="setGlobalVar()">
+    <input type="button" value="greet after setGlobalVar" onclick="greet()">
+
+    
+
+</body>
+</html>
