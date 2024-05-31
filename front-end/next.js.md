@@ -68,3 +68,9 @@ export default function Page() {
 - Next는 기본적으로는 Server Component를 사용한다.
 - useState는 Server Component에서 사용할 수 없다.
 - Client Component로 사용할 경우, 파일 최상단에 `'use client';` 를 선언한다.
+
+
+
+### Static Exports
+[Static Exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)
+
