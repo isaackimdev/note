@@ -48,12 +48,4 @@ public class GuestbookController {
 		return modelAndView;
 	}
 	
-	
-	public void guestbookList () {
-		
-	}
-	
-	
-	public void getTotalA() {}
-	
 }
