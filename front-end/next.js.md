@@ -71,6 +71,6 @@ export default function Page() {
 
 
 
-### Static Exports
-[Static Exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)
-
+### Next.js 관련 참고할 웹 사이트
+- [Static Exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)
+- [Tailwind-typography](https://github.com/tailwindlabs/tailwindcss-typography)
