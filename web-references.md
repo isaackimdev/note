@@ -1,4 +1,4 @@
-# Dev - references
+# web - references
 
 개발 공부에 참고할 페이지 목록 입니다.
 
