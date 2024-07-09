@@ -1,4 +1,2 @@
 # note
-note
-
-- [web - references](./web-references.md)
+- [references](./references.md)
