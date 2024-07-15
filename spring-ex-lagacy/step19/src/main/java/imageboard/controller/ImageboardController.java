@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,6 +24,7 @@ public class ImageboardController {	// 데이터 처리
 	// 페이지 이동 경로가 이름만 올 경우, web.xml 에 url 패턴을 *.do
 	// 로 바꾸지 않고, 기존 그대로 " / " 로 설정해준다.
 	
+	// 등록 화면
 	@RequestMapping(value="/imageboard/imageboardWriteForm", method=RequestMethod.GET)
 	public String imageboardWriteForm() {
 		return "imageboardWriteForm";
@@ -39,9 +39,12 @@ public class ImageboardController {	// 데이터 처리
 	// * 이름만 쓰는 경우에는 메소드방식도 매개변수로 지정해줘야 하는 듯..
 	// 첫번째 제약 : 파라미터 MultipartFile image는 <input type="file" name="image"> input 태그의
 	// name과 일치해야 한다.	
+
+	// 입력 데이터 저장
 	@RequestMapping(value="/imageboard/imageboardWrite", method=RequestMethod.POST)
-	public ModelAndView imageboardWrite(ImageboardDTO imageboardDTO,
-			MultipartFile image, HttpServletRequest request) {	// MultipartFile image 파일은 저장되어 있다.		
+	public ModelAndView imageboardWrite(
+		HttpServletRequest request,	
+		MultipartFile image) {	// MultipartFile image 파일은 저장되어 있다.		
 		
 		/* 					
 		 커맨드 객체의 특징으로 매개변수의 변수값을
@@ -52,6 +55,7 @@ public class ImageboardController {	// 데이터 처리
 		 */
 		
 		String filePath = "E:/java_web_4/spring/workspace/step19/src/main/webapp/storage";	// 파일 경로
+		// "E:\\java_web_4\\spring\\workspace\\step19_1\\src\\main\\webapp\\storage";
 		String fileName = image.getOriginalFilename();	// 파일 이름 얻기
 		
 		File file = new File(filePath, fileName);	// 폴더 이름과 파일 이름이 현재 결합된 것.
@@ -68,29 +72,32 @@ public class ImageboardController {	// 데이터 처리
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// 1. fileName DTO에 저장
-		imageboardDTO.setImage1(fileName);
-		// 1. +imageboard 입력정보 DTO에 저장
+
+		// 1. ImageboardDTO에 입력 정보 및 fileName을 DTO에 담는다.
+		ImageboardDTO imageboardDTO = new ImageboardDTO();
 		imageboardDTO.setImageId(request.getParameter("imageId"));
 		imageboardDTO.setImageName(request.getParameter("imageName"));
 		imageboardDTO.setImagePrice(Integer.parseInt(request.getParameter("imagePrice")));
 		imageboardDTO.setImageQty(Integer.parseInt(request.getParameter("imageQty")));
 		imageboardDTO.setImageContent(request.getParameter("imageContent"));
+		imageboardDTO.setImage1(fileName);
 		// 2. DB
 		ImageboardDAO imageboardDAO = new ImageboardDAO();
 		int su = imageboardDAO.imageboardWrite(imageboardDTO);
 		// 3. ModelAndView return
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("imageboardWrite");
+		modelAndView.addObject("imageboardDTO", imageboardDTO);
 		modelAndView.addObject("su" , su);
-		
+		modelAndView.setViewName("imageboardWrite");
 		return modelAndView;
 	}
 	
 	// 글 목록처리 /* 2018-08-23 */
-	@RequestMapping(value="/imageboard/imageboardList", method=RequestMethod.GET)
+	@RequestMapping(
+		value="/imageboard/imageboardList",
+		method=RequestMethod.GET
+	)
 	public ModelAndView imageboardList(HttpServletRequest request) {
-		System.out.println("이미지 게시판 목록 처리");
 		// 1. 사용자 입력 정보 추출 (data)
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		// 2. DB 연동처리
@@ -119,7 +126,7 @@ public class ImageboardController {	// 데이터 처리
 		int endPage = startPage + 2;	// 3, 6, 9
 		if(endPage > totalP) endPage = totalP;
 	
-		// 3. 검색결과를 request에 저장하고 목록 화면으로 이동한다.
+		// 3. 화면 navigation
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("startPage", startPage);
@@ -131,46 +138,47 @@ public class ImageboardController {	// 데이터 처리
 	}
 	
 	// 이미지게시판 상세보기
-	@RequestMapping(value="/imageboard/imageboardView", method=RequestMethod.GET)
-	public ModelAndView imageboardView(HttpServletRequest request) {
+	@RequestMapping(
+		value="/imageboard/imageboardView",
+		method=RequestMethod.GET
+	)
+	public ModelAndView imageboardView(
+			HttpServletRequest request,
+			ImageboardDAO imageboardDAO // 이렇게 해도 객체 생성되는지 확인 해봐야 함.
+		) {
 		System.out.println("이미지 게시판 상세보기 처리");
 		// 1. 사용자 입력 정보 추출 (Data)
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
-		// 2. DB연동처리
-		ImageboardDAO imageboardDAO = new ImageboardDAO();
-		ImageboardDTO imageboardDTO = new ImageboardDTO();
-		imageboardDTO = imageboardDAO.imageboardView(seq);
-		// System.out.println(imageboardDTO.toString());
+		ImageboardDTO imageboardDTO = imageboardDAO.imageboardView(seq);
 		
-		// 3. 리턴
+		// 3. 화면 navigation
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("imageboardDTO", imageboardDTO);
+		modelAndView.addObject("seq", seq);
+		modelAndView.addObject("pg", pg);
 		modelAndView.setViewName("imageboardView");
-		modelAndView.addObject(imageboardDTO);
-		
 		return modelAndView; 
 	}
-	
+
+	// 삭제 처리 
+	@RequestMapping(value="/imageboard/imageboardDelete")
+	public ModelAndView imageboardDelete(
+		HttpServletRequest request,
+		ImageboardDAO imageboardDAO
+	) {
+		
+		
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		// 2. DB 연동 처리
+		int su = imageboardDAO.imageboardDelete(seq);
+		// 3. 화면 네비게이션
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("su", su);
+		modelAndView.addObject("pg", pg);
+		modelAndView.setViewName("imageboardDelete");
+		return modelAndView;
+	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

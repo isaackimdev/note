@@ -31,7 +31,8 @@
 		<td>${imageboardDTO.seq }</td>
 		<td>
 			<a href="imageboardView?seq=${imageboardDTO.seq }&pg=${pg } ">
-				<img width="50" height="50" src="../storage/${imageboardDTO.image1 }">
+				<img width="50" height="50" 
+					src="../storage/${imageboardDTO.image1 }">
 			</a>
 		</td>
 		<td>${imageboardDTO.imageName }</td>
@@ -40,20 +41,22 @@
 		<td>${imageboardDTO.imagePrice * imageboardDTO.imageQty }</td>
 	</tr>
 </c:forEach>
-	
+
+<!-- paging -->
 	<tr>
 		<td colspan="6" align="center">
 			
 			<c:if test="${startPage > 3 }">
-				[<a id="paging" href="imageboardList?pg=${startPage-1 }">이전</a>]
+				[<a id="paging" 
+					href="imageboardList?pg=${startPage-1 }">이전</a>]
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">  
 				<c:if test="${pg == i}">
-						[<a id="currentPaging" href="imageboardList?pg=${i }">${i}</a>]
+					[<a id="currentPaging" href="imageboardList?pg=${i }">${i}</a>]
 				</c:if>
 				<c:if test="${pg != i}">
-						[<a id="paging" href="imageboardList?pg=${i }">${i}</a>]
+					[<a id="paging" href="imageboardList?pg=${i }">${i}</a>]
 				</c:if>
 				
 			</c:forEach>

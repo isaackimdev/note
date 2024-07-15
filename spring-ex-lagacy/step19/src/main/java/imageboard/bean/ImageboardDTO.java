@@ -11,6 +11,7 @@ public class ImageboardDTO {
 	private String imageContent;
 	private String image1;
 	private Date logtime;
+	
 	public int getSeq() {
 		return seq;
 	}

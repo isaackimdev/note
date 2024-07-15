@@ -80,7 +80,7 @@ function imageboardCheck() {
 	</tr>
 </table>
 </form>
-
+<a href="imageboardList?pg=1">목록</a>
 <input type="button" value="이미지 등록" onclick="ageboardCheck()">
 
 </body>

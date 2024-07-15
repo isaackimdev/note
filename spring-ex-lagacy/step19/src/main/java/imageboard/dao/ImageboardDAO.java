@@ -93,7 +93,7 @@ public class ImageboardDAO {
 				imageboardDTO.setImagePrice(rs.getInt("imagePrice"));
 				imageboardDTO.setImageQty(rs.getInt("imageQty"));
 				imageboardDTO.setImageContent(rs.getString("imageContent"));
-				imageboardDTO.setImage1(rs.getString("image1"));		
+				imageboardDTO.setImage1(rs.getString("image1"));
 				list.add(imageboardDTO);
 			}
 			
@@ -155,14 +155,14 @@ public class ImageboardDAO {
 	}
 
 	// 이미지 게시판 삭제 기능
-	public int imageboardDelete(ImageboardDTO imageboardDTO) {
+	public int imageboardDelete(int seq) {
 		String sql ="delete imageboard where seq=?";
 		int su = 0;
 		conn = getConnection();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, imageboardDTO.getSeq());
+			pstmt.setInt(1, seq);
 			su = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

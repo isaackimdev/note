@@ -43,6 +43,16 @@
 			<pre>${imageboardDTO.imageContent }</pre>
 		</td>
 	</tr>
+	
+	<tr>
+		<td colspan="3" align="center">
+			<input type="button" value="목록" onclick="location.href='imageboardList?pg=${pg}'">
+			<input type="button" value="수정" onclick="">
+			<input type="button" value="삭제"
+				onclick="location.href='imageboardDelete?pg=${pg}&seq=${imageboardDTO.seq}'">
+		</td>
+	</tr>
+
 </table>
 
 
