@@ -15,7 +15,7 @@
 	<mvc:resources location="/script/" mapping="/script/**"/>
 	
 	<context:component-scan base-package="guestbook.controller"/>
-	
+	<context:component-scan base-package="guestbook.*"/>
  
  
 </beans>

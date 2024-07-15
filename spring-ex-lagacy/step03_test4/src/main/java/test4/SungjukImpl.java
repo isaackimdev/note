@@ -5,11 +5,23 @@ import java.util.Scanner;
 public class SungjukImpl implements Sungjuk{
 	SungjukDTO sungjukDTO;
 	
+	public SungjukImpl() {
+		super();
+	}
+
 	public SungjukImpl(SungjukDTO sungjukDTO) {
 		super();
 		this.sungjukDTO = sungjukDTO;
 	}
 
+	public SungjukDTO getSungjukDTO() {
+		return sungjukDTO;
+	}
+
+	public void setSungjukDTO(SungjukDTO sungjukDTO) {
+		this.sungjukDTO = sungjukDTO;
+	}
+	
 	@Override	// 총점계산
 	public void calcTot() {
 	sungjukDTO.setTot(

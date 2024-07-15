@@ -47,9 +47,5 @@ public class BoardWriteController implements Controller {
 		modelAndView.addObject("su" , su);
 		modelAndView.setViewName("boardWrite.jsp");
 		return modelAndView;
-		
-		
 	}
-	
-
 }

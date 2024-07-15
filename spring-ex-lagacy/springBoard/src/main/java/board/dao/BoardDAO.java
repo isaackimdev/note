@@ -16,13 +16,16 @@ import org.springframework.stereotype.Repository;
 
 import board.bean.BoardDTO;
 
-@Repository	// 어노테이션 등록 > 객체 자동 생성
+@Repository
 public class BoardDAO {
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+
 		
 	//입력
 	public int boardWrite(BoardDTO boardDTO) {
+		// return sqlSession.insert("mybatis.board.boardWrite", boardDTO);
 		return sqlSession.insert("mybatis.boardMapper.boardWrite", boardDTO);
 	}
 	
@@ -67,7 +70,6 @@ public class BoardDAO {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
-		
 		return sqlSession.selectList("mybatis.boardMapper.boardList", map);
 	}
 	
@@ -158,5 +160,10 @@ public class BoardDAO {
 		return su;
 	*/
 		return sqlSession.delete("mybatis.boardMapper.boardDelete", seq);
+	}
+
+	// 게시글 수정하기
+	public int boardModify(BoardDTO boardDTO) {
+		return sqlSession.update("mybatis.board.boardModify", boardDTO);
 	}
 }

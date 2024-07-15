@@ -8,5 +8,7 @@ public class FoodTest {
 			new GenericXmlApplicationContext("anno3/bean1.xml");
 		MyFoodMgr myFood = context.getBean("myFood", MyFoodMgr.class);
 		System.out.println(myFood.toString());
+		
+		context.close();
 	}
 }

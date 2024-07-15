@@ -8,6 +8,7 @@
     <!-- Uncomment and add your base-package here:
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
+			
 	<context:component-scan base-package="guestbook.*"/>
 	
 	<context:property-placeholder location="classpath:spring/db.properties"/>

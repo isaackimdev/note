@@ -6,10 +6,15 @@
 
 	<!-- 게시판 등록하기 -->
 	<insert id="boardWrite" parameterType="boardDTO">
-			INSERT INTO board 
+		INSERT INTO board 
 		VALUES(seq_board.nextval, #{id},#{name},#{subject},#{content},0,sysdate)
 	</insert>
-
+	
+	<!-- 조회수 증가 -->
+	<update id="updateHit" parameterType="int">
+		UPDATE board SET hit=hit+1 WHERE seq = #{seq}
+	</update>
+	
 	<!-- 게시글 수정하기 -->
 	<update id="updateBoard" parameterType="boardDTO">
 		update board set subject=#{subject}, content=#{content} where seq=${seq}

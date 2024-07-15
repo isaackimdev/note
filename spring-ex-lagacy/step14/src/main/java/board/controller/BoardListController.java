@@ -49,16 +49,3 @@ public class BoardListController implements Controller {
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

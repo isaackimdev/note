@@ -10,6 +10,7 @@ import board.dao.BoardDAO;
 
 @Service	// 객체 생성 어노테이션
 public class BoardServiceImpl implements BoardService {
+	
 	@Autowired	// 생성자와 setter / getter 초기화 및 내부적으로 동작시킴
 	private BoardDAO boardDAO;
 	
@@ -20,7 +21,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int boardModify(BoardDTO boardDTO) {
-		return 0;
+		return boardDAO.boardModify(boardDTO);
 	}
 
 	@Override

@@ -29,4 +29,8 @@ public class GuestbookDAO {
 		return sqlSession.selectList("mybatis.guestbook.guestbookList", map);
 	}
 	
+	// 글 수 얻어오기
+	public int getTotalA() {	//Total Article number
+		return sqlSession.selectOne("mybatis.guestbook.getTotalA");
+	}
 }

@@ -9,6 +9,7 @@
 	 
 	 <!-- 마이바티스와 연동하기 위한 [ 클래스 별명 설정 ]-->
 	<typeAliases>
+		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"/>
 		<typeAlias type="board.bean.BoardDTO" alias="boardDTO"/>
 	</typeAliases>
 	
@@ -31,6 +32,7 @@
 	<!--마이바티스에 SQL 맵핑을 설정 --> 
 	 <!-- SQL Mapper 설정 -->
 	<mappers>
+		<mapper resource="mybatis/member-mapping.xml" />
 		<mapper resource="mybatis/board-mapping.xml" />
 	</mappers>
 	

@@ -27,6 +27,7 @@
 }
 #section {
 	float: left;
+	padding: 100px;
 }
 
 #footer {
@@ -56,7 +57,7 @@
 	<div id="container">	
 		<div id="nav"><br><br><br>
 			<a href="../guestbook/guestbookWriteForm">글쓰기</a><br>
-			<a href="../guestbook/guestbookList">글목록</a><br>
+			<a href="../guestbook/guestbookList?pg=1">글목록</a><br>
 		</div> <!-- nav -->
 		
 		<div id="section">
@@ -72,7 +73,10 @@
 				<jsp:include page="../guestbook/guestbookWrite.jsp"/>
 			</c:if>
 			
-			
+			<c:if test="${param.req == 'guestbookList' }">
+				<jsp:include page="../guestbook/guestbookList.jsp"/>
+			</c:if>
+
 		</div> <!-- section -->
 	</div>
 	

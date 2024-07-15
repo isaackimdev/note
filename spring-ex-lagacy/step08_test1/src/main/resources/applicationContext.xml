@@ -9,4 +9,7 @@
 	</bean>
 	
 	<bean id="helloSpring" class="test.main.HelloSpring"/>
+
+	<context:component-scan base-package="test.*"/>
+	
 </beans>
