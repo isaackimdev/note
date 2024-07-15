@@ -47,23 +47,3 @@
 	1) mvc-config.xml 에서 ViewResolver 작업 
 		prefix : " / "
 		suffix : " .jsp "
-
-	
-	
--------------------------------
-* 작업순서
-mybatis : slq 문 정리
-dao : db 처리
-jsp 파일에서 java, html 분리
-	- > java :controller
-	- > html : jsp
-service 처리
-
-	
-
-	
-	
-	
-	
-
-

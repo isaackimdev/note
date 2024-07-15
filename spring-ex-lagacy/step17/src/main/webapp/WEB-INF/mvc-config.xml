@@ -22,6 +22,8 @@
  -->
  	<!-- 웹에 관련된 데이터처리를 하는 객체 관리 : Controller -->
 	<!-- Controller 어노테이션 객체 생성 -->
+	<!-- Annotation Controller 등록 : 웹에 관련된 데이터 처리 -->
  	<context:component-scan base-package="board.controller"/>
+	<context:component-scan base-package="score.controller"/>
 
 </beans>

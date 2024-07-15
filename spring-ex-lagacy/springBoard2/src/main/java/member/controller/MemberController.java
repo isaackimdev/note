@@ -28,6 +28,15 @@ public class MemberController {
 	public String writeForm() {
 		return "../main/index.jsp?req=writeForm";
 	}
+	/* 
+	@RequestMapping(value="/member/writeForm.do")
+	public ModelAndView writeForm() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("display", "../member/writeForm.jsp" );
+		modelAndView.setViewName("../main/index.jsp");
+		return modelAndView;
+	}
+	*/
 
 	@RequestMapping(value="/member/write.do")
 	public ModelAndView write(HttpServletRequest request) throws IOException {
@@ -61,6 +70,11 @@ public class MemberController {
 		// 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../member/writeForm.jsp" );
+		// modelAndView.setViewName("../main/index.jsp");
+
 		modelAndView.setViewName("write.jsp");
 		return modelAndView;
 	}
@@ -87,6 +101,11 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("memName", name);
 			session.setAttribute("memId", id);
+
+			// 다른 방식
+			// modelAndView.addObject("display", "../template/body.jsp");
+			// modelAndView.setViewName("../main/index.jsp");
+
 			modelAndView.setViewName("redirect:../main/index.jsp");
 		} 
 		return modelAndView;
@@ -117,6 +136,11 @@ public class MemberController {
 		session.invalidate();			// 무효화 : 모두 지우기
 		
 		ModelAndView modelAndView = new ModelAndView();
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../template/body.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+		
 		modelAndView.setViewName("logout.jsp");
 		return modelAndView;
 	}
@@ -130,6 +154,11 @@ public class MemberController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);
+
+		// 다른 방식
+		// modelAndView.addObject("display", "../member/modifyForm.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+		
 		modelAndView.setViewName("modifyForm.jsp");
 		return modelAndView;
 	}
@@ -166,6 +195,11 @@ public class MemberController {
 		// 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su" , su);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../member/modify.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+
 		modelAndView.setViewName("modify.jsp");
 		return modelAndView;
 	}

@@ -45,7 +45,9 @@ body {
 <body>
 
 <div id="header">
-	<h2> <img src="../image/lion.jpg" width="50" height="50">Spring을 이용한 미니프로젝트 </h2>
+	<h2>
+		<img src="../image/lion.jpg" width="50" height="50">Spring을 이용한 미니프로젝트
+	</h2>
 	<c:if test="${sessionScope.memId != null }">	<!-- 로그인 후 -->
 		<a href="../board/boardWriteForm.do">글쓰기</a>
 	</c:if>
@@ -61,6 +63,7 @@ body {
 		
 		<c:if test="${sessionScope.memId != null }">	<!-- 로그인 후 -->
 			<jsp:include page="../member/loginOk.jsp"/>
+			<input type="button" value="정보 수정" onclick="location.href='../member/modifyForm.do'">
 		</c:if>
 	</div>
 	
@@ -94,6 +97,10 @@ body {
 			<jsp:include page="../board/boardModifyForm.jsp"/>
 		</c:if>
 		
+		<!-- <c:if test="${param.req == 'modifyForm' }">
+			<jsp:include page="../member/modifyForm.jsp"/>
+		</c:if> -->
+
 	</div>
 </div>
 
@@ -101,7 +108,35 @@ body {
 	<h3>KGITBANK</h3>
 </div>
 
-	
+
+<!-- table 작업 -->
+<!-- 
+<table border="1" width="100%">
+	<tr>
+		<td colspan="2" align="center">
+			<jsp:include page="../template/top.jsp"/>
+		</td>
+	</tr>
+	<tr>
+		<td width="290" height="400" align="center" valign="top">
+			<jsp:include page="../template/left.jsp"/>
+		</td>
+		<td align="center">
+		<c:if test="${display == null }">
+			<jsp:include page="../template/body.jsp"/>
+		</c:if>
+		<c:if test="${display != null }">
+			<jsp:include page="${display }"/>
+		</c:if>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<jsp:include page="../template/bottom.jsp"/>
+		</td>
+	</tr>
+</table> 
+-->
 
 </body>
 </html>

@@ -74,6 +74,7 @@
 		</tr>
 	</table>	
 </form>
+<a href="../main/index.do">메인 화면</a>
 </body>
 </html>
 

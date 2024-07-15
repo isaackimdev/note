@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- XML 네임스페이스를 이용한 프로퍼티 설정방법 -->
+	<!-- Namespaces에서 c 와 p 추가 -->
+	<!-- p : property  /  c : construct -->
+	<bean id="emp1" class="sample8.Emp" p:name="강호동" p:salary="1500000"/>
+	<bean id="emp2" class="sample8.Emp" p:name="이순신" p:salary="2500000"/>
+	<bean id="developer" class="sample8.Developer"
+		c:emp-ref="emp1" p:dept="개발1팀"/>
+	<bean id="engineer" class="sample8.Engineer"
+		c:emp-ref="emp2" c:dept="기술1팀"/>	
+</beans>

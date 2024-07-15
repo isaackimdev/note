@@ -45,23 +45,3 @@ public class BoardDAO {
 		return sqlSession.update("mybatis.board.boardModify", boardDTO);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

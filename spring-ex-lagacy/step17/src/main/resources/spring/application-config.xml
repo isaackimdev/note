@@ -9,8 +9,9 @@
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
 	
+	<!-- web웹 controller와 관련없는 다른 class 어노테이션으로 등록하도록 하기.. :DAO 등 -->
 	<!-- Package 등록 DAO, DTO 같은 것들을 등록 / 현재 중복 정의가 된 것.. mvc-config.xml에서 정의한 것과...-->
 	<context:component-scan base-package="board.*"/>
-	
+	<context:component-scan base-package="score.*"/>
 	
 </beans>

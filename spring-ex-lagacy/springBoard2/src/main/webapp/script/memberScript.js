@@ -53,20 +53,3 @@ function checkId() {
 		window.open("checkId.do?id=" + sId, "", "width=350 height=100 left=500 top=200");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -25,5 +25,6 @@
  
 	<!--  Controller 어노테이션 등록 준비  -->
 	<context:component-scan base-package="board.controller"/><!--  어노테이션이 붙은 것들을 객체화 시킴 -->
+	<context:component-scan base-package="score.controller"/>
 
 </beans>

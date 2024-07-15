@@ -59,6 +59,11 @@ public class BoardController {
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("pg", pg);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../board/boardList.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+
 		modelAndView.setViewName("../main/index.jsp?req=boardList");
 		return modelAndView;
 	}
@@ -77,6 +82,11 @@ public class BoardController {
 		modelAndView.addObject("boardDTO", boardDTO);
 		modelAndView.addObject("seq", seq);
 		modelAndView.addObject("pg",pg);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../board/boardView.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+
 		modelAndView.setViewName("../main/index.jsp?req=boardView");
 		return modelAndView;
 	}
@@ -95,13 +105,18 @@ public class BoardController {
 		modelAndView.addObject("seq", seq);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("boardDTO", boardDTO);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../board/boardModifyForm.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+		
 		modelAndView.setViewName("../main/index.jsp?req=boardModifyForm");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/board/boardModify.do")
 	public ModelAndView boardModify(HttpServletRequest request) throws IOException {
-		System.out.println("모디파이");
+		
 		request.setCharacterEncoding("utf-8");
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
@@ -121,6 +136,11 @@ public class BoardController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
 		modelAndView.addObject("pg", pg);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../board/boardModify.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+
 		modelAndView.setViewName("boardModify.jsp");
 		return modelAndView;
 	}
@@ -136,6 +156,11 @@ public class BoardController {
 		// 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../board/boardDelete.jsp");
+		// modelAndView.setViewName("../main/index.jsp");
+		
 		modelAndView.setViewName("boardDelete.jsp");
 		return modelAndView;
 
@@ -143,6 +168,13 @@ public class BoardController {
 	
 	@RequestMapping(value="/board/boardWriteForm.do")	
 	public String boardWriteForm() {
+
+		// 다른 방식
+		// ModelAndView modelAndView = new ModelAndView();
+		// modelAndView.addObject("display", "../board/boardWriteForm.jsp" );
+		// modelAndView.setViewName("../main/index.jsp");
+		// return modelAndView;
+
 		return "../main/index.jsp?req=boardWriteForm";
 	}
 	
@@ -170,6 +202,12 @@ public class BoardController {
 		// 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
+		
+		// 다른 방식
+		// modelAndView.addObject("display", "../board/boardWrite.jsp" );
+		// modelAndView.setViewName("../main/index.jsp");
+		
+
 		modelAndView.setViewName("boardWrite.jsp");
 		return modelAndView;
 

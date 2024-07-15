@@ -22,10 +22,3 @@ function checkBoardModify() {
 		document.boardModifyForm.submit();
 	}
 }
-
-
-
-
-
-
-
