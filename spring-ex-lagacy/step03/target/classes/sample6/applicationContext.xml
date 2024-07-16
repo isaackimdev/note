@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="messageBean" class="sample6.MessageBeanImpl">
+		<constructor-arg value="이순신"/>
+		<property name="phone" value="010-1234-5678"/>
+		<property name="outputter" ref="fileOutput" />
+	</bean>
+
+	<bean id="fileOutput" class="sample6.FileOutput">
+		<property name="filePath">
+			<value>data.txt</value>
+		</property>
+	</bean>	<!-- 객체는 만들어야 함 -->	
+</beans>
