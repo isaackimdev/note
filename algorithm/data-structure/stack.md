@@ -16,7 +16,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Stack<Integer> s = new Statck<>();
+        Stack<Integer> s = new Stack<>();
 
         s.push(5);
         s.push(2);
