@@ -1,0 +1,9 @@
+# DECRYPTBYPASSPHRASE
+MS-SQL 자체 내장 복호화 함수
+
+```sql
+DECLARE @result VARCHAR(100)	 	
+DECLARE @fromVarBinary VARBINARY(1000) = '0x0100000xxexample'
+SELECT @result =  CONVERT(VARCHAR(100),DECRYPTBYPASSPHRASE('SHA2_256',@fromVarBinary))
+RETURN @result
+```
