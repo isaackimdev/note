@@ -17,6 +17,16 @@ public class Solution {
             // 방법 2
             // c = c < 97 ? (char)(c+32) : (char)(c-32);
             
+            // 방법 3
+            /*
+            if ( Character.isUpperCase(c) ) {
+                c = Character.toLowerCase(c);
+            } else {
+                c = Character.toUpperCase(c);
+            }
+            System.out.print(c); 
+            */
+            
             System.out.print(c < 97 ? (char)(c+32) : (char)(c-32));
         }
         

@@ -3,5 +3,7 @@ class Solution {
         String answer = "";
         for(String s : arr) answer += s;
         return answer;
+        
+        // return String.join("", arr);
     }
 }
