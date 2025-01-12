@@ -1,19 +1,17 @@
 # 게시판 작업 순서
 
-### Application 개발 순서
-DB와 가장 가까운 것부터 작업한다. mybatis 프로젝트 인 경우.
-1. mybatis : sql
-2. dao : db connection 및 mybatis 요청
+### Spring-mybatis Project 개발 순서
+1. mybatis : DB, SQL
+2. dao : db connection, mybatis request
 3. service - model
 4. controller
 5. view
 
-
 ### Spring Legacy Project
 1. Spring Legacy project 프로젝트 파일 생성 (legacy maven web)
 2. Maven update project
-3. 서버 리무브
-4. 파셋 버전 1.8
+3. server remove
+4. 파셋 version 1.8
 5. pom.xml 버전 수정
   - 디펜던시 추가   step18 pom.xml 참고
 6. web.xml 부터 작업한다.
@@ -32,10 +30,9 @@ DB와 가장 가까운 것부터 작업한다. mybatis 프로젝트 인 경우.
     - member-mapping.xml
   > mybatis-config.xml 추가
 
-11. 파일4개를
-src/main/resources 로 옮긴다.
- - board-mapping.xml
+11. src/main/resources
  - db.properties
+ - board-mapping.xml
  - member-mapping.xml
  - mybatis-config.xml
 
@@ -117,7 +114,6 @@ db. 앞에 변수값 복사+붙여넣기
 
 그것들 담고 있는 것이 SqlSessionFactoryBean
 설정 파일이기 때문에,
-★★오타에 유의할 것..!!!★★
 
 그것을 사용하기 위한 것
 SqlSessionTemplate
@@ -184,13 +180,3 @@ BoardController 작업
 return [vew].jsp;
 return ModelAndView
  > 데이터 공유 및 페이지 이동
-
----------------------------
-21. JSP 작업
-index
-loginForm
-
-
-
-
-
