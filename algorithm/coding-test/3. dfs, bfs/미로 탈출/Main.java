@@ -41,28 +41,19 @@ public class Main {
             }
             System.out.println();
         }
-
         return map[n-1][m-1];
-        
     }
-
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
         n = sc.nextInt();
         m = sc.nextInt();
-
         for(int i = 0; i < n; i++) {
             String line = sc.next();
             map[i] = Stream.of(line.split("")).mapToInt(Integer::parseInt).toArray();
         }
-
         System.out.println(bfs(0, 0));
-
-        
     }
-
 }
 
 class Pos {
@@ -72,7 +63,6 @@ class Pos {
         this.x = x;
         this.y = y;
     }
-    
     public int getX() {
         return this.x;
     }
