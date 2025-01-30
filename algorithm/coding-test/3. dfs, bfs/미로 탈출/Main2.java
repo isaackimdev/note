@@ -45,21 +45,20 @@ class Main2 {
         n = sc.nextInt();
         m = sc.nextInt();
         
-        System.out.println("-----");
         for(int i = 0; i<n; i++) {
             String line = sc.next();
             graph[i] = Stream.of(line.split("")).mapToInt(Integer::parseInt).toArray();
         }
-        System.out.println("-----");
 
-        System.out.println("result : " + bfs(0,0));
-        System.out.println("-----");
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++) {
-                System.out.print(graph[i][j]);
-            }
-            System.out.println();
-        }
+        System.out.println(bfs(0,0));
+        
+        
+        // for(int i = 0; i < n; i++) {
+        //     for(int j = 0; j < m; j++) {
+        //         System.out.print(graph[i][j]);
+        //     }
+        //     System.out.println();
+        // }
         
     }
 }
