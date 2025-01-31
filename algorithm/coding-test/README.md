@@ -31,4 +31,6 @@
     - 문제 : 음료수 얼려 먹기, 미로 탈출
 
 - Sort
-    -  Selection Sort
+    - Selection Sort
+    - Insertion Sort
+    - Quick Sort
