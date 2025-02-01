@@ -34,3 +34,4 @@
     - Selection Sort
     - Insertion Sort
     - Quick Sort
+    - Count Sort
