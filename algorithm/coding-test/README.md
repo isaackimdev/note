@@ -35,3 +35,4 @@
     - Insertion Sort
     - Quick Sort
     - Count Sort
+    - Sort In Descending Order
