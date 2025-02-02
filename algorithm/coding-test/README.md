@@ -36,3 +36,4 @@
     - Quick Sort
     - Count Sort
     - Sort In Descending Order
+    - Sort Ascending
