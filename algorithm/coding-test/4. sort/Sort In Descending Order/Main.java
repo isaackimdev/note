@@ -10,6 +10,8 @@ class Main {
 
         Arrays.sort(arr); // 정렬
 
+        // 위에서 아래로 내림차순 정렬
+
         // reverse
         for(int i = 0; i < arr.length / 2; i++ ) {
             int temp = arr[i];

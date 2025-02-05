@@ -36,4 +36,7 @@
     - Quick Sort
     - Count Sort
     - Sort In Descending Order
+      - 위에서 아래로
     - Sort Ascending
+      - 성적이 낮은 순서로 학생 출력하기
+    - 두 배열의 원소 교체

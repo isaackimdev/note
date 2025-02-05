@@ -15,6 +15,7 @@ class Main {
         // 내림차순
         // list.sort(Comparator.comparingInt(Student::getScore).reversed());
 
+        // 성적이 낮은 순서로 학생 출력하기
         for(Student s : list) {
             System.out.print(s.getName()+" ");
         }
